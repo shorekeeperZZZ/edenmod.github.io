@@ -490,6 +490,82 @@
             color: var(--text-secondary);
             position: relative;
         }
+
+        @media (max-width: 700px) {
+    .container {
+        padding: 1rem 0.5rem;
+    }
+    .header {
+        padding: 2rem 0.5rem;
+    }
+    .header-logo {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 1rem;
+    }
+    .header h1 {
+        font-size: 2rem;
+    }
+    .controls-container {
+        padding: 1rem;
+    }
+    #gameList {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .game-card {
+        padding: 1rem;
+        font-size: 0.98rem;
+    }
+    .features-wrapper {
+        padding-top: 0.7rem;
+    }
+    .features-list {
+        gap: 0.3rem;
+    }
+    .feature-tag {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+    }
+    .info-item {
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.98rem;
+    }
+    .info-item .icon-wrapper {
+        width: 20px;
+        height: 20px;
+    }
+    .info-item .icon-wrapper svg {
+        width: 16px;
+        height: 16px;
+    }
+    .no-results {
+        padding: 2rem 0.5rem;
+        font-size: 1rem;
+    }
+    .detail-content {
+        padding: 1rem 0.5rem;
+    }
+    .video-wrapper {
+        max-width: 100%;
+    }
+    #detail-title {
+        font-size: 1.3rem;
+    }
+    .back-button {
+        padding: 8px 12px;
+        font-size: 0.98rem;
+    }
+    #detail-discord-link, #copy-discord-link {
+        padding: 12px 10px;
+        font-size: 1rem;
+    }
+    .footer {
+        padding: 1.5rem 0.5rem;
+        font-size: 0.95rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -1012,7 +1088,25 @@
                     card.dataset.gameId = game.id;
                     card.style.setProperty('--status-color', game.statusInfo.color);
                     const featuresHTML = game.features.length > 0 ? `<ul class="features-list">${game.features.map(f => `<li class="feature-tag">${getIconForFeature(f)}<span>${f}</span></li>`).join('')}</ul>` : '<p>Không có dữ liệu chức năng.</p>';
-                    card.innerHTML = `<h3>${game.name}</h3><div class="info-item"><div class="icon-wrapper">${game.statusInfo.icon}</div><span>Trạng thái: <strong class="status">${game.statusInfo.text}</strong></span></div><div class="info-item"><div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div><span>Dev: <strong>${game.devName}</strong></span></div><div class="features-wrapper"><strong>Tín hiệu Mod:</strong>${featuresHTML}</div>`;
+                    card.innerHTML = `
+    <h3>${game.name}</h3>
+    <div class="info-item">
+        <div class="icon-wrapper">${game.statusInfo.icon}</div>
+        <span>Trạng thái: <strong class="status">${game.statusInfo.text}</strong></span>
+    </div>
+    <div class="info-item">
+        <div class="icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r="1"/></svg>
+        </div>
+        <span>Dev: <strong>${game.devName || "Nobody"}</strong></span>
+    </div>
+    <div class="info-item">
+        <div class="icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span><b>Require:</b> No Root</span>
+    </div>
+    <div class="features-wrapper"><strong>Tín hiệu Mod:</strong>${featuresHTML}</div>`;
                     card.addEventListener('click', () => showDetailView(game.id));
                     gameListContainer.appendChild(card);
                 });
