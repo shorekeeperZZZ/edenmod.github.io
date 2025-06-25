@@ -574,52 +574,404 @@
             const searchInput = document.getElementById('searchInput');
             const gameCounter = document.getElementById('gameCounter');
             
-            // --- Data ---
+            // --- DỮ LIỆU GAME ---
+            // Chỉnh sửa danh sách này để thêm/sửa/xóa game.
+            // - name: Tên game (bắt buộc)
+            // - status: "Hoạt động", "Cập nhật", hoặc "Đã dừng" (bắt buộc)
+            // - note: Các chức năng mod, cách nhau bởi dấu phẩy (bắt buộc)
+            // - description: Mô tả ngắn về game (tùy chọn)
+            // - link: Link tải game hoặc trang chủ (tùy chọn)
+            // - videoId: Chỉ cần ID của video YouTube, ví dụ: "dQw4w9WgXcQ" (tùy chọn)
+            // - discordLink: Link Discord riêng của game nếu có (tùy chọn, mặc định là link chung)
             const rawGameData = [
-              { "id": "kho-bau-dai-chien", "name": "Kho Báu Đại Chiến", "link": "https://khobaudaichien.vn/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "videoId": "dQw4w9WgXcQ", "description": "Tham gia vào cuộc phiêu lưu trên biển cả, tìm kiếm kho báu huyền thoại. Bản mod giúp bạn tăng cường sức mạnh để vượt qua mọi thử thách.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "the-gioi-hai-tac", "name": "Thế Giới Hải Tặc", "link": "https://thegioihaitac.vn/home", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "videoId": "L_jWHffIx5E", "description": "Trở thành vua hải tặc trong một thế giới rộng lớn. Sử dụng các chức năng mod để không có kỹ năng nào có thể cản bước bạn.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "dai-chien-luc-dao", "name": "Đại Chiến Lục Đạo", "link": "https://daichienlucdao.vn/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "videoId": null, "description": "Cuộc chiến của các nhẫn giả vĩ đại. Bản mod cung cấp sức mạnh vô song để bạn thống trị thế giới ninja.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "mini-heroes", "name": "Mini Heroes: Magic Throne", "link": "https://play.google.com/store/apps/details?id=com.and.brawl.en", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "description": "Một thế giới ma thuật với những anh hùng tí hon nhưng sức mạnh vô hạn.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "3q-thanh-chu", "name": "3Q: Thành Chủ Tiêu Dao", "link": "https://play.google.com/store/apps/details?id=com.zjws.sea.vn", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown, Speed Multiplier.", "description": "Xây dựng và bảo vệ thành trì của bạn trong thời đại Tam Quốc hỗn loạn.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "loan-dau-tay-du", "name": "Loạn Đấu Tây Du", "link": "https://play.google.com/store/apps/details?id=com.vngw.gp", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, Always Win.", "description": "Một cuộc chiến hỗn loạn giữa các nhân vật Tây Du Ký. Với mod, chiến thắng luôn trong tầm tay.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "vo-dai-nhan-gia", "name": "Võ Đài Nhẫn Giả", "link": "https://vodainhangia.com/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "So tài trên võ đài để tìm ra nhẫn giả mạnh nhất.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "nhan-gioi-truyen-thuyet", "name": "Nhẫn Giới Truyền Thuyết", "link": "http://nhangioitruyenthuyet.top/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Viết nên huyền thoại của riêng bạn trong thế giới ninja.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "anh-trai-tam-quoc", "name": "Anh Trai Tam Quốc", "link": "https://www.facebook.com/anhtraitamquoc/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Các anh hùng Tam Quốc trong một diện mạo hoàn toàn mới.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "dragon-ball-united", "name": "Dragon Ball: Saiyans United", "link": "https://www.db-saiyans-united.com/vi", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "description": "Hợp nhất sức mạnh Saiyan để bảo vệ vũ trụ.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "home-defender", "name": "Home Defender – Wang’s Story", "link": "https://play.google.com/store/apps/details?id=com.warrior.wxw.gp", "status": "Hoạt động tốt", "note": "Unlimited Resources, Speed.", "description": "Bảo vệ ngôi nhà của bạn khỏi những kẻ xâm lược với tài nguyên vô hạn.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "nighty-knight", "name": "Nighty Knight: Frontier War TD", "link": "https://play.google.com/store/apps/details?id=com.ezg011.duskbound.tower.defend.strategy.td.game", "status": "Hoạt động tốt", "note": "Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed.", "description": "Trở thành hiệp sĩ bóng đêm, bảo vệ biên giới khỏi lũ quái vật.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "nightfall-kingdom", "name": "Nightfall: Kingdom Frontier TD", "link": "https://play.google.com/store/apps/details?id=com.fansipan.nightfall.tower.simulation.strategy.td.game", "status": "Hoạt động tốt", "note": "Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed.", "description": "Xây dựng vương quốc và phòng thủ trước hoàng hôn.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "hoc-vien-sieu-hung", "name": "Học Viện Siêu Hùng", "link": "https://hocviensieuhung.com/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Đào tạo những siêu anh hùng thế hệ mới tại học viện danh giá.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "dai-chien-poke", "name": "Đại Chiến Poke", "link": "https://daichienpoke.com/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Trở thành nhà huấn luyện tài ba trong các trận chiến poke đỉnh cao.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "ninja-world-war-2", "name": "Ninja World War II", "link": "https://play.google.com/store/apps/details?id=com.nww.gp.apk", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "description": "Tham gia Đại chiến Nhẫn giả lần thứ hai với sức mạnh vượt trội.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "underdark-defense", "name": "UnderDark Defense", "link": "https://play.google.com/store/apps/details?id=com.FreeDust.UnderDark", "status": "Hoạt động tốt", "note": "Hero Unlock, Tower Unlock, Skin Unlock, Gold, Exp, Diamond Multiplier.", "description": "Phòng thủ những hầm ngục tăm tối với mọi thứ đã được mở khóa.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "heroes-dragons", "name": "Heroes & Dragons", "link": "https://play.google.com/store/apps/details?id=studio.banditos.banditos6", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Anh hùng và rồng, một sự kết hợp hoàn hảo để thống trị.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "boom-castle", "name": "Boom Castle: Tower Defense TD", "link": "https://play.google.com/store/apps/details?id=castle.heroes.tower.defense.kingdom.magic.battle.archer", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Lâu đài của bạn sẽ bất khả xâm phạm với cửa hàng miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "omega-royale", "name": "Omega Royale", "link": "https://play.google.com/store/apps/details?id=com.towerpop.omegaroyale", "status": "Hoạt động tốt", "note": "Unlimited Silver & Mana, No Skill Cooldown, VIP, Speed.", "description": "Trận chiến hoàng gia cuối cùng với các đặc quyền VIP.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "hero-blitz", "name": "Hero Blitz: RPG Roguelike", "link": "https://play.google.com/store/apps/details?id=com.ondi.swordroguelite", "status": "Đã Dừng", "note": "Damage Multiplier, Defense multiplier, Free Shop, Speed.", "description": "Cuộc phiêu lưu roguelike tốc độ cao. (Dự án đã dừng)", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "boomerang-rpg", "name": "Boomerang RPG:Watch out, Dude!", "link": "https://play.google.com/store/apps/details?id=com.superplanet.boomerang", "status": "Hoạt động tốt", "note": "Free Bonus, Resource Never Decrease, Speed.", "description": "Sử dụng boomerang và nhận các phần thưởng miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "manga-loan-chien", "name": "Manga Loạn Chiến", "link": "https://play.google.com/store/apps/details?id=com.game.mglc", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Các nhân vật manga yêu thích của bạn trong một trận chiến hỗn loạn.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "ba-vuong-dai-chien", "name": "Bá Vương Đại Chiến", "link": "https://bavuongdaichien.mobi/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Tranh đoạt ngôi vị bá vương với sức mạnh vượt trội.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "fortias-saga", "name": "Fortias Saga: Idle RPG", "link": "https://play.google.com/store/apps/details?id=com.ondi.fortias.saga", "status": "Hoạt động tốt", "note": "Remove Ads, Unlock All Hero, Unlock All Skin, Custom Resources, Speed.", "description": "Một câu chuyện sử thi nhàn rỗi không có quảng cáo và mọi thứ đã được mở khóa.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "ngu-kiem-sinh-ton", "name": "Ngự Kiếm Sinh Tồn", "link": "https://play.google.com/store/apps/details?id=com.colocess.opengame.ngukiem", "status": "Hoạt động tốt", "note": "No Skill CD, God Mode, Auto Collect.", "description": "Sinh tồn trong thế giới kiếm hiệp với các kỹ năng bất tử.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "nuoi-tho-ngoc", "name": "Nuôi Thỏ Ngọc", "link": "https://apkcombo.com/vi/idlemoonrabbit-x-eternalreturn/com.AbleGames.DalToKi/", "status": "Hoạt động tốt", "note": "No Skill CD, OHK, God Mode, Dumb Enemies, Speed.", "description": "Nuôi thỏ ngọc của bạn trở thành một cỗ máy hủy diệt.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "ethereal-hunter", "name": "Ethereal Hunter IDLE RPG", "link": "https://play.google.com/store/apps/details?id=com.firstgames.girlhunter_global", "status": "Hoạt động tốt", "note": "Free Shop, Auto Clear, Speed.", "description": "Săn lùng các thực thể ethereal với cửa hàng miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "wittle-defender", "name": "Wittle Defender", "link": "https://play.google.com/store/apps/details?id=com.game.kingrush", "status": "Hoạt động tốt", "note": "God Mode, Speed.", "description": "Trở thành người bảo vệ tí hon bất khả chiến bại.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "dino-hero-go", "name": "Dino Hero Go", "link": "https://play.google.com/store/apps/details?id=com.droidhang.dn.android.google", "status": "Hoạt động tốt", "note": "Attack Speed & Range, Speed.", "description": "Anh hùng khủng long với tốc độ và tầm đánh không giới hạn.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "lucky-offense", "name": "Lucky Offense", "link": "https://play.google.com/store/apps/details?id=com.percent.aos.luckyrolling", "status": "Hoạt động tốt", "note": "HP Multiplier, Attack Multiplier, Speed.", "description": "Cuộc tấn công may mắn với sức mạnh được nhân lên nhiều lần.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "imae-guardian-girl", "name": "IMAE Guardian Girl", "link": "https://play.google.com/store/apps/details?id=com.wondersquad.imaegirl", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Cô gái hộ vệ với cửa hàng miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "idle-weapon-shop", "name": "Idle Weapon Shop", "link": "https://play.google.com/store/apps/details?id=com.wondersquad.imaegirl", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Quản lý cửa hàng vũ khí nhàn rỗi của bạn.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "wulin-buzz", "name": "Wulin Buzz", "link": "https://play.google.com/store/apps/details?id=com.pandagame.twzm.and", "status": "Đang Cập Nhật", "note": "Auto Win, Speed.", "description": "Khuấy đảo võ lâm với tính năng tự động thắng.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "legendary-girl-warrior", "name": "Legendary Girl Warrior Idle", "link": "https://play.google.com/store/apps/details?id=com.firstgames.girlhunter", "status": "Hoạt động tốt", "note": "Free Costume Shop, Auto Clear, Speed.", "description": "Nữ chiến binh huyền thoại với cửa hàng trang phục miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "grandzenka", "name": "Grandzenka: Idle RPG", "link": "https://play.google.com/store/apps/details?id=studio.gameberry.earthwarrior", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Chiến binh Trái Đất trong một game RPG nhàn rỗi.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "supervillain-wanted", "name": "Supervillain Wanted", "link": "https://play.google.com/store/apps/details?id=io.supervlabs.catchandtame.gl", "status": "Hoạt động tốt", "note": "One Hit Kill, Dumb Enemies, Speed.", "description": "Trở thành siêu phản diện bị truy nã gắt gao nhất.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "epic-shaman-battle", "name": "Epic Shaman Battle: 4P Defense", "link": "https://play.google.com/store/apps/details?id=com.wemade.tales", "status": "Hoạt động tốt", "note": "One Hit Kill, God Mode.", "description": "Trận chiến pháp sư sử thi với chế độ phòng thủ 4 người.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "raise-knightly-order", "name": "Raise Your Knightly Order:Idle", "link": "https://play.google.com/store/apps/details?id=com.superplanet.knight", "status": "Hoạt động tốt", "note": "Free Shop, Add Custom Resource, Speed.", "description": "Xây dựng đội quân hiệp sĩ của bạn.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "tiny-reaper", "name": "Tiny Reaper: Reborn", "link": "https://play.google.com/store/apps/details?id=com.xchange.blob", "status": "Đang Cập Nhật", "note": "Custom Shop Amount + Cost, No Skill CD + Max Attack Range + Attack All Targets, Dumb Enemies, Speed.", "description": "Thần chết tí hon tái sinh với sức mạnh tùy chỉnh.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "chuyen-sinh-ta-la-vua", "name": "Chuyển Sinh Ta Là Vua Tam Quốc", "link": "https://play.google.com/store/apps/details?id=vn.funtap.chuyensinh", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, Speed.", "description": "Chuyển sinh và trở thành vua của thời Tam Quốc.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "rush-knights-2", "name": "Rush Knights : Idle RPG", "link": "https://play.google.com/store/apps/details?id=com.gaimstudio.knightage", "status": "Đang Cập Nhật", "note": "Free Shop, Speed.", "description": "Các hiệp sĩ xông lên trong một game RPG nhàn rỗi.", "discordLink": "https://discord.gg/edenmod" },
-              { "id": "sieu-dau-tien-cong", "name": "Siêu Đậu Tiến Công", "link": "https://play.google.com/store/apps/details?id=vn.funtap.gardenbattle", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, Speed.", "videoId": null, "description": "Chưa có mô tả chi tiết cho game này.", "discordLink": "https://discord.gg/edenmod" }
-            ];
+    {
+        "name": "Kho Báu Đại Chiến",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier",
+        "description": "Tham gia vào cuộc phiêu lưu trên biển cả, tìm kiếm kho báu huyền thoại. Bản mod giúp bạn tăng cường sức mạnh để vượt qua mọi thử thách.",
+        "link": "https://khobaudaichien.vn/",
+        "videoId": "Ce31ZxStEng",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Thế Giới Hải Tặc",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown",
+        "description": "Trở thành vua hải tặc trong một thế giới rộng lớn. Sử dụng các chức năng mod để không có kỹ năng nào có thể cản bước bạn.",
+        "link": "https://thegioihaitac.vn/home",
+        "videoId": "Ce31ZxStEng",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Đại Chiến Lục Đạo",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown",
+        "description": "Cuộc chiến của các nhẫn giả vĩ đại. Bản mod cung cấp sức mạnh vô song để bạn thống trị thế giới ninja.",
+        "link": "https://daichienlucdao.vn/",
+        "videoId": "Ce31ZxStEng",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Mini Heroes: Magic Throne",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown",
+        "description": "Một thế giới ma thuật với những anh hùng tí hon nhưng sức mạnh vô hạn.",
+        "link": "https://play.google.com/store/apps/details?id=com.and.brawl.en",
+        "videoId": "Ce31ZxStEng",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "3Q: Thành Chủ Tiêu Dao",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown, Speed Multiplier",
+        "description": "Xây dựng và bảo vệ thành trì của bạn trong thời đại Tam Quốc hỗn loạn.",
+        "link": "https://play.google.com/store/apps/details?id=com.zjws.sea.vn",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Loạn Đấu Tây Du",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier, Always Win",
+        "description": "Một cuộc chiến hỗn loạn giữa các nhân vật Tây Du Ký. Với mod, chiến thắng luôn trong tầm tay.",
+        "link": "https://play.google.com/store/apps/details?id=com.vngw.gp",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Võ Đài Nhẫn Giả",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier",
+        "description": "So tài trên võ đài để tìm ra nhẫn giả mạnh nhất.",
+        "link": "https://vodainhangia.com/",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Nhẫn Giới Truyền Thuyết",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier",
+        "description": "Viết nên huyền thoại của riêng bạn trong thế giới ninja.",
+        "link": "http://nhangioitruyenthuyet.top/",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Anh Trai Tam Quốc",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier",
+        "description": "Các anh hùng Tam Quốc trong một diện mạo hoàn toàn mới.",
+        "link": "https://www.facebook.com/anhtraitamquoc/",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Dragon Ball: Saiyans United",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown",
+        "description": "Hợp nhất sức mạnh Saiyan để bảo vệ vũ trụ.",
+        "link": "https://www.db-saiyans-united.com/vi",
+        "videoId": "Ce31ZxStEng",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Home Defender – Wang’s Story",
+        "status": "Hoạt động",
+        "note": "Unlimited Resources, Speed",
+        "description": "Bảo vệ ngôi nhà của bạn khỏi những kẻ xâm lược với tài nguyên vô hạn.",
+        "link": "https://play.google.com/store/apps/details?id=com.warrior.wxw.gp",
+        "videoId": "Ce31ZxStEng",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Nighty Knight: Frontier War TD",
+        "status": "Hoạt động",
+        "note": "Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed",
+        "description": "Trở thành hiệp sĩ bóng đêm, bảo vệ biên giới khỏi lũ quái vật.",
+        "link": "https://play.google.com/store/apps/details?id=com.ezg011.duskbound.tower.defend.strategy.td.game",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Nightfall: Kingdom Frontier TD",
+        "status": "Hoạt động",
+        "note": "Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed",
+        "description": "Xây dựng vương quốc và phòng thủ trước hoàng hôn.",
+        "link": "https://play.google.com/store/apps/details?id=com.fansipan.nightfall.tower.simulation.strategy.td.game",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Học Viện Siêu Hùng",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier",
+        "description": "Đào tạo những siêu anh hùng thế hệ mới tại học viện danh giá.",
+        "link": "https://hocviensieuhung.com/",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Đại Chiến Poke",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier",
+        "description": "Trở thành nhà huấn luyện tài ba trong các trận chiến poke đỉnh cao.",
+        "link": "https://daichienpoke.com/",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Ninja World War II",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown",
+        "description": "Tham gia Đại chiến Nhẫn giả lần thứ hai với sức mạnh vượt trội.",
+        "link": "https://play.google.com/store/apps/details?id=com.nww.gp.apk",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "UnderDark Defense",
+        "status": "Hoạt động",
+        "note": "Hero Unlock, Tower Unlock, Skin Unlock, Gold, Exp, Diamond Multiplier",
+        "description": "Phòng thủ những hầm ngục tăm tối với mọi thứ đã được mở khóa.",
+        "link": "https://play.google.com/store/apps/details?id=com.FreeDust.UnderDark",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Heroes & Dragons",
+        "status": "Hoạt động",
+        "note": "Free Shop, Speed",
+        "description": "Anh hùng và rồng, một sự kết hợp hoàn hảo để thống trị.",
+        "link": "https://play.google.com/store/apps/details?id=studio.banditos.banditos6",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Boom Castle: Tower Defense TD",
+        "status": "Hoạt động",
+        "note": "Free Shop, Speed",
+        "description": "Lâu đài của bạn sẽ bất khả xâm phạm với cửa hàng miễn phí.",
+        "link": "https://play.google.com/store/apps/details?id=castle.heroes.tower.defense.kingdom.magic.battle.archer",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Omega Royale",
+        "status": "Hoạt động",
+        "note": "Unlimited Silver & Mana, No Skill Cooldown, VIP, Speed",
+        "description": "Trận chiến hoàng gia cuối cùng với các đặc quyền VIP.",
+        "link": "https://play.google.com/store/apps/details?id=com.towerpop.omegaroyale",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Hero Blitz: RPG Roguelike",
+        "status": "Đã dừng",
+        "note": "Damage Multiplier, Defense multiplier, Free Shop, Speed",
+        "description": "Cuộc phiêu lưu roguelike tốc độ cao. (Dự án đã dừng)",
+        "link": "https://play.google.com/store/apps/details?id=com.ondi.swordroguelite",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Boomerang RPG:Watch out, Dude!",
+        "status": "Hoạt động",
+        "note": "Free Bonus, Resource Never Decrease, Speed",
+        "description": "Sử dụng boomerang và nhận các phần thưởng miễn phí.",
+        "link": "https://play.google.com/store/apps/details?id=com.superplanet.boomerang",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Manga Loạn Chiến",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier",
+        "description": "Các nhân vật manga yêu thích của bạn trong một trận chiến hỗn loạn.",
+        "link": "https://play.google.com/store/apps/details?id=com.game.mglc",
+        "videoId": "WSl7vjhCaNk",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Bá Vương Đại Chiến",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier",
+        "description": "Tranh đoạt ngôi vị bá vương với sức mạnh vượt trội.",
+        "link": "https://bavuongdaichien.mobi/",
+        "videoId": "WSl7vjhCaNk",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Fortias Saga: Idle RPG",
+        "status": "Hoạt động",
+        "note": "Remove Ads, Unlock All Hero, Unlock All Skin, Custom Resources, Speed",
+        "description": "Một câu chuyện sử thi nhàn rỗi không có quảng cáo và mọi thứ đã được mở khóa.",
+        "link": "https://play.google.com/store/apps/details?id=com.ondi.fortias.saga",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Ngự Kiếm Sinh Tồn",
+        "status": "Hoạt động",
+        "note": "No Skill CD, God Mode, Auto Collect",
+        "description": "Sinh tồn trong thế giới kiếm hiệp với các kỹ năng bất tử.",
+        "link": "https://play.google.com/store/apps/details?id=com.colocess.opengame.ngukiem",
+        "videoId": "UxePDXivvIY",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Nuôi Thỏ Ngọc",
+        "status": "Hoạt động",
+        "note": "No Skill CD, OHK, God Mode, Dumb Enemies, Speed",
+        "description": "Nuôi thỏ ngọc của bạn trở thành một cỗ máy hủy diệt.",
+        "link": "https://apkcombo.com/vi/idlemoonrabbit-x-eternalreturn/com.AbleGames.DalToKi/",
+        "videoId": "ujMLCOQbAGA",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Ethereal Hunter IDLE RPG",
+        "status": "Hoạt động",
+        "note": "Free Shop, Auto Clear, Speed",
+        "description": "Săn lùng các thực thể ethereal với cửa hàng miễn phí.",
+        "link": "https://play.google.com/store/apps/details?id=com.firstgames.girlhunter_global",
+        "videoId": "berSTxHHgI8",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Wittle Defender",
+        "status": "Hoạt động",
+        "note": "God Mode, Speed",
+        "description": "Trở thành người bảo vệ tí hon bất khả chiến bại.",
+        "link": "https://play.google.com/store/apps/details?id=com.game.kingrush",
+        "videoId": "xm-0Z_Yk2oU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Dino Hero Go",
+        "status": "Hoạt động",
+        "note": "Attack Speed & Range, Speed",
+        "description": "Anh hùng khủng long với tốc độ và tầm đánh không giới hạn.",
+        "link": "https://play.google.com/store/apps/details?id=com.droidhang.dn.android.google",
+        "videoId": "YYdT2sv6y5s",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Lucky Offense",
+        "status": "Hoạt động",
+        "note": "HP Multiplier, Attack Multiplier, Speed",
+        "description": "Cuộc tấn công may mắn với sức mạnh được nhân lên nhiều lần.",
+        "link": "https://play.google.com/store/apps/details?id=com.percent.aos.luckyrolling",
+        "videoId": "4fpXxediZOw",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "IMAE Guardian Girl",
+        "status": "Hoạt động",
+        "note": "Free Shop, Speed",
+        "description": "Cô gái hộ vệ với cửa hàng miễn phí.",
+        "link": "https://play.google.com/store/apps/details?id=com.wondersquad.imaegirl",
+        "videoId": "LUUHZ52goz4",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Idle Weapon Shop",
+        "status": "Hoạt động",
+        "note": "Free Shop, Speed",
+        "description": "Quản lý cửa hàng vũ khí nhàn rỗi của bạn.",
+        "link": "https://play.google.com/store/apps/details?id=com.wondersquad.imaegirl",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Wulin Buzz",
+        "status": "Cập nhật",
+        "note": "Auto Win, Speed",
+        "description": "Khuấy đảo võ lâm với tính năng tự động thắng.",
+        "link": "https://play.google.com/store/apps/details?id=com.pandagame.twzm.and",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Legendary Girl Warrior Idle",
+        "status": "Hoạt động",
+        "note": "Free Costume Shop, Auto Clear, Speed",
+        "description": "Nữ chiến binh huyền thoại với cửa hàng trang phục miễn phí.",
+        "link": "https://play.google.com/store/apps/details?id=com.firstgames.girlhunter",
+        "videoId": "berSTxHHgI8",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Grandzenka: Idle RPG",
+        "status": "Hoạt động",
+        "note": "Free Shop, Speed",
+        "description": "Chiến binh Trái Đất trong một game RPG nhàn rỗi.",
+        "link": "https://play.google.com/store/apps/details?id=studio.gameberry.earthwarrior",
+        "videoId": "4flXowqZsuA",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Supervillain Wanted",
+        "status": "Hoạt động",
+        "note": "One Hit Kill, Dumb Enemies, Speed",
+        "description": "Trở thành siêu phản diện bị truy nã gắt gao nhất.",
+        "link": "https://play.google.com/store/apps/details?id=io.supervlabs.catchandtame.gl",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Epic Shaman Battle: 4P Defense",
+        "status": "Hoạt động",
+        "note": "One Hit Kill, God Mode",
+        "description": "Trận chiến pháp sư sử thi với chế độ phòng thủ 4 người.",
+        "link": "https://play.google.com/store/apps/details?id=com.wemade.tales",
+        "videoId": "KpeaZL4GKaw",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Raise Your Knightly Order:Idle",
+        "status": "Hoạt động",
+        "note": "Free Shop, Add Custom Resource, Speed",
+        "description": "Xây dựng đội quân hiệp sĩ của bạn.",
+        "link": "https://play.google.com/store/apps/details?id=com.superplanet.knight",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Tiny Reaper: Reborn",
+        "status": "Hoạt động",
+        "note": "Custom Shop Amount + Cost, No Skill CD + Max Attack Range + Attack All Targets, Dumb Enemies, Speed",
+        "description": "Thần chết tí hon tái sinh với sức mạnh tùy chỉnh.",
+        "link": "https://play.google.com/store/apps/details?id=com.xchange.blob",
+        "videoId": "_6lX-HS9owE",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Chuyển Sinh Ta Là Vua Tam Quốc",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier, Speed",
+        "description": "Chuyển sinh và trở thành vua của thời Tam Quốc.",
+        "link": "https://play.google.com/store/apps/details?id=vn.funtap.chuyensinh",
+        "videoId": "ZNYsG_YjkUQ",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Rush Knights : Idle RPG",
+        "status": "Cập nhật",
+        "note": "Free Shop, Speed",
+        "description": "Các hiệp sĩ xông lên trong một game RPG nhàn rỗi.",
+        "link": "https://play.google.com/store/apps/details?id=com.gaimstudio.knightage",
+        "videoId": "1aRMYlzk7Z0",
+        "discordLink": "https://discord.gg/edenmod"
+    },
+    {
+        "name": "Siêu Đậu Tiến Công",
+        "status": "Hoạt động",
+        "note": "Damage Multiplier, Defense Multiplier, Speed",
+        "description": "Chưa có mô tả chi tiết cho game này.",
+        "link": "https://play.google.com/store/apps/details?id=vn.funtap.gardenbattle",
+        "videoId": "NF6nNIqX2QU",
+        "discordLink": "https://discord.gg/edenmod"
+    }
+];
 
             const featureIcons = {
                 'damage': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 4.5l7 7L8 25l-6-6 12.5-12.5z"></path><path d="M4.5 19.5L9 15"></path></svg>`,
@@ -644,7 +996,7 @@
 
             // --- Functions ---
             const getIconForFeature = (featureText) => { const text = featureText.toLowerCase(); if (text.includes('damage') || text.includes('attack') || text.includes('ohk')) return featureIcons.damage; if (text.includes('defense')) return featureIcons.defense; if (text.includes('speed')) return featureIcons.speed; if (text.includes('cooldown') || text.includes('cd')) return featureIcons.cooldown; if (text.includes('win')) return featureIcons.win; if (text.includes('god')) return featureIcons.god; if (text.includes('resource') || text.includes('gold') || text.includes('coin') || text.includes('diamond')) return featureIcons.resource; if (text.includes('unlock') || text.includes('free')) return featureIcons.unlock; if (text.includes('kill') || text.includes('enemies')) return featureIcons.kill; return featureIcons.default; };
-            const processData = (rawData) => { return rawData.map(game => { const noteText = (game.note || '').replace('Chức năng mod: ', ''); const features = noteText.split(/, |\. /).map(f => f.trim()).filter(f => f); let statusInfo = statusMap.stopped; const lowerCaseStatus = game.status.toLowerCase(); if (lowerCaseStatus.includes('hoạt động')) statusInfo = statusMap.ok; else if (lowerCaseStatus.includes('đang cập nhật')) statusInfo = statusMap.updating; return { ...game, statusInfo, features, devName: game.devName || "Vô danh" }; }); };
+            const processData = (rawData) => { return rawData.map(game => { const features = (game.note || '').split(/,/).map(f => f.trim()).filter(f => f); let statusInfo = statusMap.stopped; const lowerCaseStatus = (game.status || "").toLowerCase(); if (lowerCaseStatus.includes('hoạt động')) statusInfo = statusMap.ok; else if (lowerCaseStatus.includes('cập nhật')) statusInfo = statusMap.updating; const id = game.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'); return { ...game, id, statusInfo, features, devName: game.devName || "Vô danh" }; }); };
             const gameData = processData(rawGameData);
             
             const displayGames = (games) => {
@@ -708,14 +1060,10 @@
 
             const copyDiscordLink = (button) => {
                 const link = document.getElementById('detail-discord-link').href;
-                const textarea = document.createElement('textarea');
-                textarea.value = link;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                button.textContent = 'Đã sao chép!';
-                setTimeout(() => { button.textContent = 'Sao chép Link'; }, 2000);
+                navigator.clipboard.writeText(link).then(() => {
+                    button.textContent = 'Đã sao chép!';
+                    setTimeout(() => { button.textContent = 'Sao chép Link'; }, 2000);
+                });
             };
             
             const showMainView = () => {
