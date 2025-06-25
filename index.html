@@ -24,6 +24,7 @@
             --status-ok: #4ade80; /* Green */
             --status-updating: #38bdf8; /* Cyan */
             --status-stopped: #f472b6; /* Pink */
+            --star-color: #facc15; /* Yellow */
         }
 
         * {
@@ -55,7 +56,36 @@
             z-index: -1;
         }
         
-        /* Hiệu ứng tổng thể */
+        /* Hiệu ứng và Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background-color: var(--bg-primary);
+            display: grid;
+            place-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        #preloader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 5px solid var(--border-color);
+            border-top-color: var(--primary-accent);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -82,7 +112,6 @@
             align-items: center;
             border-bottom: 1px solid var(--border-color);
         }
-
         .header-logo {
             width: 140px;
             height: 140px;
@@ -92,7 +121,6 @@
             border: 3px solid var(--primary-accent);
             box-shadow: 0 0 25px var(--primary-accent), 0 0 40px var(--secondary-accent) inset;
         }
-
         .header h1 {
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
@@ -101,14 +129,12 @@
             letter-spacing: 5px;
             animation: text-glow 2s ease-in-out infinite alternate;
         }
-
         .header p {
             font-size: clamp(1rem, 2.5vw, 1.25rem);
             color: var(--text-secondary);
             margin-top: 1rem;
             max-width: 650px;
         }
-
         .discord-button {
             display: inline-block;
             margin-top: 2.5rem;
@@ -123,7 +149,6 @@
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
             border: none;
         }
-
         .discord-button:hover, .discord-button:focus {
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 0 35px rgba(168, 85, 247, 0.8);
@@ -154,7 +179,6 @@
             margin-bottom: 3rem;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
-
         .filter-container {
             display: flex;
             justify-content: center;
@@ -162,7 +186,6 @@
             margin-bottom: 2rem;
             flex-wrap: wrap;
         }
-
         .filter-btn {
             background-color: transparent;
             color: var(--text-secondary);
@@ -174,26 +197,22 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
         }
-
         .filter-btn:hover {
             color: var(--text-primary);
             border-color: var(--primary-accent);
             box-shadow: 0 0 10px var(--primary-accent);
         }
-
         .filter-btn.active {
             background: var(--primary-accent);
             color: #fff;
             border-color: var(--primary-accent);
             box-shadow: 0 0 15px var(--primary-accent);
         }
-        
         .search-container {
             position: relative;
             max-width: 700px;
             margin: 0 auto;
         }
-
         #searchInput {
             width: 100%;
             padding: 16px 20px 16px 55px;
@@ -204,14 +223,12 @@
             color: var(--text-primary);
             transition: all 0.3s ease;
         }
-        
         #searchInput::placeholder { color: var(--text-secondary); }
         #searchInput:focus {
             outline: none;
             border-color: var(--primary-accent);
             box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.3);
         }
-
         .search-container::before {
             content: '🔍';
             position: absolute;
@@ -221,7 +238,6 @@
             font-size: 1.4rem;
             opacity: 0.6;
         }
-
         .game-counter {
             text-align: center;
             color: var(--text-secondary);
@@ -253,21 +269,18 @@
             overflow: hidden;
             cursor: pointer;
         }
-        
         .game-card:hover {
             transform: translateY(-10px) perspective(1000px) rotateX(2deg);
             box-shadow: 0 0 25px var(--status-color), 0 0 40px rgba(0,0,0,0.6);
             border-color: var(--status-color);
         }
-        
         .game-card h3 {
             color: var(--text-primary);
             margin-top: 0;
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.5rem;
             font-size: 1.5rem;
             font-weight: 600;
         }
-
         .info-item {
             display: flex;
             align-items: center;
@@ -275,7 +288,6 @@
             margin-bottom: 0.75rem;
             color: var(--text-secondary);
         }
-        
         .info-item .icon-wrapper {
             width: 24px;
             height: 24px;
@@ -283,30 +295,25 @@
             place-items: center;
             color: var(--primary-accent);
         }
-        
         .info-item .icon-wrapper svg {
              width: 20px;
              height: 20px;
         }
-
         .info-item .status {
             font-weight: 600;
             color: var(--status-color);
             text-shadow: 0 0 5px var(--status-color);
         }
-
         .features-wrapper {
             margin-top: auto;
             padding-top: 1.25rem;
             border-top: 1px solid var(--border-color);
         }
-
         .features-wrapper strong {
             color: var(--text-primary);
             display: block;
             margin-bottom: 0.75rem;
         }
-        
         .features-list {
             list-style-type: none;
             padding-left: 0;
@@ -314,7 +321,6 @@
             flex-wrap: wrap;
             gap: 0.6rem;
         }
-
         .feature-tag {
             background-color: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -328,19 +334,16 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
         .feature-tag .feature-icon {
             width: 16px;
             height: 16px;
             stroke-width: 2;
         }
-
         .feature-tag:hover {
             background-color: var(--primary-accent);
             color: #fff;
             border-color: var(--primary-accent);
         }
-
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
@@ -350,13 +353,29 @@
             background-color: var(--glass-bg);
             border-radius: 16px;
         }
+        .star-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--star-color);
+            margin-bottom: 1rem;
+        }
+        .star-rating svg {
+            width: 20px;
+            height: 20px;
+        }
+        .star-rating .rating-value {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
 
         /* --- Chế độ xem chi tiết --- */
         #detail-view {
             display: none;
             animation: fadeIn 0.5s ease-in-out;
         }
-        
         .back-button {
             display: inline-flex;
             align-items: center;
@@ -370,13 +389,11 @@
             margin-bottom: 2rem;
             transition: all 0.3s ease;
         }
-
         .back-button:hover {
             background: var(--primary-accent);
             border-color: var(--primary-accent);
             box-shadow: 0 0 15px var(--primary-accent);
         }
-
         .detail-content {
             background-color: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -386,23 +403,36 @@
             padding: clamp(1.5rem, 5vw, 3rem);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
-
+        .detail-header {
+            margin-bottom: 1.5rem;
+        }
         #detail-title {
             font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 700;
             color: #fff;
             text-shadow: 0 0 15px var(--primary-accent);
-            margin-bottom: 1.5rem;
+            margin: 0;
         }
+        #detail-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        #detail-title a:hover {
+            color: var(--status-updating);
+            text-shadow: 0 0 15px var(--status-updating);
+        }
+        #detail-rating .star-rating { margin-bottom: 0; }
+        #detail-rating .star-rating svg { width: 24px; height: 24px; }
+        #detail-rating .rating-value { font-size: 1.1rem; }
         
         .video-wrapper {
             max-width: 70%;
             margin: 0 auto 2rem auto;
         }
-
         #video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%; /* 16:9 */
             height: 0;
             overflow: hidden;
             max-width: 100%;
@@ -410,7 +440,6 @@
             border-radius: 12px;
             border: 1px solid var(--border-color);
         }
-
         #video-container iframe {
             position: absolute;
             top: 0;
@@ -418,29 +447,31 @@
             width: 100%;
             height: 100%;
         }
-
         #detail-description, #detail-features {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
-        
         #detail-description p {
              color: var(--text-secondary);
         }
-
         #detail-features .features-list {
             gap: 0.8rem;
         }
-        
         #detail-features .feature-tag {
             font-size: 1rem;
             padding: 8px 16px;
         }
+        
+        .detail-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
         #detail-discord-link {
+            flex-grow: 1;
             display: inline-block;
-            width: 100%;
             text-align: center;
-            padding: 18px 40px;
+            padding: 18px 30px;
             background: linear-gradient(135deg, #23d5ab, #38bdf8);
             color: #fff;
             text-decoration: none;
@@ -451,12 +482,25 @@
             box-shadow: 0 0 20px rgba(35, 213, 171, 0.5);
             border: none;
         }
-        
         #detail-discord-link:hover {
              transform: translateY(-5px) scale(1.02);
              box-shadow: 0 0 35px rgba(35, 213, 171, 0.8);
         }
 
+        #copy-discord-link {
+            padding: 18px 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        #copy-discord-link:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+        }
 
         /* Footer */
         .footer {
@@ -471,6 +515,7 @@
     </style>
 </head>
 <body>
+    <div id="preloader"><div class="spinner"></div></div>
 
     <canvas id="galaxy-bg"></canvas>
 
@@ -511,7 +556,10 @@
                 Quay lại vũ trụ
             </button>
             <div class="detail-content">
-                <h2 id="detail-title"></h2>
+                <div class="detail-header">
+                    <h2 id="detail-title"></h2>
+                    <div id="detail-rating"></div>
+                </div>
                 <div class="video-wrapper">
                     <div id="video-container"></div>
                 </div>
@@ -523,7 +571,10 @@
                      <h3>Tín hiệu Mod chi tiết</h3>
                      <ul class="features-list"></ul>
                 </div>
-                <a id="detail-discord-link" href="#" target="_blank" rel="noopener noreferrer">Vào Server Discord</a>
+                <div class="detail-actions">
+                    <a id="detail-discord-link" href="#" target="_blank" rel="noopener noreferrer">Vào Server Discord</a>
+                    <button id="copy-discord-link" onclick="copyDiscordLink(this)">Sao chép Link</button>
+                </div>
             </div>
         </section>
     </div>
@@ -533,14 +584,196 @@
     </footer>
 
     <script>
-        // --- Three.js Galaxy Background ---
+        // --- Preloader Logic ---
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                 document.getElementById('preloader').classList.add('loaded');
+            }, 500);
+        });
+
+        // --- Main App Logic ---
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Elements ---
+            const mainView = document.getElementById('main-view');
+            const detailView = document.getElementById('detail-view');
+            const gameListContainer = document.getElementById('gameList');
+            const searchInput = document.getElementById('searchInput');
+            const gameCounter = document.getElementById('gameCounter');
+            
+            // --- Data ---
+            const rawGameData = [
+              { "id": "kho-bau-dai-chien", "name": "Kho Báu Đại Chiến", "link": "https://khobaudaichien.vn/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "videoId": "dQw4w9WgXcQ", "description": "Tham gia vào cuộc phiêu lưu trên biển cả, tìm kiếm kho báu huyền thoại. Bản mod giúp bạn tăng cường sức mạnh để vượt qua mọi thử thách.", "discordLink": "https://discord.gg/edenmod", "rating": 4.5, "reviewCount": 112 },
+              { "id": "the-gioi-hai-tac", "name": "Thế Giới Hải Tặc", "link": "https://thegioihaitac.vn/home", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "videoId": "L_jWHffIx5E", "description": "Trở thành vua hải tặc trong một thế giới rộng lớn. Sử dụng các chức năng mod để không có kỹ năng nào có thể cản bước bạn.", "discordLink": "https://discord.gg/edenmod", "rating": 4.8, "reviewCount": 254 },
+              { "id": "dai-chien-luc-dao", "name": "Đại Chiến Lục Đạo", "link": "https://daichienlucdao.vn/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "videoId": null, "description": "Cuộc chiến của các nhẫn giả vĩ đại. Bản mod cung cấp sức mạnh vô song để bạn thống trị thế giới ninja.", "discordLink": "https://discord.gg/edenmod", "rating": 4.2, "reviewCount": 98 },
+              { "id": "mini-heroes", "name": "Mini Heroes: Magic Throne", "link": "https://play.google.com/store/apps/details?id=com.and.brawl.en", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "description": "Một thế giới ma thuật với những anh hùng tí hon nhưng sức mạnh vô hạn.", "discordLink": "https://discord.gg/edenmod", "rating": 3.9, "reviewCount": 45 },
+              { "id": "3q-thanh-chu", "name": "3Q: Thành Chủ Tiêu Dao", "link": "https://play.google.com/store/apps/details?id=com.zjws.sea.vn", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown, Speed Multiplier.", "description": "Xây dựng và bảo vệ thành trì của bạn trong thời đại Tam Quốc hỗn loạn.", "discordLink": "https://discord.gg/edenmod", "rating": 4.6, "reviewCount": 150 },
+              { "id": "loan-dau-tay-du", "name": "Loạn Đấu Tây Du", "link": "https://play.google.com/store/apps/details?id=com.vngw.gp", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, Always Win.", "description": "Một cuộc chiến hỗn loạn giữa các nhân vật Tây Du Ký. Với mod, chiến thắng luôn trong tầm tay.", "discordLink": "https://discord.gg/edenmod", "rating": 5.0, "reviewCount": 310 },
+              { "id": "vo-dai-nhan-gia", "name": "Võ Đài Nhẫn Giả", "link": "https://vodainhangia.com/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "So tài trên võ đài để tìm ra nhẫn giả mạnh nhất.", "discordLink": "https://discord.gg/edenmod", "rating": 4.0, "reviewCount": 88 },
+              { "id": "nhan-gioi-truyen-thuyet", "name": "Nhẫn Giới Truyền Thuyết", "link": "http://nhangioitruyenthuyet.top/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Viết nên huyền thoại của riêng bạn trong thế giới ninja.", "discordLink": "https://discord.gg/edenmod", "rating": 4.3, "reviewCount": 120 },
+              { "id": "anh-trai-tam-quoc", "name": "Anh Trai Tam Quốc", "link": "https://www.facebook.com/anhtraitamquoc/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Các anh hùng Tam Quốc trong một diện mạo hoàn toàn mới.", "discordLink": "https://discord.gg/edenmod", "rating": 4.4, "reviewCount": 132 },
+              { "id": "dragon-ball-united", "name": "Dragon Ball: Saiyans United", "link": "https://www.db-saiyans-united.com/vi", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "description": "Hợp nhất sức mạnh Saiyan để bảo vệ vũ trụ.", "discordLink": "https://discord.gg/edenmod", "rating": 4.7, "reviewCount": 198 },
+              { "id": "home-defender", "name": "Home Defender – Wang’s Story", "link": "https://play.google.com/store/apps/details?id=com.warrior.wxw.gp", "status": "Hoạt động tốt", "note": "Unlimited Resources, Speed.", "description": "Bảo vệ ngôi nhà của bạn khỏi những kẻ xâm lược với tài nguyên vô hạn.", "discordLink": "https://discord.gg/edenmod", "rating": 4.0, "reviewCount": 55 },
+              { "id": "nighty-knight", "name": "Nighty Knight: Frontier War TD", "link": "https://play.google.com/store/apps/details?id=com.ezg011.duskbound.tower.defend.strategy.td.game", "status": "Hoạt động tốt", "note": "Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed.", "description": "Trở thành hiệp sĩ bóng đêm, bảo vệ biên giới khỏi lũ quái vật.", "discordLink": "https://discord.gg/edenmod", "rating": 4.2, "reviewCount": 78 },
+              { "id": "nightfall-kingdom", "name": "Nightfall: Kingdom Frontier TD", "link": "https://play.google.com/store/apps/details?id=com.fansipan.nightfall.tower.simulation.strategy.td.game", "status": "Hoạt động tốt", "note": "Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed.", "description": "Xây dựng vương quốc và phòng thủ trước hoàng hôn.", "discordLink": "https://discord.gg/edenmod", "rating": 4.3, "reviewCount": 91 },
+              { "id": "hoc-vien-sieu-hung", "name": "Học Viện Siêu Hùng", "link": "https://hocviensieuhung.com/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Đào tạo những siêu anh hùng thế hệ mới tại học viện danh giá.", "discordLink": "https://discord.gg/edenmod", "rating": 4.5, "reviewCount": 143 },
+              { "id": "dai-chien-poke", "name": "Đại Chiến Poke", "link": "https://daichienpoke.com/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Trở thành nhà huấn luyện tài ba trong các trận chiến poke đỉnh cao.", "discordLink": "https://discord.gg/edenmod", "rating": 4.6, "reviewCount": 188 },
+              { "id": "ninja-world-war-2", "name": "Ninja World War II", "link": "https://play.google.com/store/apps/details?id=com.nww.gp.apk", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "description": "Tham gia Đại chiến Nhẫn giả lần thứ hai với sức mạnh vượt trội.", "discordLink": "https://discord.gg/edenmod", "rating": 4.7, "reviewCount": 210 },
+              { "id": "underdark-defense", "name": "UnderDark Defense", "link": "https://play.google.com/store/apps/details?id=com.FreeDust.UnderDark", "status": "Hoạt động tốt", "note": "Hero Unlock, Tower Unlock, Skin Unlock, Gold, Exp, Diamond Multiplier.", "description": "Phòng thủ những hầm ngục tăm tối với mọi thứ đã được mở khóa.", "discordLink": "https://discord.gg/edenmod", "rating": 4.8, "reviewCount": 230 },
+              { "id": "heroes-dragons", "name": "Heroes & Dragons", "link": "https://play.google.com/store/apps/details?id=studio.banditos.banditos6", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Anh hùng và rồng, một sự kết hợp hoàn hảo để thống trị.", "discordLink": "https://discord.gg/edenmod", "rating": 3.8, "reviewCount": 49 },
+              { "id": "boom-castle", "name": "Boom Castle: Tower Defense TD", "link": "https://play.google.com/store/apps/details?id=castle.heroes.tower.defense.kingdom.magic.battle.archer", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Lâu đài của bạn sẽ bất khả xâm phạm với cửa hàng miễn phí.", "discordLink": "https://discord.gg/edenmod", "rating": 3.9, "reviewCount": 62 },
+              { "id": "omega-royale", "name": "Omega Royale", "link": "https://play.google.com/store/apps/details?id=com.towerpop.omegaroyale", "status": "Hoạt động tốt", "note": "Unlimited Silver & Mana, No Skill Cooldown, VIP, Speed.", "description": "Trận chiến hoàng gia cuối cùng với các đặc quyền VIP.", "discordLink": "https://discord.gg/edenmod", "rating": 4.9, "reviewCount": 301 },
+              { "id": "hero-blitz", "name": "Hero Blitz: RPG Roguelike", "link": "https://play.google.com/store/apps/details?id=com.ondi.swordroguelite", "status": "Đã Dừng", "note": "Damage Multiplier, Defense multiplier, Free Shop, Speed.", "description": "Cuộc phiêu lưu roguelike tốc độ cao. (Dự án đã dừng)", "discordLink": "https://discord.gg/edenmod", "rating": 3.5, "reviewCount": 40 },
+              { "id": "boomerang-rpg", "name": "Boomerang RPG:Watch out, Dude!", "link": "https://play.google.com/store/apps/details?id=com.superplanet.boomerang", "status": "Hoạt động tốt", "note": "Free Bonus, Resource Never Decrease, Speed.", "description": "Sử dụng boomerang và nhận các phần thưởng miễn phí.", "discordLink": "https://discord.gg/edenmod", "rating": 4.0, "reviewCount": 81 },
+              { "id": "manga-loan-chien", "name": "Manga Loạn Chiến", "link": "https://play.google.com/store/apps/details?id=com.game.mglc", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Các nhân vật manga yêu thích của bạn trong một trận chiến hỗn loạn.", "discordLink": "https://discord.gg/edenmod", "rating": 4.4, "reviewCount": 115 },
+              { "id": "ba-vuong-dai-chien", "name": "Bá Vương Đại Chiến", "link": "https://bavuongdaichien.mobi/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Tranh đoạt ngôi vị bá vương với sức mạnh vượt trội.", "discordLink": "https://discord.gg/edenmod", "rating": 4.6, "reviewCount": 167 },
+              { "id": "fortias-saga", "name": "Fortias Saga: Idle RPG", "link": "https://play.google.com/store/apps/details?id=com.ondi.fortias.saga", "status": "Hoạt động tốt", "note": "Remove Ads, Unlock All Hero, Unlock All Skin, Custom Resources, Speed.", "description": "Một câu chuyện sử thi nhàn rỗi không có quảng cáo và mọi thứ đã được mở khóa.", "discordLink": "https://discord.gg/edenmod", "rating": 4.8, "reviewCount": 222 },
+              { "id": "ngu-kiem-sinh-ton", "name": "Ngự Kiếm Sinh Tồn", "link": "https://play.google.com/store/apps/details?id=com.colocess.opengame.ngukiem", "status": "Hoạt động tốt", "note": "No Skill CD, God Mode, Auto Collect.", "description": "Sinh tồn trong thế giới kiếm hiệp với các kỹ năng bất tử.", "discordLink": "https://discord.gg/edenmod", "rating": 4.9, "reviewCount": 289 },
+              { "id": "nuoi-tho-ngoc", "name": "Nuôi Thỏ Ngọc", "link": "https://apkcombo.com/vi/idlemoonrabbit-x-eternalreturn/com.AbleGames.DalToKi/", "status": "Hoạt động tốt", "note": "No Skill CD, OHK, God Mode, Dumb Enemies, Speed.", "description": "Nuôi thỏ ngọc của bạn trở thành một cỗ máy hủy diệt.", "discordLink": "https://discord.gg/edenmod", "rating": 5.0, "reviewCount": 401 },
+              { "id": "ethereal-hunter", "name": "Ethereal Hunter IDLE RPG", "link": "https://play.google.com/store/apps/details?id=com.firstgames.girlhunter_global", "status": "Hoạt động tốt", "note": "Free Shop, Auto Clear, Speed.", "description": "Săn lùng các thực thể ethereal với cửa hàng miễn phí.", "discordLink": "https://discord.gg/edenmod", "rating": 4.1, "reviewCount": 73 },
+              { "id": "wittle-defender", "name": "Wittle Defender", "link": "https://play.google.com/store/apps/details?id=com.game.kingrush", "status": "Hoạt động tốt", "note": "God Mode, Speed.", "description": "Trở thành người bảo vệ tí hon bất khả chiến bại.", "discordLink": "https://discord.gg/edenmod", "rating": 4.0, "reviewCount": 58 },
+              { "id": "dino-hero-go", "name": "Dino Hero Go", "link": "https://play.google.com/store/apps/details?id=com.droidhang.dn.android.google", "status": "Hoạt động tốt", "note": "Attack Speed & Range, Speed.", "description": "Anh hùng khủng long với tốc độ và tầm đánh không giới hạn.", "discordLink": "https://discord.gg/edenmod", "rating": 4.2, "reviewCount": 99 },
+              { "id": "lucky-offense", "name": "Lucky Offense", "link": "https://play.google.com/store/apps/details?id=com.percent.aos.luckyrolling", "status": "Hoạt động tốt", "note": "HP Multiplier, Attack Multiplier, Speed.", "description": "Cuộc tấn công may mắn với sức mạnh được nhân lên nhiều lần.", "discordLink": "https://discord.gg/edenmod", "rating": 3.7, "reviewCount": 41 },
+              { "id": "imae-guardian-girl", "name": "IMAE Guardian Girl", "link": "https://play.google.com/store/apps/details?id=com.wondersquad.imaegirl", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Cô gái hộ vệ với cửa hàng miễn phí.", "discordLink": "https://discord.gg/edenmod", "rating": 4.0, "reviewCount": 66 },
+              { "id": "idle-weapon-shop", "name": "Idle Weapon Shop", "link": "https://play.google.com/store/apps/details?id=com.wondersquad.imaegirl", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Quản lý cửa hàng vũ khí nhàn rỗi của bạn.", "discordLink": "https://discord.gg/edenmod", "rating": 4.1, "reviewCount": 77 },
+              { "id": "wulin-buzz", "name": "Wulin Buzz", "link": "https://play.google.com/store/apps/details?id=com.pandagame.twzm.and", "status": "Đang Cập Nhật", "note": "Auto Win, Speed.", "description": "Khuấy đảo võ lâm với tính năng tự động thắng.", "discordLink": "https://discord.gg/edenmod", "rating": 4.3, "reviewCount": 89 },
+              { "id": "legendary-girl-warrior", "name": "Legendary Girl Warrior Idle", "link": "https://play.google.com/store/apps/details?id=com.firstgames.girlhunter", "status": "Hoạt động tốt", "note": "Free Costume Shop, Auto Clear, Speed.", "description": "Nữ chiến binh huyền thoại với cửa hàng trang phục miễn phí.", "discordLink": "https://discord.gg/edenmod", "rating": 4.5, "reviewCount": 111 },
+              { "id": "grandzenka", "name": "Grandzenka: Idle RPG", "link": "https://play.google.com/store/apps/details?id=studio.gameberry.earthwarrior", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Chiến binh Trái Đất trong một game RPG nhàn rỗi.", "discordLink": "https://discord.gg/edenmod", "rating": 4.2, "reviewCount": 85 },
+              { "id": "supervillain-wanted", "name": "Supervillain Wanted", "link": "https://play.google.com/store/apps/details?id=io.supervlabs.catchandtame.gl", "status": "Hoạt động tốt", "note": "One Hit Kill, Dumb Enemies, Speed.", "description": "Trở thành siêu phản diện bị truy nã gắt gao nhất.", "discordLink": "https://discord.gg/edenmod", "rating": 4.8, "reviewCount": 250 },
+              { "id": "epic-shaman-battle", "name": "Epic Shaman Battle: 4P Defense", "link": "https://play.google.com/store/apps/details?id=com.wemade.tales", "status": "Hoạt động tốt", "note": "One Hit Kill, God Mode.", "description": "Trận chiến pháp sư sử thi với chế độ phòng thủ 4 người.", "discordLink": "https://discord.gg/edenmod", "rating": 4.7, "reviewCount": 190 },
+              { "id": "raise-knightly-order", "name": "Raise Your Knightly Order:Idle", "link": "https://play.google.com/store/apps/details?id=com.superplanet.knight", "status": "Hoạt động tốt", "note": "Free Shop, Add Custom Resource, Speed.", "description": "Xây dựng đội quân hiệp sĩ của bạn.", "discordLink": "https://discord.gg/edenmod", "rating": 4.6, "reviewCount": 145 },
+              { "id": "tiny-reaper", "name": "Tiny Reaper: Reborn", "link": "https://play.google.com/store/apps/details?id=com.xchange.blob", "status": "Đang Cập Nhật", "note": "Custom Shop Amount + Cost, No Skill CD + Max Attack Range + Attack All Targets, Dumb Enemies, Speed.", "description": "Thần chết tí hon tái sinh với sức mạnh tùy chỉnh.", "discordLink": "https://discord.gg/edenmod", "rating": 4.5, "reviewCount": 133 },
+              { "id": "chuyen-sinh-ta-la-vua", "name": "Chuyển Sinh Ta Là Vua Tam Quốc", "link": "https://play.google.com/store/apps/details?id=vn.funtap.chuyensinh", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, Speed.", "description": "Chuyển sinh và trở thành vua của thời Tam Quốc.", "discordLink": "https://discord.gg/edenmod", "rating": 4.4, "reviewCount": 121 },
+              { "id": "rush-knights-2", "name": "Rush Knights : Idle RPG", "link": "https://play.google.com/store/apps/details?id=com.gaimstudio.knightage", "status": "Đang Cập Nhật", "note": "Free Shop, Speed.", "description": "Các hiệp sĩ xông lên trong một game RPG nhàn rỗi.", "discordLink": "https://discord.gg/edenmod", "rating": 4.1, "reviewCount": 67 }
+            ];
+
+            const featureIcons = {
+                'damage': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 4.5l7 7L8 25l-6-6 12.5-12.5z"></path><path d="M4.5 19.5L9 15"></path></svg>`,
+                'defense': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+                'speed': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
+                'cooldown': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 8v4l3 3"></path><path d="M21 12a9 9 0 1 1-9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path></svg>`,
+                'win': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 8V2l4 4-4 4"></path><path d="M20 12v-2a4 4 0 0 0-4-4H8"></path><path d="M4 12v2a4 4 0 0 0 4 4h8"></path><path d="M12 16v6l-4-4 4-4"></path></svg>`,
+                'god': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>`,
+                'resource': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>`,
+                'unlock': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>`,
+                'kill': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`,
+                'default': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20.94c-4.48-1.5-8-5.88-8-10.94V5l8-3 8 3v6"></path><path d="M18 15v6"></path><path d="M21 18h-6"></path></svg>`
+            };
+            
+            const statusMap = {
+                ok: { key: 'ok', color: 'var(--status-ok)', text: 'Hoạt động', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>` },
+                updating: { key: 'updating', color: 'var(--status-updating)', text: 'Cập nhật', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M21 21v-5h-5"></path></svg>` },
+                stopped: { key: 'stopped', color: 'var(--status-stopped)', text: 'Đã dừng', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>` }
+            };
+
+            let currentStatusFilter = 'all';
+
+            // --- Functions ---
+            const getIconForFeature = (featureText) => { const text = featureText.toLowerCase(); if (text.includes('damage') || text.includes('attack') || text.includes('ohk')) return featureIcons.damage; if (text.includes('defense')) return featureIcons.defense; if (text.includes('speed')) return featureIcons.speed; if (text.includes('cooldown') || text.includes('cd')) return featureIcons.cooldown; if (text.includes('win')) return featureIcons.win; if (text.includes('god')) return featureIcons.god; if (text.includes('resource') || text.includes('gold') || text.includes('coin') || text.includes('diamond')) return featureIcons.resource; if (text.includes('unlock') || text.includes('free')) return featureIcons.unlock; if (text.includes('kill') || text.includes('enemies')) return featureIcons.kill; return featureIcons.default; };
+            const processData = (rawData) => { return rawData.map(game => { const noteText = (game.note || '').replace('Chức năng mod: ', ''); const features = noteText.split(/, |\. /).map(f => f.trim()).filter(f => f); let statusInfo = statusMap.stopped; const lowerCaseStatus = game.status.toLowerCase(); if (lowerCaseStatus.includes('hoạt động')) statusInfo = statusMap.ok; else if (lowerCaseStatus.includes('đang cập nhật')) statusInfo = statusMap.updating; return { ...game, statusInfo, features, devName: game.devName || "Vô danh" }; }); };
+            const gameData = processData(rawGameData);
+            
+            const generateStars = (rating) => {
+                let starsHTML = '';
+                const fullStars = Math.floor(rating);
+                const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+                const emptyStars = 5 - fullStars - halfStar;
+                for (let i = 0; i < fullStars; i++) starsHTML += `<svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>`;
+                if (halfStar) starsHTML += `<svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545L10 15zm0-2.24V0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545L10 12.76z"/></svg>`;
+                for (let i = 0; i < emptyStars; i++) starsHTML += `<svg fill="none" stroke="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>`;
+                return starsHTML;
+            }
+            
+            const displayGames = (games) => {
+                gameListContainer.innerHTML = '';
+                gameCounter.textContent = `Tìm thấy ${games.length} tín hiệu trong vũ trụ.`;
+                if (games.length === 0) {
+                    gameListContainer.innerHTML = '<p class="no-results">Không có tín hiệu nào phù hợp...</p>';
+                    return;
+                }
+                games.forEach(game => {
+                    const card = document.createElement('article');
+                    card.className = 'game-card';
+                    card.dataset.gameId = game.id;
+                    card.style.setProperty('--status-color', game.statusInfo.color);
+                    const featuresHTML = game.features.length > 0 ? `<ul class="features-list">${game.features.map(f => `<li class="feature-tag">${getIconForFeature(f)}<span>${f}</span></li>`).join('')}</ul>` : '<p>Không có dữ liệu chức năng.</p>';
+                    card.innerHTML = `<h3>${game.name}</h3><div class="star-rating">${generateStars(game.rating)}<span class="rating-value">${game.rating.toFixed(1)}</span></div><div class="info-item"><div class="icon-wrapper">${game.statusInfo.icon}</div><span>Trạng thái: <strong class="status">${game.statusInfo.text}</strong></span></div><div class="info-item"><div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div><span>Dev: <strong>${game.devName}</strong></span></div><div class="features-wrapper"><strong>Tín hiệu Mod:</strong>${featuresHTML}</div>`;
+                    card.addEventListener('click', () => showDetailView(game.id));
+                    gameListContainer.appendChild(card);
+                });
+            };
+
+            const showDetailView = (gameId) => {
+                const game = gameData.find(g => g.id === gameId);
+                if (!game) return;
+                const detailTitleElement = document.getElementById('detail-title');
+                detailTitleElement.innerHTML = '';
+                const titleLink = document.createElement('a');
+                titleLink.href = game.link || '#';
+                titleLink.textContent = game.name;
+                titleLink.target = '_blank';
+                titleLink.rel = 'noopener noreferrer';
+                detailTitleElement.appendChild(titleLink);
+                document.getElementById('detail-rating').innerHTML = `<div class="star-rating">${generateStars(game.rating)}<span class="rating-value">${game.rating.toFixed(1)} (${game.reviewCount} đánh giá)</span></div>`;
+                document.querySelector('#detail-description p').textContent = game.description || "Chưa có mô tả chi tiết cho game này.";
+                const videoContainer = document.getElementById('video-container');
+                videoContainer.innerHTML = game.videoId ? `<iframe src="https://www.youtube.com/embed/${game.videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : `<div style="display:grid; place-items:center; width:100%; height:100%; color:var(--text-secondary); text-align:center; padding: 2rem;">Không có video demo cho game này.</div>`;
+                document.querySelector('#detail-features .features-list').innerHTML = game.features.map(f => `<li class="feature-tag">${getIconForFeature(f)}<span>${f}</span></li>`).join('');
+                document.getElementById('detail-discord-link').href = game.discordLink || "https://discord.gg/edenmod";
+                mainView.style.display = 'none';
+                detailView.style.display = 'block';
+                window.scrollTo(0, 0);
+            };
+
+            const renderGameList = () => {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                let filteredGames = gameData;
+                if (currentStatusFilter !== 'all') {
+                    filteredGames = filteredGames.filter(game => game.statusInfo.key === currentStatusFilter);
+                }
+                if (searchTerm) {
+                    filteredGames = filteredGames.filter(game => game.name.toLowerCase().includes(searchTerm));
+                }
+                displayGames(filteredGames);
+            };
+
+            const filterByStatus = (event, statusKey) => {
+                currentStatusFilter = statusKey;
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+                renderGameList();
+            };
+
+            const copyDiscordLink = (button) => {
+                const link = document.getElementById('detail-discord-link').href;
+                const textarea = document.createElement('textarea');
+                textarea.value = link;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                button.textContent = 'Đã sao chép!';
+                setTimeout(() => { button.textContent = 'Sao chép Link'; }, 2000);
+            };
+            
+            const showMainView = () => {
+                detailView.style.display = 'none';
+                mainView.style.display = 'block';
+                window.scrollTo(0, 0);
+            };
+
+            // --- Make functions globally accessible for HTML onclick ---
+            window.showMainView = showMainView;
+            window.renderGameList = renderGameList;
+            window.filterByStatus = filterByStatus;
+            window.copyDiscordLink = copyDiscordLink;
+            
+            // Initial render
+            renderGameList();
+            
+            // Three.js background setup
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({
-                canvas: document.getElementById('galaxy-bg'),
-                alpha: true
-            });
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('galaxy-bg'), alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
 
             const starGeo = new THREE.BufferGeometry();
@@ -551,15 +784,9 @@
             }
             starGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
             
-            const starMaterial = new THREE.PointsMaterial({
-                size: 0.7,
-                color: 0xffffff,
-                transparent: true
-            });
-            
+            const starMaterial = new THREE.PointsMaterial({ size: 0.7, color: 0xffffff, transparent: true });
             const stars = new THREE.Points(starGeo, starMaterial);
             scene.add(stars);
-
             camera.position.z = 5;
 
             let mouseX = 0;
@@ -588,206 +815,6 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
         });
-
-        // --- Game Data and Rendering Logic ---
-        const rawGameData = [
-          { "id": "kho-bau-dai-chien", "name": "Kho Báu Đại Chiến", "link": "https://khobaudaichien.vn/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "videoId": "dQw4w9WgXcQ", "description": "Tham gia vào cuộc phiêu lưu trên biển cả, tìm kiếm kho báu huyền thoại. Bản mod giúp bạn tăng cường sức mạnh để vượt qua mọi thử thách.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "the-gioi-hai-tac", "name": "Thế Giới Hải Tặc", "link": "https://thegioihaitac.vn/home", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "videoId": "L_jWHffIx5E", "description": "Trở thành vua hải tặc trong một thế giới rộng lớn. Sử dụng các chức năng mod để không có kỹ năng nào có thể cản bước bạn.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "dai-chien-luc-dao", "name": "Đại Chiến Lục Đạo", "link": "https://daichienlucdao.vn/", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "videoId": null, "description": "Cuộc chiến của các nhẫn giả vĩ đại. Bản mod cung cấp sức mạnh vô song để bạn thống trị thế giới ninja.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "mini-heroes", "name": "Mini Heroes: Magic Throne", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "description": "Một thế giới ma thuật với những anh hùng tí hon nhưng sức mạnh vô hạn.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "3q-thanh-chu", "name": "3Q: Thành Chủ Tiêu Dao", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown, Speed Multiplier.", "description": "Xây dựng và bảo vệ thành trì của bạn trong thời đại Tam Quốc hỗn loạn.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "loan-dau-tay-du", "name": "Loạn Đấu Tây Du", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, Always Win.", "description": "Một cuộc chiến hỗn loạn giữa các nhân vật Tây Du Ký. Với mod, chiến thắng luôn trong tầm tay.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "vo-dai-nhan-gia", "name": "Võ Đài Nhẫn Giả", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "So tài trên võ đài để tìm ra nhẫn giả mạnh nhất.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "nhan-gioi-truyen-thuyet", "name": "Nhẫn Giới Truyền Thuyết", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Viết nên huyền thoại của riêng bạn trong thế giới ninja.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "anh-trai-tam-quoc", "name": "Anh Trai Tam Quốc", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Các anh hùng Tam Quốc trong một diện mạo hoàn toàn mới.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "dragon-ball-united", "name": "Dragon Ball: Saiyans United", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "description": "Hợp nhất sức mạnh Saiyan để bảo vệ vũ trụ.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "home-defender", "name": "Home Defender – Wang’s Story", "status": "Hoạt động tốt", "note": "Unlimited Resources, Speed.", "description": "Bảo vệ ngôi nhà của bạn khỏi những kẻ xâm lược với tài nguyên vô hạn.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "nighty-knight", "name": "Nighty Knight: Frontier War TD", "status": "Hoạt động tốt", "note": "Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed.", "description": "Trở thành hiệp sĩ bóng đêm, bảo vệ biên giới khỏi lũ quái vật.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "nightfall-kingdom", "name": "Nightfall: Kingdom Frontier TD", "status": "Hoạt động tốt", "note": "Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed.", "description": "Xây dựng vương quốc và phòng thủ trước hoàng hôn.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "hoc-vien-sieu-hung", "name": "Học Viện Siêu Hùng", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Đào tạo những siêu anh hùng thế hệ mới tại học viện danh giá.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "dai-chien-poke", "name": "Đại Chiến Poke", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Trở thành nhà huấn luyện tài ba trong các trận chiến poke đỉnh cao.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "ninja-world-war-2", "name": "Ninja World War II", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown.", "description": "Tham gia Đại chiến Nhẫn giả lần thứ hai với sức mạnh vượt trội.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "underdark-defense", "name": "UnderDark Defense", "status": "Hoạt động tốt", "note": "Hero Unlock, Tower Unlock, Skin Unlock, Gold, Exp, Diamond Multiplier.", "description": "Phòng thủ những hầm ngục tăm tối với mọi thứ đã được mở khóa.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "heroes-dragons", "name": "Heroes & Dragons", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Anh hùng và rồng, một sự kết hợp hoàn hảo để thống trị.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "boom-castle", "name": "Boom Castle: Tower Defense TD", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Lâu đài của bạn sẽ bất khả xâm phạm với cửa hàng miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "omega-royale", "name": "Omega Royale", "status": "Hoạt động tốt", "note": "Unlimited Silver & Mana, No Skill Cooldown, VIP, Speed.", "description": "Trận chiến hoàng gia cuối cùng với các đặc quyền VIP.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "hero-blitz", "name": "Hero Blitz: RPG Roguelike", "status": "Đã Dừng", "note": "Damage Multiplier, Defense multiplier, Free Shop, Speed.", "description": "Cuộc phiêu lưu roguelike tốc độ cao. (Dự án đã dừng)", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "boomerang-rpg", "name": "Boomerang RPG:Watch out, Dude!", "status": "Hoạt động tốt", "note": "Free Bonus, Resource Never Decrease, Speed.", "description": "Sử dụng boomerang và nhận các phần thưởng miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "manga-loan-chien", "name": "Manga Loạn Chiến", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Các nhân vật manga yêu thích của bạn trong một trận chiến hỗn loạn.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "ba-vuong-dai-chien", "name": "Bá Vương Đại Chiến", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier.", "description": "Tranh đoạt ngôi vị bá vương với sức mạnh vượt trội.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "fortias-saga", "name": "Fortias Saga: Idle RPG", "status": "Hoạt động tốt", "note": "Remove Ads, Unlock All Hero, Unlock All Skin, Custom Resources, Speed.", "description": "Một câu chuyện sử thi nhàn rỗi không có quảng cáo và mọi thứ đã được mở khóa.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "ngu-kiem-sinh-ton", "name": "Ngự Kiếm Sinh Tồn", "status": "Hoạt động tốt", "note": "No Skill CD, God Mode, Auto Collect.", "description": "Sinh tồn trong thế giới kiếm hiệp với các kỹ năng bất tử.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "nuoi-tho-ngoc", "name": "Nuôi Thỏ Ngọc", "status": "Hoạt động tốt", "note": "No Skill CD, OHK, God Mode, Dumb Enemies, Speed.", "description": "Nuôi thỏ ngọc của bạn trở thành một cỗ máy hủy diệt.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "ethereal-hunter", "name": "Ethereal Hunter IDLE RPG", "status": "Hoạt động tốt", "note": "Free Shop, Auto Clear, Speed.", "description": "Săn lùng các thực thể ethereal với cửa hàng miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "wittle-defender", "name": "Wittle Defender", "status": "Hoạt động tốt", "note": "God Mode, Speed.", "description": "Trở thành người bảo vệ tí hon bất khả chiến bại.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "dino-hero-go", "name": "Dino Hero Go", "status": "Hoạt động tốt", "note": "Attack Speed & Range, Speed.", "description": "Anh hùng khủng long với tốc độ và tầm đánh không giới hạn.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "lucky-offense", "name": "Lucky Offense", "status": "Hoạt động tốt", "note": "HP Multiplier, Attack Multiplier, Speed.", "description": "Cuộc tấn công may mắn với sức mạnh được nhân lên nhiều lần.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "imae-guardian-girl", "name": "IMAE Guardian Girl", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Cô gái hộ vệ với cửa hàng miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "idle-weapon-shop", "name": "Idle Weapon Shop", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Quản lý cửa hàng vũ khí nhàn rỗi của bạn.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "wulin-buzz", "name": "Wulin Buzz", "status": "Đang Cập Nhật", "note": "Auto Win, Speed.", "description": "Khuấy đảo võ lâm với tính năng tự động thắng.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "legendary-girl-warrior", "name": "Legendary Girl Warrior Idle", "status": "Hoạt động tốt", "note": "Free Costume Shop, Auto Clear, Speed.", "description": "Nữ chiến binh huyền thoại với cửa hàng trang phục miễn phí.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "grandzenka", "name": "Grandzenka: Idle RPG", "status": "Hoạt động tốt", "note": "Free Shop, Speed.", "description": "Chiến binh Trái Đất trong một game RPG nhàn rỗi.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "supervillain-wanted", "name": "Supervillain Wanted", "status": "Hoạt động tốt", "note": "One Hit Kill, Dumb Enemies, Speed.", "description": "Trở thành siêu phản diện bị truy nã gắt gao nhất.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "epic-shaman-battle", "name": "Epic Shaman Battle: 4P Defense", "status": "Hoạt động tốt", "note": "One Hit Kill, God Mode.", "description": "Trận chiến pháp sư sử thi với chế độ phòng thủ 4 người.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "raise-knightly-order", "name": "Raise Your Knightly Order:Idle", "status": "Hoạt động tốt", "note": "Free Shop, Add Custom Resource, Speed.", "description": "Xây dựng đội quân hiệp sĩ của bạn.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "tiny-reaper", "name": "Tiny Reaper: Reborn", "status": "Đang Cập Nhật", "note": "Custom Shop Amount + Cost, No Skill CD + Max Attack Range + Attack All Targets, Dumb Enemies, Speed.", "description": "Thần chết tí hon tái sinh với sức mạnh tùy chỉnh.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "chuyen-sinh-ta-la-vua", "name": "Chuyển Sinh Ta Là Vua Tam Quốc", "status": "Hoạt động tốt", "note": "Damage Multiplier, Defense Multiplier, Speed.", "description": "Chuyển sinh và trở thành vua của thời Tam Quốc.", "discordLink": "https://discord.gg/edenmod" },
-          { "id": "rush-knights", "name": "Rush Knights : Idle RPG", "status": "Đang Cập Nhật", "note": "Free Shop, Speed.", "description": "Các hiệp sĩ xông lên trong một game RPG nhàn rỗi.", "discordLink": "https://discord.gg/edenmod" }
-        ];
-
-        const mainView = document.getElementById('main-view');
-        const detailView = document.getElementById('detail-view');
-        const gameListContainer = document.getElementById('gameList');
-        const searchInput = document.getElementById('searchInput');
-        const gameCounter = document.getElementById('gameCounter');
-        let currentStatusFilter = 'all';
-        
-        const featureIcons = {
-            'damage': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 4.5l7 7L8 25l-6-6 12.5-12.5z"></path><path d="M4.5 19.5L9 15"></path></svg>`,
-            'defense': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
-            'speed': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
-            'cooldown': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 8v4l3 3"></path><path d="M21 12a9 9 0 1 1-9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path></svg>`,
-            'win': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 8V2l4 4-4 4"></path><path d="M20 12v-2a4 4 0 0 0-4-4H8"></path><path d="M4 12v2a4 4 0 0 0 4 4h8"></path><path d="M12 16v6l-4-4 4-4"></path></svg>`,
-            'god': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>`,
-            'resource': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>`,
-            'unlock': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>`,
-            'kill': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`,
-            'default': `<svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20.94c-4.48-1.5-8-5.88-8-10.94V5l8-3 8 3v6"></path><path d="M18 15v6"></path><path d="M21 18h-6"></path></svg>`
-        };
-        
-        function getIconForFeature(featureText) {
-            const text = featureText.toLowerCase();
-            if (text.includes('damage') || text.includes('attack') || text.includes('ohk')) return featureIcons.damage;
-            if (text.includes('defense')) return featureIcons.defense;
-            if (text.includes('speed')) return featureIcons.speed;
-            if (text.includes('cooldown') || text.includes('cd')) return featureIcons.cooldown;
-            if (text.includes('win')) return featureIcons.win;
-            if (text.includes('god')) return featureIcons.god;
-            if (text.includes('resource') || text.includes('gold') || text.includes('coin') || text.includes('diamond')) return featureIcons.resource;
-            if (text.includes('unlock') || text.includes('free')) return featureIcons.unlock;
-            if (text.includes('kill') || text.includes('enemies')) return featureIcons.kill;
-            return featureIcons.default;
-        }
-
-        const statusMap = {
-            ok: { key: 'ok', color: 'var(--status-ok)', text: 'Hoạt động', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>` },
-            updating: { key: 'updating', color: 'var(--status-updating)', text: 'Cập nhật', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M21 21v-5h-5"></path></svg>` },
-            stopped: { key: 'stopped', color: 'var(--status-stopped)', text: 'Đã dừng', icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>` }
-        };
-
-        function processData(rawData) {
-            return rawData.map(game => {
-                const noteText = (game.note || '').replace('Chức năng mod: ', '');
-                const features = noteText.split(/, |\. /).map(f => f.trim()).filter(f => f);
-                
-                let statusInfo = statusMap.stopped;
-                const lowerCaseStatus = game.status.toLowerCase();
-
-                if (lowerCaseStatus.includes('hoạt động')) statusInfo = statusMap.ok;
-                else if (lowerCaseStatus.includes('đang cập nhật')) statusInfo = statusMap.updating;
-
-                return { ...game, statusInfo, features, devName: game.devName || "Vô danh" };
-            });
-        }
-
-        const gameData = processData(rawGameData);
-
-        function displayGames(games) {
-            gameListContainer.innerHTML = '';
-            gameCounter.textContent = `Tìm thấy ${games.length} tín hiệu trong vũ trụ.`;
-
-            if (games.length === 0) {
-                gameListContainer.innerHTML = '<p class="no-results">Không có tín hiệu nào phù hợp...</p>';
-                return;
-            }
-
-            games.forEach(game => {
-                const card = document.createElement('article');
-                card.className = 'game-card';
-                card.dataset.gameId = game.id;
-                card.style.setProperty('--status-color', game.statusInfo.color);
-                
-                const featuresHTML = game.features.length > 0
-                    ? `<ul class="features-list">${game.features.map(f => `<li class="feature-tag">${getIconForFeature(f)}<span>${f}</span></li>`).join('')}</ul>`
-                    : '<p>Không có dữ liệu chức năng.</p>';
-
-                card.innerHTML = `
-                    <h3>${game.name}</h3>
-                    <div class="info-item">
-                        <div class="icon-wrapper">${game.statusInfo.icon}</div>
-                        <span>Trạng thái: <strong class="status">${game.statusInfo.text}</strong></span>
-                    </div>
-                     <div class="info-item">
-                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg></div>
-                        <span>Dev: <strong>${game.devName}</strong></span>
-                    </div>
-                    <div class="features-wrapper">
-                        <strong>Tín hiệu Mod:</strong>
-                        ${featuresHTML}
-                    </div>
-                `;
-                card.addEventListener('click', () => showDetailView(game.id));
-                gameListContainer.appendChild(card);
-            });
-        }
-        
-        function showDetailView(gameId) {
-            const game = gameData.find(g => g.id === gameId);
-            if (!game) return;
-
-            document.getElementById('detail-title').textContent = game.name;
-            document.querySelector('#detail-description p').textContent = game.description || "Chưa có mô tả chi tiết cho game này.";
-            
-            const videoContainer = document.getElementById('video-container');
-            if (game.videoId) {
-                videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${game.videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            } else {
-                videoContainer.innerHTML = `<div style="display:grid; place-items:center; width:100%; height:100%; color:var(--text-secondary); text-align:center; padding: 2rem;">Không có video demo cho game này.</div>`;
-            }
-
-            const featuresList = document.querySelector('#detail-features .features-list');
-            featuresList.innerHTML = game.features.map(f => `<li class="feature-tag">${getIconForFeature(f)}<span>${f}</span></li>`).join('');
-
-            document.getElementById('detail-discord-link').href = game.discordLink || "https://discord.gg/edenmod";
-            
-            mainView.style.display = 'none';
-            detailView.style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-
-        window.showMainView = function() {
-            detailView.style.display = 'none';
-            mainView.style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-        
-        window.renderGameList = function() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            let filteredGames = gameData;
-
-            if (currentStatusFilter !== 'all') {
-                filteredGames = filteredGames.filter(game => game.statusInfo.key === currentStatusFilter);
-            }
-
-            if (searchTerm) {
-                filteredGames = filteredGames.filter(game => 
-                    game.name.toLowerCase().includes(searchTerm)
-                );
-            }
-            displayGames(filteredGames);
-        }
-
-        window.filterByStatus = function(event, statusKey) {
-            currentStatusFilter = statusKey;
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            renderGameList();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderGameList();
-        });
     </script>
-
 </body>
 </html>
