@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Khám phá kho mod game lớn nhất dành cho cộng đồng game thủ Việt tại Eden Mod. Cung cấp thông tin, link tải và các chức năng mod chi tiết.">
+    <title>Eden Mod - Kho Thông Tin Mod Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Cài đặt biến màu và phông chữ --- */
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --card-bg: #2a2a2a;
+            --primary-accent: #bb86fc;
+            --secondary-accent: #03dac6;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #3a3a3a;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --status-ok: #4caf50;        /* Xanh lá */
+            --status-updating: #2196F3;  /* Xanh dương */
+            --status-stopped: #f44336;   /* Đỏ */
+            --status-unknown: #9e9e9e;
+        }
+
+        /* --- Cài đặt chung cho toàn trang --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Hiệu ứng Animation --- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Phần đầu trang (Header) --- */
+        .header {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--primary-accent);
+        }
+
+        .header p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .discord-button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(187, 134, 252, 0.3);
+        }
+
+        .discord-button:hover, .discord-button:focus {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(3, 218, 198, 0.4);
+            outline: none;
+        }
+
+        /* --- Khu vực nội dung chính --- */
+        .container {
+            padding: 2rem 1.5rem;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        /* --- Khu vực lọc và tìm kiếm --- */
+        .controls-container {
+            margin-bottom: 2rem;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--secondary-accent);
+            color: #000;
+            border-color: var(--secondary-accent);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            color: #000;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(187, 134, 252, 0.3);
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            border: 2px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #searchInput::placeholder { color: var(--text-secondary); }
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 15px rgba(187, 134, 252, 0.2);
+        }
+
+        .search-container::before {
+            content: '🔍';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        /* --- Cải tiến: Bộ đếm kết quả --- */
+        .game-counter {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* --- Lưới hiển thị Game --- */
+        #gameList {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* --- Thẻ thông tin Game --- */
+        .game-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 5px solid var(--border-color);
+            /* Cải tiến: Thêm hiệu ứng animation */
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-color);
+            border-color: var(--secondary-accent);
+        }
+
+        .game-card h3 {
+            color: var(--secondary-accent);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .game-card h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .game-card h3 a:hover {
+            color: var(--primary-accent);
+            text-decoration: underline;
+        }
+
+        .game-card .info-item {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .game-card .status {
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+        .game-card .status-ok { background-color: var(--status-ok); }
+        .game-card .status-updating { background-color: var(--status-updating); }
+        .game-card .status-stopped { background-color: var(--status-stopped); }
+        .game-card .status-unknown { background-color: var(--status-unknown); }
+
+        .game-card .features {
+            font-size: 0.95rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .game-card .features strong { color: var(--text-primary); }
+        .game-card .features ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 0.5rem;
+        }
+        .game-card .features li {
+            padding: 4px 0;
+            color: var(--text-secondary);
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* --- Chân trang --- */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2.5rem;
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Eden Mod</h1>
+        <p>Kho thông tin Mod Game dành cho cộng đồng Game Thủ Việt</p>
+        <a href="https://discord.gg/edenmod" target="_blank" rel="noopener noreferrer" class="discord-button">
+            Tải Mod (Tham gia Discord)
+        </a>
+    </header>
+
+    <main class="container">
+        <section class="controls-container">
+            <div id="filterContainer" class="filter-container">
+                <button class="filter-btn active" onclick="filterByStatus(event, 'all')">Tất cả</button>
+                <button class="filter-btn" onclick="filterByStatus(event, 'ok')">Hoạt động tốt</button>
+                <button class="filter-btn" onclick="filterByStatus(event, 'updating')">Đang Cập Nhật</button>
+                <button class="filter-btn" onclick="filterByStatus(event, 'stopped')">Đã Dừng</button>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" onkeyup="renderGameList()" placeholder="Nhập tên game bạn muốn tìm...">
+            </div>
+        </section>
+
+        <!-- Cải tiến: Thêm bộ đếm kết quả -->
+        <div id="gameCounter" class="game-counter"></div>
+        
+        <section id="gameList">
+            <!-- Dữ liệu game sẽ được chèn vào đây bởi JavaScript -->
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2025 Eden Mod. Mọi quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        // --- Cập nhật: Tích hợp toàn bộ dữ liệu game mới ---
+        const rawGameData = [
+  {
+    "name": "Kho Báu Đại Chiến",
+    "link": "https://khobaudaichien.vn/",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier."
+  },
+  {
+    "name": "Thế Giới Hải Tặc",
+    "link": "https://thegioihaitac.vn/home",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier, No Skill Cooldown."
+  },
+  {
+    "name": "Đại Chiến Lục Đạo",
+    "link": "https://daichienlucdao.vn/",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier, No Skill Cooldown."
+  },
+  {
+    "name": "Mini Heroes: Magic Throne",
+    "link": "https://play.google.com/store/apps/details?id=com.and.brawl.en",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier, No Skill Cooldown."
+  },
+  {
+    "name": "3Q: Thành Chủ Tiêu Dao",
+    "link": "https://play.google.com/store/apps/details?id=com.zjws.sea.vn",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier, No Skill Cooldown, Speed Multiplier (Harvest rice, chop wood)."
+  },
+  {
+    "name": "Loạn Đấu Tây Du",
+    "link": "https://play.google.com/store/apps/details?id=com.vngw.gp",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier, Always Win."
+  },
+  {
+    "name": "Võ Đài Nhẫn Giả",
+    "link": "https://vodainhangia.com/",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier."
+  },
+  {
+    "name": "Nhẫn Giới Truyền Thuyết",
+    "link": "http://nhangioitruyenthuyet.top/",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier."
+  },
+  {
+    "name": "Anh Trai Tam Quốc",
+    "link": "https://www.facebook.com/anhtraitamquoc/",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier."
+  },
+  {
+    "name": "Dragon Ball: Saiyans United",
+    "link": "https://www.db-saiyans-united.com/vi",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier, No Skill Cooldown."
+  },
+  {
+    "name": "Home Defender – Wang’s Story",
+    "link": "https://play.google.com/store/apps/details?id=com.warrior.wxw.gp",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Unlimited Resources (Diamond, Coin, Brick, Wood, Sweep...), Speed."
+  },
+  {
+    "name": "Nighty Knight: Frontier War TD",
+    "link": "https://play.google.com/store/apps/details?id=com.ezg011.duskbound.tower.defend.strategy.td.game",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed."
+  },
+  {
+    "name": "Nightfall: Kingdom Frontier TD",
+    "link": "https://play.google.com/store/apps/details?id=com.fansipan.nightfall.tower.simulation.strategy.td.game",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Unlimited Resources, Auto Kill Enemies, Auto Win Wave, Speed."
+  },
+  {
+    "name": "Học Viện Siêu Hùng",
+    "link": "https://hocviensieuhung.com/",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier."
+  },
+  {
+    "name": "Đại Chiến Poke",
+    "link": "https://daichienpoke.com/",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier."
+  },
+  {
+    "name": "Ninja World War II",
+    "link": "https://play.google.com/store/apps/details?id=com.nww.gp.apk",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier, No Skill Cooldown."
+  },
+  {
+    "name": "UnderDark Defense",
+    "link": "https://play.google.com/store/apps/details?id=com.FreeDust.UnderDark",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Hero Unlock, Tower Unlock, Skin Unlock, Gold, Exp, Diamond Multiplier."
+  },
+  {
+    "name": "Heroes & Dragons",
+    "link": "https://play.google.com/store/apps/details?id=studio.banditos.banditos6",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Free Shop, Speed."
+  },
+  {
+    "name": "Boom Castle: Tower Defense TD",
+    "link": "https://play.google.com/store/apps/details?id=castle.heroes.tower.defense.kingdom.magic.battle.archer",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Free Shop, Speed."
+  },
+  {
+    "name": "Omega Royale",
+    "link": "https://play.google.com/store/apps/details?id=com.towerpop.omegaroyale",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Unlimited Silver & Mana, No Skill Cooldown, VIP, Speed."
+  },
+  {
+    "name": "Hero Blitz: RPG Roguelike",
+    "link": "https://play.google.com/store/apps/details?id=com.ondi.swordroguelite",
+    "status": "Đã Dừng",
+    "note": "Chức năng mod: Damage Multiplier, Defense multiplier, Free Shop, Speed."
+  },
+  {
+    "name": "Boomerang RPG:Watch out, Dude!",
+    "link": "https://play.google.com/store/apps/details?id=com.superplanet.boomerang",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Free Bonus, Resource Never Decrease, Speed."
+  },
+  {
+    "name": "Manga Loạn Chiến",
+    "link": "https://play.google.com/store/apps/details?id=com.game.mglc",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier."
+  },
+  {
+    "name": "Bá Vương Đại Chiến",
+    "link": "https://bavuongdaichien.mobi/",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier."
+  },
+  {
+    "name": "Fortias Saga: Idle RPG",
+    "link": "https://play.google.com/store/apps/details?id=com.ondi.fortias.saga",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Remove Ads, Unlock All Hero, Unlock All Skin, Custom Resources, Speed."
+  },
+  {
+    "name": "Ngự Kiếm Sinh Tồn",
+    "link": "https://play.google.com/store/apps/details?id=com.colocess.opengame.ngukiem",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: No Skill CD, God Mode, Auto Collect."
+  },
+  {
+    "name": "Nuôi Thỏ Ngọc",
+    "link": "https://apkcombo.com/vi/idlemoonrabbit-x-eternalreturn/com.AbleGames.DalToKi/",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: No Skill CD, OHK, God Mode, Dumb Enemies, Speed."
+  },
+  {
+    "name": "Ethereal Hunter IDLE RPG",
+    "link": "https://play.google.com/store/apps/details?id=com.firstgames.girlhunter_global",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Free Shop, Auto Clear, Speed."
+  },
+  {
+    "name": "Wittle Defender",
+    "link": "https://play.google.com/store/apps/details?id=com.game.kingrush",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: God Mode, Speed."
+  },
+  {
+    "name": "Dino Hero Go",
+    "link": "https://play.google.com/store/apps/details?id=com.droidhang.dn.android.google",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Attack Speed & Range, Speed."
+  },
+  {
+    "name": "Lucky Offense",
+    "link": "https://play.google.com/store/apps/details?id=com.percent.aos.luckyrolling",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: HP Multiplier, Attack Multiplier, Speed."
+  },
+  {
+    "name": "IMAE Guardian Girl",
+    "link": "https://play.google.com/store/apps/details?id=com.wondersquad.imaegirl",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Free Shop, Speed."
+  },
+  {
+    "name": "Idle Weapon Shop",
+    "link": "https://play.google.com/store/apps/details?id=com.wondersquad.imaegirl",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Free Shop, Speed."
+  },
+  {
+    "name": "Wulin Buzz",
+    "link": "https://play.google.com/store/apps/details?id=com.pandagame.twzm.and",
+    "status": "Đang Cập Nhật",
+    "note": "Chức năng mod: Auto Win, Speed."
+  },
+  {
+    "name": "Legendary Girl Warrior Idle",
+    "link": "https://play.google.com/store/apps/details?id=com.firstgames.girlhunter",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Free Costume Shop, Auto Clear, Speed."
+  },
+  {
+    "name": "Grandzenka: Idle RPG",
+    "link": "https://play.google.com/store/apps/details?id=studio.gameberry.earthwarrior",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Free Shop, Speed."
+  },
+  {
+    "name": "Supervillain Wanted",
+    "link": "https://play.google.com/store/apps/details?id=io.supervlabs.catchandtame.gl",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: One Hit Kill, Dumb Enemies, Speed."
+  },
+  {
+    "name": "Epic Shaman Battle: 4P Defense",
+    "link": "https://play.google.com/store/apps/details?id=com.wemade.tales",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: One Hit Kill, God Mode."
+  },
+  {
+    "name": "Raise Your Knightly Order:Idle",
+    "link": "https://play.google.com/store/apps/details?id=com.superplanet.knight",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Free Shop, Add Custom Resource, Speed."
+  },
+  {
+    "name": "Tiny Reaper: Reborn",
+    "link": "https://play.google.com/store/apps/details?id=com.xchange.blob",
+    "status": "Đang Cập Nhật",
+    "note": "Chức năng mod: Custom Shop Amount + Cost, No Skill CD + Max Attack Range + Attack All Targets, Dumb Enemies, Speed."
+  },
+  {
+    "name": "Chuyển Sinh Ta Là Vua Tam Quốc",
+    "link": "https://play.google.com/store/apps/details?id=vn.funtap.chuyensinh",
+    "status": "Hoạt động tốt",
+    "note": "Chức năng mod: Damage Multiplier, Defense Multiplier, Speed."
+  },
+  {
+    "name": "Rush Knights : Idle RPG",
+    "link": "https://play.google.com/store/apps/details?id=com.gaimstudio.knightage",
+    "status": "Đang Cập Nhật",
+    "note": "Chức năng mod: Free Shop, Speed."
+  }
+];
+
+        const gameListContainer = document.getElementById('gameList');
+        const searchInput = document.getElementById('searchInput');
+        const gameCounter = document.getElementById('gameCounter');
+        let currentStatusFilter = 'all';
+
+        /**
+         * Chuyển đổi dữ liệu thô sang định dạng chuẩn để sử dụng
+         * @param {Array} rawData - Mảng dữ liệu game ban đầu
+         * @returns {Array} Mảng dữ liệu đã được xử lý
+         */
+        function processData(rawData) {
+            return rawData.map(game => {
+                let statusKey = 'unknown';
+                const lowerCaseStatus = game.status.toLowerCase();
+                if (lowerCaseStatus.includes('hoạt động tốt')) statusKey = 'ok';
+                else if (lowerCaseStatus.includes('đang cập nhật')) statusKey = 'updating';
+                else if (lowerCaseStatus.includes('đã dừng')) statusKey = 'stopped';
+
+                const features = (game.note || '')
+                    .replace('Chức năng mod: ', '')
+                    .split(',')
+                    .map(f => f.trim())
+                    .filter(f => f); // Lọc ra các chuỗi rỗng
+
+                return {
+                    ...game,
+                    statusKey: statusKey,
+                    features: features,
+                    devName: game.devName || "Nobody"
+                };
+            });
+        }
+
+        const gameData = processData(rawGameData);
+
+        /**
+         * Hiển thị danh sách game lên giao diện.
+         */
+        function displayGames(games) {
+            gameListContainer.innerHTML = ''; 
+
+            // Cập nhật bộ đếm
+            gameCounter.textContent = `Hiển thị ${games.length} trên tổng số ${gameData.length} game`;
+
+            if (games.length === 0) {
+                gameListContainer.innerHTML = '<p class="no-results">Không tìm thấy game phù hợp.</p>';
+                return;
+            }
+
+            games.forEach(game => {
+                const card = document.createElement('article');
+                card.className = 'game-card';
+                
+                const statusClass = `status-${game.statusKey}`;
+                let gameTitleHTML = game.link ? `<h3><a href="${game.link}" target="_blank" rel="noopener noreferrer">${game.name}</a></h3>` : `<h3>${game.name}</h3>`;
+                
+                const featuresHTML = game.features.length > 0
+                    ? `<ul>${game.features.map(f => `<li>${f}</li>`).join('')}</ul>`
+                    : '<ul><li>Chưa có thông tin</li></ul>';
+
+                card.innerHTML = `
+                    ${gameTitleHTML}
+                    <p class="info-item">
+                        <strong>Tình trạng:</strong> 
+                        <span class="status ${statusClass}">${game.status}</span>
+                    </p>
+                    <p class="info-item"><strong>Dev:</strong> ${game.devName}</p>
+                    <div class="features">
+                        <strong>Chức năng mod:</strong>
+                        ${featuresHTML}
+                    </div>
+                `;
+                gameListContainer.appendChild(card);
+            });
+        }
+
+        /**
+         * Lọc và tìm kiếm game, sau đó hiển thị lại danh sách.
+         */
+        function renderGameList() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            let filteredGames = gameData;
+
+            if (currentStatusFilter !== 'all') {
+                filteredGames = filteredGames.filter(game => game.statusKey === currentStatusFilter);
+            }
+
+            if (searchTerm) {
+                filteredGames = filteredGames.filter(game => 
+                    game.name.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            displayGames(filteredGames);
+        }
+
+        /**
+         * Xử lý khi người dùng nhấp vào nút lọc.
+         */
+        function filterByStatus(event, statusKey) {
+            currentStatusFilter = statusKey;
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            renderGameList();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGameList();
+        });
+    </script>
+
+</body>
+</html>
