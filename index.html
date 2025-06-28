@@ -497,6 +497,21 @@
             color: var(--primary-accent);
         }
 
+        #submitRatingBtn {
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        #submitRatingBtn:hover {
+            background: var(--secondary-accent) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #ratingError {
+            transition: all 0.3s ease;
+        }
+
         .info-item .icon-wrapper svg {
             width: 20px;
             height: 20px;
@@ -841,17 +856,23 @@
             <span class="close-modal" onclick="closeRatingModal()">&times;</span>
             <h3 id="ratingGameTitle"></h3>
             <div class="stars-container">
-                <span class="star" onclick="rateGame(1)">★</span>
-                <span class="star" onclick="rateGame(2)">★</span>
-                <span class="star" onclick="rateGame(3)">★</span>
-                <span class="star" onclick="rateGame(4)">★</span>
-                <span class="star" onclick="rateGame(5)">★</span>
+                <span class="star" onclick="updateRating(1)">★</span>
+                <span class="star" onclick="updateRating(2)">★</span>
+                <span class="star" onclick="updateRating(3)">★</span>
+                <span class="star" onclick="updateRating(4)">★</span>
+                <span class="star" onclick="updateRating(5)">★</span>
             </div>
+            <p id="ratingError"
+                style="color: var(--status-stopped); text-align: center; margin: 0.5rem 0; display: none;">Vui lòng chọn
+                số sao và nhập nhận xét!</p>
             <div style="margin: 1rem 0;">
-                <textarea id="ratingComment" placeholder="Nhận xét của bạn về game này..." style="width: 100%; padding: 10px; border-radius: 8px; 
-                     background: rgba(0,0,0,0.2); border: 1px solid var(--border-color);
-                     color: var(--text-primary); min-height: 80px;"></textarea>
+                <textarea id="ratingComment" placeholder="Nhận xét của bạn về game này (bắt buộc)..." style="width: 100%; padding: 10px; border-radius: 8px; 
+                 background: rgba(0,0,0,0.2); border: 1px solid var(--border-color);
+                 color: var(--text-primary); min-height: 80px;"></textarea>
             </div>
+            <button id="submitRatingBtn" onclick="submitRating()"
+                style="width: 100%; padding: 12px; background: var(--primary-accent); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Gửi
+                đánh giá</button>
             <p id="ratingStatus" class="rating-status"></p>
         </div>
     </div>
@@ -1729,6 +1750,7 @@
             const openRatingModal = (gameId, gameName) => {
                 localStorage.setItem('currentGameToRate', gameId);
                 currentGameToRate = gameId;
+                currentRating = 0;
 
                 if (!firebase.auth().currentUser) {
                     document.getElementById('ratingModal').style.display = 'none';
@@ -1751,15 +1773,16 @@
                     if (snapshot.exists()) {
                         document.getElementById('ratingStatus').textContent = 'Bạn đã đánh giá game này trước đó.';
                         document.getElementById('ratingStatus').className = 'rating-status error';
-                        // Thêm dòng này để đóng modal sau 2 giây
                         setTimeout(closeRatingModal, 2000);
-                        return; // Không mở modal nếu đã đánh giá
+                        return;
                     }
 
                     currentGameToRate = gameId;
                     document.getElementById('ratingGameTitle').textContent = `Đánh giá: ${gameName}`;
                     document.getElementById('ratingStatus').textContent = '';
                     document.getElementById('ratingStatus').className = 'rating-status';
+                    document.getElementById('ratingComment').value = '';
+                    document.getElementById('ratingError').style.display = 'none';
                     document.getElementById('ratingModal').style.display = 'block';
                     currentRating = 0;
                     updateStarDisplay(0);
@@ -1773,11 +1796,29 @@
                 document.getElementById('discordLoginModal').style.display = 'none';
             };
 
-            const rateGame = async (rating) => {
-                if (!currentUser || !currentGameToRate) return;
+            let currentRating = 0;
 
+            // Hàm cập nhật số sao đã chọn
+            const updateRating = (rating) => {
                 currentRating = rating;
                 updateStarDisplay(rating);
+                document.getElementById('ratingError').style.display = 'none';
+            };
+
+            // Hàm kiểm tra và gửi đánh giá
+            const submitRating = () => {
+                const comment = document.getElementById('ratingComment').value.trim();
+
+                if (currentRating === 0 || comment === '') {
+                    document.getElementById('ratingError').style.display = 'block';
+                    return;
+                }
+
+                rateGame(currentRating);
+            };
+
+            const rateGame = async (rating) => {
+                if (!currentUser || !currentGameToRate) return;
 
                 const comment = document.getElementById('ratingComment').value.trim();
 
@@ -1788,14 +1829,12 @@
 
                     // Lưu đánh giá
                     await gameRef.set(rating);
-                    if (comment) {
-                        await commentsRef.set({
-                            text: comment,
-                            author: currentUser.displayName || "Ẩn danh",
-                            authorPhoto: currentUser.photoURL || null,
-                            timestamp: firebase.database.ServerValue.TIMESTAMP
-                        });
-                    }
+                    await commentsRef.set({
+                        text: comment,
+                        author: currentUser.displayName || "Ẩn danh",
+                        authorPhoto: currentUser.photoURL || null,
+                        timestamp: firebase.database.ServerValue.TIMESTAMP
+                    });
 
                     // Tính toán lại điểm trung bình
                     const ratingsRef = database.ref(`games/${currentGameToRate}/ratings`);
@@ -1818,9 +1857,7 @@
                         totalRatings: count
                     });
 
-                    document.getElementById('ratingStatus').textContent = comment
-                        ? 'Cảm ơn đánh giá và nhận xét!'
-                        : 'Cảm ơn bạn đã đánh giá!';
+                    document.getElementById('ratingStatus').textContent = 'Cảm ơn đánh giá và nhận xét!';
                     document.getElementById('ratingStatus').className = 'rating-status success';
 
                     setTimeout(() => {
