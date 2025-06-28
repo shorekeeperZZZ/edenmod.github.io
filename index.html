@@ -1740,25 +1740,20 @@
 
             // --- Discord Authentication Functions ---
             const loginWithDiscord = () => {
-                const provider = new firebase.auth.OAuthProvider('discord.com');
+                const provider = new firebase.auth.OAuthProvider('oidc.discord');
+
+                // Thêm các scope cần thiết
                 provider.addScope('identify');
                 provider.addScope('email');
 
-                // Sử dụng signInWithPopup thay vì redirect để dễ debug
+                // Đặt custom parameters nếu cần
+                provider.setCustomParameters({
+                    prompt: 'consent'
+                });
+
                 firebase.auth().signInWithPopup(provider)
                     .then((result) => {
-                        // Đăng nhập thành công
-                        currentUser = result.user;
-                        updateUserUI(result.user);
-
-                        // Kiểm tra nếu có game đang chờ đánh giá
-                        const gameToRate = localStorage.getItem('currentGameToRate');
-                        if (gameToRate) {
-                            const game = gameData.find(g => g.id === gameToRate);
-                            if (game) {
-                                openRatingModal(gameToRate, game.name);
-                            }
-                        }
+                        console.log('Đăng nhập thành công:', result.user);
                     })
                     .catch((error) => {
                         console.error('Lỗi đăng nhập:', error);
