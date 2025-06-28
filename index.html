@@ -385,6 +385,33 @@
             transition: all 0.3s ease;
         }
 
+        /* Thêm vào phần style */
+        .comment-rating {
+            color: var(--star-color);
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .comment-user {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comment-date {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
         .filter-btn:hover {
             color: var(--text-primary);
             border-color: var(--primary-accent);
@@ -1682,29 +1709,35 @@
                 const commentsSection = document.createElement('div');
                 commentsSection.className = 'comments-section';
                 commentsSection.innerHTML = `
-        <div style="margin: 2rem 0;">
-            <h3>Nhận xét từ cộng đồng</h3>
-            <div id="comments-list" style="margin-top: 1rem;">
-                ${Object.keys(commentsData).length > 0
+    <div style="margin: 2rem 0;">
+        <h3>Nhận xét từ cộng đồng</h3>
+        <div id="comments-list" style="margin-top: 1rem;">
+            ${Object.keys(commentsData).length > 0
                         ? Object.entries(commentsData)
                             .sort((a, b) => b[1].timestamp - a[1].timestamp)
-                            .map(([key, comment]) => `
-                        <div style="background: rgba(0,0,0,0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                                <img src="${comment.authorPhoto || 'https://cdn.discordapp.com/embed/avatars/0.png'}" 
-                                     width="30" height="30" style="border-radius: 50%;">
-                                <strong>${comment.author}</strong>
-                                <span style="color: var(--text-secondary); font-size: 0.8rem;">
+                            .map(([key, comment]) => {
+                                const userRating = ratingsData.ratings ? ratingsData.ratings[key] : null;
+                                return `
+                        <div style="background: var(--glass-bg); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--border-color);">
+                            <div class="comment-header">
+                                <div class="comment-user">
+                                    <img src="${comment.authorPhoto || 'https://cdn.discordapp.com/embed/avatars/0.png'}" 
+                                         width="30" height="30" style="border-radius: 50%;">
+                                    <strong>${comment.author}</strong>
+                                </div>
+                                ${userRating ? `<span class="comment-rating">${'★'.repeat(userRating)}${'☆'.repeat(5 - userRating)}</span>` : ''}
+                                <span class="comment-date">
                                     ${new Date(comment.timestamp).toLocaleDateString('vi-VN')}
                                 </span>
                             </div>
                             <p style="margin: 0; line-height: 1.5;">${comment.text}</p>
                         </div>
-                    `).join('')
+                    `;
+                            }).join('')
                         : '<p style="color: var(--text-secondary); text-align: center; padding: 1rem;">Chưa có nhận xét nào. Hãy là người đầu tiên đánh giá!</p>'}
-            </div>
         </div>
-    `;
+    </div>
+`;
                 detailContent.appendChild(commentsSection);
 
                 // Hiển thị detail view
