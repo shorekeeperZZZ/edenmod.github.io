@@ -1744,10 +1744,25 @@
                 provider.addScope('identify');
                 provider.addScope('email');
 
-                // Sử dụng redirect thay vì popup
-                firebase.auth().signInWithRedirect(provider)
+                // Sử dụng signInWithPopup thay vì redirect để dễ debug
+                firebase.auth().signInWithPopup(provider)
+                    .then((result) => {
+                        // Đăng nhập thành công
+                        currentUser = result.user;
+                        updateUserUI(result.user);
+
+                        // Kiểm tra nếu có game đang chờ đánh giá
+                        const gameToRate = localStorage.getItem('currentGameToRate');
+                        if (gameToRate) {
+                            const game = gameData.find(g => g.id === gameToRate);
+                            if (game) {
+                                openRatingModal(gameToRate, game.name);
+                            }
+                        }
+                    })
                     .catch((error) => {
                         console.error('Lỗi đăng nhập:', error);
+                        alert('Đăng nhập thất bại: ' + error.message);
                     });
             };
 
