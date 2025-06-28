@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Khám phá kho mod game lớn nhất dành cho cộng đồng game thủ Việt tại Eden Mod. Cung cấp thông tin, link tải và các chức năng mod chi tiết.">
-    <title>Eden Mod - Giao diện Galaxy</title>
+
+    <link rel="icon" href="eden-og-image.png" type="image/png">
+    <title>Eden Mod</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -74,8 +76,6 @@
         /* Rating stars */
         .star {
             color: var(--star-color);
-            cursor: pointer;
-            transition: transform 0.2s ease, text-shadow 0.2s ease;
             display: inline-block;
             margin: 0 2px;
         }
@@ -1478,11 +1478,20 @@
                 const ratingsSnapshot = await database.ref('games').once('value');
                 const ratingsData = ratingsSnapshot.val() || {};
 
-                games.forEach(game => {
+                // Tạo mảng game với thông tin rating để sắp xếp
+                const gamesWithRatings = games.map(game => {
                     const gameRatings = ratingsData[game.id] || {};
-                    const averageRating = gameRatings.averageRating || 0;
-                    const totalRatings = gameRatings.totalRatings || 0;
+                    return {
+                        ...game,
+                        averageRating: parseFloat(gameRatings.averageRating) || 0,
+                        totalRatings: gameRatings.totalRatings || 0
+                    };
+                });
 
+                // Sắp xếp game theo điểm đánh giá từ cao đến thấp
+                gamesWithRatings.sort((a, b) => b.averageRating - a.averageRating);
+
+                gamesWithRatings.forEach(game => {
                     const card = document.createElement('article');
                     card.className = 'game-card';
                     card.dataset.gameId = game.id;
@@ -1500,26 +1509,26 @@
 
                         if (userRating) {
                             ratingHTML = `
-                    <div class="rating-info">
-                        <div class="stars">${renderStars(averageRating)}</div>
-                        <span class="rating-text">(${totalRatings} đánh giá)</span>
-                        <span class="rating-text">Bạn đã đánh giá: ${userRating}★</span>
-                    </div>`;
+                <div class="rating-info">
+                    <div class="stars">${renderStars(game.averageRating)}</div>
+                    <span class="rating-text">(${game.totalRatings} đánh giá)</span>
+                    <span class="rating-text">Bạn đã đánh giá: ${userRating}★</span>
+                </div>`;
                         } else {
                             ratingHTML = `
-                    <div class="rating-info">
-                        <div class="stars">${renderStars(averageRating)}</div>
-                        <span class="rating-text">(${totalRatings} đánh giá)</span>
-                        <button class="rating-button" onclick="event.stopPropagation(); openRatingModal('${game.id}', '${game.name}')">Đánh giá</button>
-                    </div>`;
+                <div class="rating-info">
+                    <div class="stars">${renderStars(game.averageRating)}</div>
+                    <span class="rating-text">(${game.totalRatings} đánh giá)</span>
+                    <button class="rating-button" onclick="event.stopPropagation(); openRatingModal('${game.id}', '${game.name}')">Đánh giá</button>
+                </div>`;
                         }
                     } else {
                         ratingHTML = `
-                <div class="rating-info">
-                    <div class="stars">${renderStars(averageRating)}</div>
-                    <span class="rating-text">(${totalRatings} đánh giá)</span>
-                    <button class="rating-button" onclick="event.stopPropagation(); document.getElementById('discordLoginModal').style.display='block'; localStorage.setItem('currentGameToRate', '${game.id}'); document.getElementById('gameToRateName').textContent = '${game.name}'">Đăng nhập để đánh giá</button>
-                </div>`;
+            <div class="rating-info">
+                <div class="stars">${renderStars(game.averageRating)}</div>
+                <span class="rating-text">(${game.totalRatings} đánh giá)</span>
+                <button class="rating-button" onclick="event.stopPropagation(); document.getElementById('discordLoginModal').style.display='block'; localStorage.setItem('currentGameToRate', '${game.id}'); document.getElementById('gameToRateName').textContent = '${game.name}'">Đăng nhập để đánh giá</button>
+            </div>`;
                     }
 
                     card.innerHTML = `
@@ -1668,15 +1677,21 @@
                     if (snapshot.exists()) {
                         document.getElementById('ratingStatus').textContent = 'Bạn đã đánh giá game này trước đó.';
                         document.getElementById('ratingStatus').className = 'rating-status error';
+                        // Thêm dòng này để đóng modal sau 2 giây
+                        setTimeout(closeRatingModal, 2000);
+                        return; // Không mở modal nếu đã đánh giá
                     }
-                });
 
-                document.getElementById('ratingGameTitle').textContent = `Đánh giá: ${gameName}`;
-                document.getElementById('ratingStatus').textContent = '';
-                document.getElementById('ratingStatus').className = 'rating-status';
-                document.getElementById('ratingModal').style.display = 'block';
-                currentRating = 0;
-                updateStarDisplay(0);
+                    currentGameToRate = gameId;
+                    document.getElementById('ratingGameTitle').textContent = `Đánh giá: ${gameName}`;
+                    document.getElementById('ratingStatus').textContent = '';
+                    document.getElementById('ratingStatus').className = 'rating-status';
+                    document.getElementById('ratingModal').style.display = 'block';
+                    currentRating = 0;
+                    updateStarDisplay(0);
+                }).catch(error => {
+                    console.error('Error checking rating:', error);
+                });
             };
 
             const closeRatingModal = () => {
@@ -1791,6 +1806,8 @@
                     console.error('Logout error:', error);
                 }
             };
+            window.logout = logout; // Thêm dòng này để hàm có thể gọi từ HTML
+
 
             const checkAuthState = () => {
                 firebase.auth().onAuthStateChanged(async (user) => {
@@ -1802,15 +1819,26 @@
                         updateUserUI(user);
                         renderGameList();
 
-                        // Kiểm tra nếu có game đang chờ đánh giá
-                        const gameToRate = localStorage.getItem('currentGameToRate');
-                        if (gameToRate) {
-                            const game = gameData.find(g => g.id === gameToRate);
-                            if (game) {
-                                console.log('Opening rating modal for saved game:', game.name);
-                                setTimeout(() => {
-                                    openRatingModal(gameToRate, game.name);
-                                }, 500);
+                        // Chỉ kiểm tra game đang chờ đánh giá nếu có trong URL params
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const ratingRequested = urlParams.get('rating');
+
+                        if (ratingRequested) {
+                            const gameToRate = localStorage.getItem('currentGameToRate');
+                            if (gameToRate) {
+                                const game = gameData.find(g => g.id === gameToRate);
+                                if (game) {
+                                    console.log('Opening rating modal for saved game:', game.name);
+                                    // Kiểm tra lại trước khi mở modal
+                                    const snapshot = await database.ref(`games/${gameToRate}/ratings/${user.uid}`).once('value');
+                                    if (!snapshot.exists()) {
+                                        setTimeout(() => {
+                                            openRatingModal(gameToRate, game.name);
+                                        }, 500);
+                                    } else {
+                                        localStorage.removeItem('currentGameToRate');
+                                    }
+                                }
                             }
                         }
                     } else {
