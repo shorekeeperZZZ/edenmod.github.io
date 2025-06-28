@@ -1476,15 +1476,16 @@
 
                 // Lấy dữ liệu rating từ Firebase
                 const ratingsSnapshot = await database.ref('games').once('value');
-                const ratingsData = ratingsSnapshot.val() || {};
+                const allRatingsData = ratingsSnapshot.val() || {};
 
                 // Tạo mảng game với thông tin rating để sắp xếp
                 const gamesWithRatings = games.map(game => {
-                    const gameRatings = ratingsData[game.id] || {};
+                    const gameRatings = allRatingsData[game.id] || {};
                     return {
                         ...game,
                         averageRating: parseFloat(gameRatings.averageRating) || 0,
-                        totalRatings: gameRatings.totalRatings || 0
+                        totalRatings: gameRatings.totalRatings || 0,
+                        userRating: currentUser ? (gameRatings.ratings ? gameRatings.ratings[currentUser.uid] : null) : null
                     };
                 });
 
@@ -1504,31 +1505,28 @@
                     // Tạo HTML cho rating info dựa trên trạng thái đăng nhập
                     let ratingHTML = '';
                     if (currentUser) {
-                        // Kiểm tra xem user đã đánh giá game này chưa
-                        const userRating = gameRatings.ratings ? gameRatings.ratings[currentUser.uid] : null;
-
-                        if (userRating) {
+                        if (game.userRating) {
                             ratingHTML = `
-                <div class="rating-info">
-                    <div class="stars">${renderStars(game.averageRating)}</div>
-                    <span class="rating-text">(${game.totalRatings} đánh giá)</span>
-                    <span class="rating-text">Bạn đã đánh giá: ${userRating}★</span>
-                </div>`;
+                    <div class="rating-info">
+                        <div class="stars">${renderStars(game.averageRating)}</div>
+                        <span class="rating-text">(${game.totalRatings} đánh giá)</span>
+                        <span class="rating-text">Bạn đã đánh giá: ${game.userRating}★</span>
+                    </div>`;
                         } else {
                             ratingHTML = `
-                <div class="rating-info">
-                    <div class="stars">${renderStars(game.averageRating)}</div>
-                    <span class="rating-text">(${game.totalRatings} đánh giá)</span>
-                    <button class="rating-button" onclick="event.stopPropagation(); openRatingModal('${game.id}', '${game.name}')">Đánh giá</button>
-                </div>`;
+                    <div class="rating-info">
+                        <div class="stars">${renderStars(game.averageRating)}</div>
+                        <span class="rating-text">(${game.totalRatings} đánh giá)</span>
+                        <button class="rating-button" onclick="event.stopPropagation(); openRatingModal('${game.id}', '${game.name}')">Đánh giá</button>
+                    </div>`;
                         }
                     } else {
                         ratingHTML = `
-            <div class="rating-info">
-                <div class="stars">${renderStars(game.averageRating)}</div>
-                <span class="rating-text">(${game.totalRatings} đánh giá)</span>
-                <button class="rating-button" onclick="event.stopPropagation(); document.getElementById('discordLoginModal').style.display='block'; localStorage.setItem('currentGameToRate', '${game.id}'); document.getElementById('gameToRateName').textContent = '${game.name}'">Đăng nhập để đánh giá</button>
-            </div>`;
+                <div class="rating-info">
+                    <div class="stars">${renderStars(game.averageRating)}</div>
+                    <span class="rating-text">(${game.totalRatings} đánh giá)</span>
+                    <button class="rating-button" onclick="event.stopPropagation(); document.getElementById('discordLoginModal').style.display='block'; localStorage.setItem('currentGameToRate', '${game.id}'); document.getElementById('gameToRateName').textContent = '${game.name}'">Đăng nhập để đánh giá</button>
+                </div>`;
                     }
 
                     card.innerHTML = `
