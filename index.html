@@ -1434,15 +1434,12 @@
 
             // --- Rating Functions ---
             const renderStars = (rating) => {
-                const fullStars = Math.floor(rating);
-                const hasHalfStar = rating % 1 >= 0.5;
+                const fullStars = Math.round(rating); // Làm tròn để không có nửa sao
                 let stars = '';
 
                 for (let i = 1; i <= 5; i++) {
                     if (i <= fullStars) {
                         stars += '★';
-                    } else if (i === fullStars + 1 && hasHalfStar) {
-                        stars += '½';
                     } else {
                         stars += '☆';
                     }
