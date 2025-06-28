@@ -73,6 +73,23 @@
             overflow-x: hidden;
         }
 
+        .loading-spinner {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--primary-accent);
+            animation: spin 1s linear infinite;
+        }
+
         /* Rating stars */
         .star {
             color: var(--star-color);
@@ -1038,6 +1055,8 @@
         let currentUser = null;
         let currentGameToRate = null;
         let currentRating = 0;
+        let isAutofilling = false;
+
 
         // --- Main App Logic ---
         document.addEventListener('DOMContentLoaded', () => {
@@ -1476,6 +1495,46 @@
             };
 
             let currentStatusFilter = 'all';
+            let searchTimeoutId = null;
+            let lastProcessedValue = '';
+            const renderGameListWithDelay = () => {
+                const currentValue = searchInput.value.trim();
+
+                // Nếu giá trị không thay đổi, không làm gì
+                if (currentValue === lastProcessedValue) return;
+
+                // Clear timeout cũ nếu có
+                if (searchTimeoutId) {
+                    clearTimeout(searchTimeoutId);
+                }
+
+                // Hiển thị loading spinner nếu có từ khóa
+                if (currentValue && !gameListContainer.querySelector('.loading-spinner')) {
+                    gameListContainer.innerHTML = '<div class="loading-spinner"><div class="spinner"></div><p>Đang tìm kiếm...</p></div>';
+                }
+
+                // Đặt độ trễ 300ms trước khi thực sự tìm kiếm
+                searchTimeoutId = setTimeout(() => {
+                    lastProcessedValue = currentValue;
+                    const searchTerm = currentValue.toLowerCase();
+                    let filteredGames = [...gameData];
+
+                    if (currentStatusFilter !== 'all') {
+                        filteredGames = filteredGames.filter(game =>
+                            game.statusInfo.key === currentStatusFilter
+                        );
+                    }
+
+                    if (searchTerm) {
+                        filteredGames = filteredGames.filter(game =>
+                            game.name.toLowerCase().includes(searchTerm)
+                        );
+                    }
+
+                    displayGames(filteredGames);
+                }, 300);
+            };
+
 
             // --- Utility Functions ---
             const getIconForFeature = (featureText) => {
@@ -1536,7 +1595,12 @@
             };
 
             // --- Main Functions ---
+            let displayGamesTimeout;
             const displayGames = async (games) => {
+                if (displayGamesTimeout) {
+                    clearTimeout(displayGamesTimeout);
+                }
+
                 gameListContainer.innerHTML = '';
                 gameCounter.textContent = `Tìm thấy ${games.length} tín hiệu trong vũ trụ.`;
 
@@ -2085,6 +2149,10 @@
                     if (event.target === document.getElementById('discordLoginModal')) {
                         document.getElementById('discordLoginModal').style.display = 'none';
                     }
+                });
+
+                searchInput.addEventListener('input', () => {
+                    renderGameListWithDelay();
                 });
 
                 // Render game list ban đầu
