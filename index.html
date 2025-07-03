@@ -187,8 +187,6 @@
 
         .star {
             color: var(--star-color);
-            display: inline-block;
-            margin: 0 2px;
         }
 
         .star.empty {
@@ -319,9 +317,9 @@
         }
 
         .rating-text {
-            margin-left: 0.5rem;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            margin-left: 0.5rem;
         }
 
         #galaxy-bg {
@@ -1007,6 +1005,10 @@
                 padding: 1rem;
             }
 
+            .stars {
+                color: var(--star-color) !important;
+            }
+
             .stars-container {
                 font-size: 1.5rem;
             }
@@ -1594,7 +1596,7 @@
                 const fullStars = Math.round(rating);
                 let stars = '';
                 for (let i = 1; i <= 5; i++) {
-                    stars += i <= fullStars ? '★' : '☆';
+                    stars += i <= fullStars ? '<span class="star">★</span>' : '<span class="star empty">☆</span>';
                 }
                 return stars;
             };
