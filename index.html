@@ -44,7 +44,7 @@
         html {
             scroll-behavior: smooth;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-primary);
@@ -68,6 +68,8 @@
             display: flex;
             gap: 2rem;
             align-items: flex-start;
+            flex-direction: row-reverse;
+
         }
 
         #sidebar {
@@ -129,7 +131,7 @@
         .top-game-info {
             overflow: hidden;
         }
-        
+
         .top-game-info h4 {
             margin: 0 0 0.25rem 0;
             font-size: 1rem;
@@ -597,7 +599,7 @@
             border-radius: 12px;
             margin-bottom: 1.5rem;
             border: 1px solid var(--border-color);
-            background-color: rgba(0,0,0,0.2);
+            background-color: rgba(0, 0, 0, 0.2);
         }
 
         .game-card h3 {
@@ -860,7 +862,7 @@
             color: var(--text-secondary);
             position: relative;
         }
-        
+
         #scroll-to-top {
             position: fixed;
             bottom: 20px;
@@ -891,6 +893,7 @@
             .main-layout {
                 flex-direction: column;
             }
+
             #sidebar {
                 width: 100%;
                 position: static;
@@ -930,7 +933,7 @@
                 padding: 1rem;
                 font-size: 0.98rem;
             }
-            
+
             .game-card-image {
                 height: 120px;
                 margin-bottom: 1rem;
@@ -1128,13 +1131,13 @@
                         <div class="detail-header">
                             <h2 id="detail-title"></h2>
                         </div>
-                        
+
                         <div class="detail-grid">
                             <div id="detail-features">
                                 <h3>Tín hiệu Mod chi tiết</h3>
                                 <ul class="features-list"></ul>
                             </div>
-    
+
                             <div id="detail-description">
                                 <h3>Giới thiệu</h3>
                                 <p></p>
@@ -1155,7 +1158,7 @@
             </div>
         </div>
     </div>
-    
+
     <button id="scroll-to-top">↑</button>
 
     <footer class="footer">
@@ -1558,7 +1561,7 @@
             };
 
             let currentStatusFilter = 'all';
-            
+
             const getIconForFeature = (featureText) => {
                 const text = featureText.toLowerCase();
                 if (text.includes('damage') || text.includes('attack') || text.includes('ohk')) return featureIcons.damage;
@@ -1608,7 +1611,7 @@
                     }
                 });
             };
-            
+
             const displayTopGames = async () => {
                 const topGamesList = document.getElementById('top-games-list');
                 topGamesList.innerHTML = '<div class="loading-spinner" style="padding:0;"><div class="spinner" style="width:30px; height:30px;"></div></div>';
@@ -1629,7 +1632,7 @@
                     gamesWithRatings.sort((a, b) => b.averageRating - a.averageRating);
                     const topGames = gamesWithRatings.slice(0, 5);
 
-                    topGamesList.innerHTML = ''; 
+                    topGamesList.innerHTML = '';
 
                     if (topGames.length === 0 || topGames.every(g => g.averageRating === 0)) {
                         topGamesList.innerHTML = '<p style="text-align:center; color: var(--text-secondary);">Chưa có game nào được đánh giá.</p>';
@@ -1701,12 +1704,12 @@
                         <div class="rating-info">
                             <div class="stars">${renderStars(game.averageRating)}</div>
                             <span class="rating-text">(${game.totalRatings} đánh giá)</span>
-                            ${currentUser ? 
-                                (game.userRating ? `<span class="rating-text">Bạn đã đánh giá: ${game.userRating}★</span>` : `<button class="rating-button" onclick="event.stopPropagation(); openRatingModal('${game.id}', '${game.name}')">Đánh giá</button>`) :
-                                `<button class="rating-button" onclick="event.stopPropagation(); document.getElementById('discordLoginModal').style.display='block'; localStorage.setItem('currentGameToRate', '${game.id}'); document.getElementById('gameToRateName').textContent = '${game.name}'">Đăng nhập</button>`
-                            }
+                            ${currentUser ?
+                            (game.userRating ? `<span class="rating-text">Bạn đã đánh giá: ${game.userRating}★</span>` : `<button class="rating-button" onclick="event.stopPropagation(); openRatingModal('${game.id}', '${game.name}')">Đánh giá</button>`) :
+                            `<button class="rating-button" onclick="event.stopPropagation(); document.getElementById('discordLoginModal').style.display='block'; localStorage.setItem('currentGameToRate', '${game.id}'); document.getElementById('gameToRateName').textContent = '${game.name}'">Đăng nhập</button>`
+                        }
                         </div>`;
-                    
+
                     card.innerHTML = `
                         <img class="game-card-image" src="${game.image || 'https://placehold.co/400x200/020010/a0aec0?text=No+Image'}" alt="Ảnh bìa game ${game.name}" onerror="this.onerror=null;this.src='https://placehold.co/400x200/020010/a0aec0?text=Image+Error';">
                         <h3>${game.name}</h3>
@@ -1729,7 +1732,7 @@
                     gameListContainer.appendChild(card);
                 });
             };
-            
+
             const showDetailView = async (gameId) => {
                 document.querySelector('.header').style.display = 'none'; // Ẩn header
                 const game = gameData.find(g => g.id === gameId);
@@ -1760,7 +1763,7 @@
                     `<li class="feature-tag">${getIconForFeature(f)}<span>${f}</span></li>`
                 ).join('');
                 document.getElementById('detail-discord-link').href = game.discordLink || "https://discord.gg/edenmod";
-                
+
                 const detailContent = document.querySelector('.detail-content');
                 const oldRatingSection = detailContent.querySelector('.rating-section');
                 if (oldRatingSection) detailContent.removeChild(oldRatingSection);
@@ -1790,9 +1793,9 @@
                         <h3>Nhận xét từ cộng đồng</h3>
                         <div id="comments-list" style="margin-top: 1rem;">
                             ${Object.keys(commentsData).length > 0
-                                ? Object.entries(commentsData).sort((a, b) => b[1].timestamp - a[1].timestamp).map(([key, comment]) => {
-                                    const userRating = ratingsData.ratings ? ratingsData.ratings[key] : null;
-                                    return `<div style="background: var(--glass-bg); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--border-color);">
+                        ? Object.entries(commentsData).sort((a, b) => b[1].timestamp - a[1].timestamp).map(([key, comment]) => {
+                            const userRating = ratingsData.ratings ? ratingsData.ratings[key] : null;
+                            return `<div style="background: var(--glass-bg); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--border-color);">
                                                 <div class="comment-header">
                                                     <div class="comment-user">
                                                         <img src="${comment.authorPhoto || 'https://cdn.discordapp.com/embed/avatars/0.png'}" width="30" height="30" style="border-radius: 50%;">
@@ -1803,8 +1806,8 @@
                                                 </div>
                                                 <p style="margin: 0; line-height: 1.5;">${comment.text}</p>
                                             </div>`;
-                                }).join('')
-                                : '<p style="color: var(--text-secondary); text-align: center; padding: 1rem;">Chưa có nhận xét nào.</p>'}
+                        }).join('')
+                        : '<p style="color: var(--text-secondary); text-align: center; padding: 1rem;">Chưa có nhận xét nào.</p>'}
                         </div>
                     </div>`;
                 detailContent.appendChild(commentsSection);
@@ -1935,7 +1938,7 @@
             };
 
             const logout = () => firebase.auth().signOut();
-            
+
             const updateUserUI = (user) => {
                 const userInfo = document.getElementById('user-info');
                 document.getElementById('username').textContent = user.displayName || 'Người dùng Discord';
@@ -1955,14 +1958,14 @@
                     renderGameList();
                     displayTopGames();
                 });
-                
+
                 window.addEventListener('click', (event) => {
                     if (event.target === document.getElementById('ratingModal')) closeRatingModal();
                     if (event.target === document.getElementById('discordLoginModal')) closeRatingModal();
                 });
 
                 searchInput.addEventListener('keyup', renderGameList);
-                
+
                 const scrollToTopBtn = document.getElementById('scroll-to-top');
                 window.addEventListener('scroll', () => {
                     if (window.scrollY > 300) {
@@ -1986,7 +1989,7 @@
             window.submitRating = submitRating;
             window.loginWithDiscord = loginWithDiscord;
             window.logout = logout;
-            
+
             initApp();
 
             // Three.js background
