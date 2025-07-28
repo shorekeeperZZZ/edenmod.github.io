@@ -1130,11 +1130,12 @@
                 <main id="main-view">
                     <section class="controls-container">
                         <div id="filterContainer" class="filter-container">
-                            <button class="filter-btn active" onclick="filterByStatus(event, 'all')">Tất cả</button>
                             <button class="filter-btn" onclick="filterByStatus(event, 'ok')">Hoạt động</button>
                             <button class="filter-btn" onclick="filterByStatus(event, 'updating')">Cập Nhật</button>
                             <button class="filter-btn" onclick="filterByStatus(event, 'stopped')">Đã Dừng</button>
                             <button class="filter-btn" onclick="filterByStatus(event, 'top-review')">Top Review</button>
+                            <button class="filter-btn" onclick="filterByStatus(event, 'vip')">VIP</button>
+
                         </div>
                         <div class="search-container">
                             <input type="text" id="searchInput" onkeyup="renderGameList()"
@@ -2471,16 +2472,21 @@ Bạn có thể đặt lại hoặc xóa quyền sau khi cho phép như minh h�
                 const searchTerm = searchInput.value.toLowerCase().trim();
                 let filteredGames = gameData;
 
-                if (currentStatusFilter !== 'all' && currentStatusFilter !== 'top-review') {
+                if (currentStatusFilter === 'vip') {
+                    filteredGames = filteredGames.filter(game =>
+                        game.name.trim().toLowerCase().endsWith('vip)')
+                        || game.name.trim().toLowerCase().endsWith('vip')
+                    );
+                } else if (currentStatusFilter !== 'all' && currentStatusFilter !== 'top-review') {
                     filteredGames = filteredGames.filter(game => game.statusInfo.key === currentStatusFilter);
-                }
+            }
 
-                if (searchTerm) {
-                    filteredGames = filteredGames.filter(game => game.name.toLowerCase().includes(searchTerm));
-                }
+            if (searchTerm) {
+                filteredGames = filteredGames.filter(game => game.name.toLowerCase().includes(searchTerm));
+            }
 
-                displayGames(filteredGames);
-            };
+            displayGames(filteredGames);
+        };
 
             const filterByStatus = (event, statusKey) => {
                 currentStatusFilter = statusKey;
