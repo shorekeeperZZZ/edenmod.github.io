@@ -33,6 +33,8 @@
             --status-stopped: #f472b6;
             --star-color: #ffd700;
             --star-empty: #6b7280;
+                --vip-color: #ffd700;
+                --thuong-color: #38bdf8;
         }
 
         * {
@@ -275,6 +277,32 @@
             background-color: var(--primary-accent);
             border-radius: 10px;
         }
+
+            /* Nhãn VIP và Thường */
+            .vip-label {
+                display: inline-block;
+                background: linear-gradient(90deg, var(--vip-color), #ff8c00);
+                color: #222;
+                font-weight: bold;
+                border-radius: 8px;
+                padding: 2px 10px;
+                font-size: 0.9em;
+                margin-left: 6px;
+                box-shadow: 0 0 8px var(--vip-color);
+                border: 1px solid #ffb300;
+            }
+            .thuong-label {
+                display: inline-block;
+                background: linear-gradient(90deg, var(--thuong-color), #a0e9ff);
+                color: #00334d;
+                font-weight: bold;
+                border-radius: 8px;
+                padding: 2px 10px;
+                font-size: 0.9em;
+                margin-left: 6px;
+                box-shadow: 0 0 8px var(--thuong-color);
+                border: 1px solid #38bdf8;
+            }
 
         .rating-button {
             background: var(--glass-bg);
@@ -1097,6 +1125,9 @@
                 <img id="user-avatar" width="40" height="40"
                     style="border-radius: 50%; border: 2px solid var(--primary-accent);">
                 <span id="username"></span>
+                <!-- Ví dụ: Thêm nhãn VIP hoặc Thường cho user -->
+                <span class="vip-label" style="display:none" id="vipLabel">VIP</span>
+                <span class="thuong-label" style="display:none" id="thuongLabel">Thường</span>
                 <button onclick="logout()"
                     style="background: transparent; border: none; color: var(--text-secondary); cursor: pointer; margin-left: 0.5rem;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1129,12 +1160,9 @@
                 <main id="main-view">
                     <section class="controls-container">
                         <div id="filterContainer" class="filter-container">
-                            <button class="filter-btn" onclick="filterByStatus(event, 'ok')">Hoạt động</button>
-                            <button class="filter-btn" onclick="filterByStatus(event, 'updating')">Cập Nhật</button>
-                            <button class="filter-btn" onclick="filterByStatus(event, 'stopped')">Đã Dừng</button>
+                            <button class="filter-btn" onclick="filterByStatus(event, 'all')">Tất cả game</button>
                             <button class="filter-btn" onclick="filterByStatus(event, 'top-review')">Top Review</button>
                             <button class="filter-btn" onclick="filterByStatus(event, 'vip')">VIP</button>
-
                         </div>
                         <div class="search-container">
                             <input type="text" id="searchInput" onkeyup="renderGameList()"
@@ -1369,13 +1397,6 @@
                     "image": "https://lh3.googleusercontent.com/fife/ALs6j_Ghpn1ivHan7z6dIuirOCaQhMUp0yQMe9unCPm98tGIuqWWhXJDdfpJhbZKVL3XxElDS5TZm-b8CKoRtcf1zD59gq1zQeT1KtAx6pFG2l_M9ZI4jlQC5TDSt2Kv1Ju-VUSZZ8DK8JMUMfv800qL3Cm0JcXmBTrOKQA9phszd-CkVuYxkSphzJEJtLIChMXUnqJOYOCvuSah2VOyVfT8qg74F3subfL0Zm5qM3EvcwLH0eM-XPe_ez-Cf9tiGF1zT5LGGKfmOpG9ZwSN9q2bBU_DNwIbUZawGPjYXQQCDvQRYPUx8m3diPkuAR47QyMtNBvaPhPNrnzLumM6ahDXNy0XNyMZMtLtqMYJUis4KC9JHak84LFUfGjigfFOmNvQyw6YmBUHLw3FE8KwBxe2IKH3wVOJjhG8eAUBKiWcEIvO3LXCEafxYwvMf8jruY8TCmxvNMTgv9IVyO8NhNKoyZlqV4H-lFycoNACg9UmxR5DzY3UCMUn9-xYyK-9tb9BWrqS8PZd1fvL82KRp050Y44lb-grG0hy9jw1vV78uFh1iP30NJybRupRxF-6-B61wsMyS1cDMHDiO9yvWx1-sHBYUlAsU1NiG0ht6aUH8lhU0fLWgutnJr5nyeCgydl_qkYyzXw8F_pIbF3meHOS_0fPsnfUP9df6pG5Ya-axHinXkeMz5tZjateAhhnY7540YlkCIRSBoksHovqaHng42Dd37uq3gHHDEKf8gA3LH0wnDkGRfW-IlJ8Dr8W199tOUnt2AxUamawJ94MkTsTJljw6x_Xlp2juBgfnOmYlcgxh4nwkQXuQSLN_UV27tPNrchE4CBTs2VLhCJBArN2atwphNWejPIOUoOfzUlL7RUkUzBNHsqdjd-S49v9QLqlbVUzY0byycT6xlRvQZc8Sh-UL8nmAW8OVh9io1C87yOiDyCjB9seiiL7eaWLdsfpyi7MuxGM5UVyEoFzhkwKVooyXBqNxnw6FoRPxzQXaVSVCb93ZjHLyEL39fUPoRoBaRuZbAULOwqU3X4vM20TSzXlX7QVbjdG9Q-LXaysu180aWrTAV3-7UANQGBZ-S5rRvsuYejD_A15HTpaf35SSmqYXOp18yc2N5WF-UikZhHOdAcHXP6FIIRSEASzXv5HfoBkKcvE-h_Gbk68OgeYMVaI1yUuJj_ANSWmWunY9Ku3C0lLCKT5IC1Q-dU9s_d62E-1vo39wCo-WGIuf1mGe8JVmJ5pVniwMF6E_o2P4zn-LtfxEbwcyS2uG4tKh4z9bAHETLTKWh5GBUi12gV1tFiMzWjqZVs4GgL5FOPRjvlC4x9X3oY4yEjeiOiNavNBRzVmKJm6sD4xboWoUNIvtm5i7xCcPJ0BndiwNsXrs2K5bJBc13Gir7qkY3mGn7b9HtYYeckXn9tc6uG3nSZyzRUvw_-0ueYjsqQ31lsod0f8mUkY22StaL8rIPEKjDYGtX_x0gbAL6F9HRBCeU8Cp6s4I-Y60zg8cA1axdNrdi7OXKYXTa03NFzdsiXKOltJG0sldjTWkN41dQEmAzrPRJ7ahrInTQD5ondZBe7BKSWbHYF73BrR8NwFsegOdJFWWIFbzY1LkWhcPCRhkxtE64KY0v3fxTq5X1yaiGv8cy9bx4KDNqKA4ock3a21GuIv2Lccp1Bmrsu7=w1229-h959"
                 },
                 {
-                    "name": "Hero Blitz: RPG Roguelike", "status": "Đã dừng", "note": "Damage Multiplier, Defense multiplier, Free Shop, Speed",
-                    "description": "Cuộc phiêu lưu roguelike tốc độ cao (dự án đã dừng).",
-                    "link": "https://play.google.com/store/apps/details?id=com.ondi.swordroguelite", "videoId": "NF6nNIqX2QU",
-                    "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://lh3.googleusercontent.com/fife/ALs6j_Ezqmbrjzilj5axl_Rb3InzMrMgPYVaE-bfciFt_FhBB7yS4Dc7zSPi-pSKs7Yn-hE_SoWMOvtDqjbwNCzFOQMlHq2RFJ9mE3BZ304PrWwBfK6vLSkdw-aUsLmQhgaI4V0MZSJIPHlHrph0TBj4bTL4hkZ-kNOEIIoaD9_xV5tuJeUJZStBUbAiWs6QWkitYgkR08MrHjEvAxCrcyeuJ52RWuotfDNadcQDV9OuRQMbz522hi9_WS7BPRULTmugN2E5syDVN6YFlJdHEOIgEo38dJRNc9dKFh2OwdVUca2_dntO9eVUC9gx1llrh51FTjnJOxEOO3I4441QuBTOXkUsGkwimJnh9NbzgemDiAdlAXNDdGMK9n5_mLxNIKGsNR3M-hV3YnAwn6NZrELu7NBXXfi8T5bB5l_n4tCmJ0bGUbYuWfKvIUxzslboeyQ6ukQDwzZdAsWFj9ZxtZq16lywn3fuUstCcpxtCQcUWKIy7kw4QmEc3Wzg7sVb6IGCKeEVyPt75QsZ8UZhx9zYzCX4ZGIPWUDHNkmCCLsXkFb0PNFrGFiGze-8y8OiTzYL_646ttt7T25qaaj19VZW90ZM0d3iinynsegwYx7VE0i8QORwNR8XAxx2rsvynoawK-psV_WHtNii5i1Sv2_e9n5PQw2MXszG0Aeu7j-EXjMIMYZc8v4QTobDWkRQ7bO4pELsa8_T0SuRwalRLsu7o6gbJtKgfB_PdhfADeQYqjP8jk5Nodi1s3qIvS0vAjDHrNkUvtVtmL7xhxY-Pc1fFFABUPcPRLmh6927W33Efuw2MnM04nhAyBTetArPe8DS-nhRTyvgvw7_pVJYrnbw95Bvf_bS4RA4qIZSnTRRigAhVP6zEbVUuyYFVtnQfQC9q6eEE0m22n_KUEn87BaJ5U4558hsgT3vKkZmqbJtCRRGQLUrSQmvOqkxVqi4OAU3tdPwoSqLuVVvZTtGnI4eKYPDxoBXPPEOQx1ssC_SKaVKLkyser5_M94rpa6DR80XIIl5gvrag81jOeCI78253zuG9pn19gtN_Z4QomGbE1UWbHHZtw5a8lOZfwocK5jlAqx84QZD2JZFvKwegkXydUTzS23Wgt-X-izNA-_Z-mnCpyMYMIbX1ylB2hjnL_Px2-uLPzeFJtGjdHkFI5G0YGq50VPRXNXPgPX9hbiK8YurDcDxMK3Mi1Vw1_ziaKAEK32MFo1FZhsx68MrqHFxYQMcLRMJbASf-EfX8aVEpQv1OqMytVMZxr2yRfNzjWWCmOtm69Wz4e3rXg9wLKFma5vSHwToCRGYLGfvEst8vtjXnKEh0lQHsO3RnKhO52ajD2zO0mabpKFdb4u5qq7O1cHEa4KHGoQzxYmXkiZHka5QJuUQ0FNCI78hioGUwlPg2cMOv__bHgcn5tXEoGOwqF-tbWHCbXFbP69Buj1ouYlO0RQaC-LSU68ihv3815eounv5jss78SsSHnBGf1K29QoF_190H85AK6fXPZEJZSzsr57s1S5wPU5PfVTQC8fpvHBO4f4Q3-irkUnCxeMOHiaii7y9LVBC9qeEnziTGDm20JUdHn9MzqFoihAZoUlzLzreZLxTSfAsd5QsgDgL3gY4-XKWR07xpjdUbm9s2_xt5FKwpTIxtsr6Ls5iLfCCGGndgipIEaU=w1229-h959"
-                },
-                {
                     "name": "Boomerang RPG:Watch out, Dude!", "status": "Hoạt động", "note": "Free Bonus, Resource Never Decrease, Speed",
                     "description": "Sử dụng boomerang và nhận các phần thưởng miễn phí.",
                     "link": "https://play.google.com/store/apps/details?id=com.superplanet.boomerang", "videoId": "NF6nNIqX2QU",
@@ -1487,7 +1508,7 @@
                     "image": "https://lh3.googleusercontent.com/fife/ALs6j_FvNE5V7TunH3HfOS3xu-x60vuqdJCwbZHSLAdQXLar80cThVvGD_T1FLizJAeX2a7t4QLLDMT2f58KiJ7NgQzOM6UvxaPyHDt6-KGRHkrqqkasu8_4UfKn1VHNzPE8EkGWkNFnx_g7-9iYmXGIEIsxTmE-FK4U0eyzqPHI7N6cK2A5VkTjR3Oio6N1jEzu1jQMeDQzALqRb6AtGwRCEETpobVQgxBKvm7x7IoveprWpabN3AOs7kh6HwMvEvNAOHc7XbPdYFkNDeoTcFiRsb5kw8tucyM1GADVwyeqRB5oRH1iph3jlD7-W_HKxr3pQgVIz7mrXIjAOKdMgEmbgsNpxi_wPOrYtJGB9QSLhMsTm-0bYWUR16yB6jhkPtHODMikmXjgMwDoUxRGWTfDSz_woaOFxEw2cHDoAWdwZn9zF9ChOKXSYr64x4qTJcNopF5bydduhM__YPlaXDHHHtOYHG9SSNR_UO9ARWOz_f5M5GhneWjia6WgM4uS_2XeL55KEBYQxwM7b6MWS_kAIkSB4Bhl19Ek81N815OD60dkv0Nblfe_1N3Xr93eSaTCATgdqOviT5wg1v2LziDwxFS2D_6Yst1iNAJqUT2SYpp8140HVyqC8B3kC_7F-92XmkBnzjGLJ0m_BxaBz5RmzDc6fKesc-9HBTUKZWMw0Nas-RJYYO_RtAz2HPEUMo2QE6HL4o4uRvZoloxGSvTIbVreLv-D6ZWZlULGWsD3W2WvupmB969cH4-o_JKvuNMjjZQHMeVJ944Y1wy5Mh3RR5ifCDM9vP0wmsAlJmDWPFNu0AyzWYa2an4CF3VdFKlkAppYRUhPdlieml9568eaEe8w7snT0cVP1OI1BIe9KPo6HQ0OCjt01CjMDkrLdD76dzJprHsdRZrUnDiq3XstyMndZyc9Uhj5JRDMPlJFiguI9U40q8H5__u0i3ytWYdXuA9GXpF8nwNRUCrQv8mw2bbG8dbo6XVLNXH-Kw400Q--1pjMkiXr0j9dIc30PNoW9_NhVCG5f0dKmH7_qbSQflB6DGIJpfyfzLuGzmDV2N32-Mv9dYPbrWSQ4aWT99pmRqKn80Mi0KvudM0j0S7sKXUkfgI_f9pMpBmMJLT4OgVLKB-FDESn1k21rly6l4nEjg9vKmI-c78KB-bGrnVCtjeQyLe3jAZ1JG8IAeNT5B60-3kOwrSL-H5skyZRoIEUHs-ecHa-viy0hjZ8QK9uK_hbqwjUZXKVOe3PJv7M-VdGvn7mQ0QsLGb7hj9-3pHAuRt3BoV8jaC0riMs91SwsgzSSJNKpClyR3Dq0Dw4pgN--xJcy0uV11izovG1_g7uTpbb-OUbv6yIRnHgYoxdAB8cmBTMTfBXJTsDq4dFxhyMJePnu7XrZlrFUJRH3sbRFwuMv79DGFCrFhjYK7k9EqiSmBTKPbXIjDpS3-YdljOMOn3n7A5Co6UcAxB41SV1ygky8AXFz6rKewhKIOu4FLiq_GyT4YPsmq3peMcY1U3XO4KKzeh0RWqU1c7w6BmAIg2e35g36WZBR_gdgbq-GwzApBItr5fv6y78bQhYNzcpkbOdtWPEL5j8ZDNXe_jnnNGiIOSldHcfC-DcspkQOdECzLu5y__3Bs2ImUb-ETAuny9mcwLe0D-MW_ePpdOU7yTsvCD3aVbC=w1229-h959"
                 },
                 {
-                    "name": "Supervillain Wanted", "status": "Cập nhật", "note": "One Hit Kill, Dumb Enemies, Speed",
+                    "name": "Supervillain Wanted", "status": "Hoạt động", "note": "One Hit Kill, Dumb Enemies, Speed",
                     "description": "Trở thành siêu phản diện bị truy nã gắt gao nhất.",
                     "link": "https://play.google.com/store/apps/details?id=io.supervlabs.catchandtame.gl", "videoId": "NF6nNIqX2QU",
                     "discordLink": "https://discord.gg/edenmod",
@@ -1501,7 +1522,7 @@
                     "image": "https://lh3.googleusercontent.com/fife/ALs6j_Ey6IDuCqhKc3e0EgFm1D6e3mNLBlxlMGW7rc9YJN01pnigD4rDRQ4GfGTZYeUqSfyDSGCfphRftgJc1l6IS1l-gEwLSyhEcTV_3FiPqxsDEWYSke26jp22hYnOpriBV6s-agJDKZjHCp_CQfd3CtJV9I0XrItOverd3aHLcuPKv3XS0eRrN-c7NAv_D4gAFJ4nYTm97KW1rwbrH0HRY8gtUNgm089xd2JNiB23VWcyjaoWL_uH8gTvyqQcoT9PtoA-1g-bxXeAgIi-M-g78z4dRs43v5WnEPM3JmrcnUNbbG-t7EqqcWHBTghxW5dYUII44qMqbkiu9eSPvxQisGzifEi0BiMuoQiiNA-5QbHdfFLkG50s2BD0zsjaCmi2JkjEwcEdO9qMqMflSspbpM-V7KpHQj30rXhmRhocj6rymNAIpfKthlWKncYgQACk9h7eqUMq9AXjzAUQBISwenNskcKRlIuhytNwkHfF_448Nz5ZqEzVQBGyF0D3cOAefBDiWvTp0wBZlc5fS4qF_rRZnw0-tBOGL4tQKWGGgifGNKxX8QFXW46ZMu4fHn_auW1GK78oe6l0CtCG3Dd1KSRu39JOSx1dLKPS9PV9QxalgPXDqupRNyzhxV7pY8HX3CAAbR-N-uSKDD7_Ev9lo3nuJT2g5rxfkFJZXLAG46-ciIlL5nBqTj8smKvcjnMV_yav_xN7R1R47XuHeGXVELqatf7diT3_c0I3RWZubNC6bBOA8jIYVOACIeDWrEh18dEE5jOrEXc43ewsi1E1sP073fR97W_0SHHJQ18L9MdksjrrtR_qRYdXEYKdU2BFYg7E_9azPO2l1TtuvQq4GyJlAhes7uE2YdmgSmJbRhKxpY_AjOgwwz4Rzumy7SiN7N9nx0vojB7vRAgVWVyVAaCq8CLOfq-k4SIky66A9uRi27TV9A371XC76jyIpoAL5yh9pVEOdiL25WNFpfoTK-tWJq64YxyyZ9GcPSDFpO2iNg8970WYbrgA2bAXph40XQBt0YwNywW6KO8VDA-kLd8odM4EOsXMDOzGUybwRTHOif4brhFa8ebWXYHNtphOSgjUqYLTm-w31syYWIll8nKTxXr1YbuNXlMm5neb0SXAfwGy9bppUXKLUtVeijSa21tNyfpQ74FvhxFCT-ZORCjBLGZbXykfCS0-HXnctT_zP-NoH91x0ONzkUdt-x21JFcn00BvGwslExQU3c93Mtxle2bDG1JDxdGSplODo9lAtaGyAox_MWFrrat0OPVlx4eUfTkbLQ80grHLd4HJdQl8T-R7Xupmw3fp1d5WpO3xct-3q19bmxN3i3GliuLrPkIyBxn9sRQ1qPKwoSKNzrDGe_TJRAXiKY9DgbI_V0CWqEsuvxnzAcYLmIj08uEzjc128m5bp6WqebNr3t5vIjpYc4OZjhHkudP4KfmAgucaapaKCr0HMxCAPUxdwoq9ENpkl0IiVkX62_3-N62BO144npQf6JE4UkFmKS5qiqfe7NY53-2ZpZR_BuwXSpsZByug7w_lTFeqyxKSCBpvW-ddGoiOSv9aApWMa6MN4PUKILq3SSBq6z-EBVciPMvpLWgFHKHqjKbRXzjT16y28v1Y5bDv2v4NEJckgTqisIZwTTZ_EOxmT8vlbJjdOJRUoF9ErmZY0dN8=w1229-h959"
                 },
                 {
-                    "name": "Raise Your Knightly Order:Idle", "status": "Cập nhật", "note": "Free Shop, Add Custom Resource, Speed",
+                    "name": "Raise Your Knightly Order:Idle", "status": "Hoạt động", "note": "Free Shop, Add Custom Resource, Speed",
                     "description": "Xây dựng đội quân hiệp sĩ của bạn.",
                     "link": "https://play.google.com/store/apps/details?id=com.superplanet.knight", "videoId": "NF6nNIqX2QU",
                     "discordLink": "https://discord.gg/edenmod",
@@ -1668,6 +1689,7 @@
                     "link": "https://play.google.com/store/apps/details?id=com.lobstargames.dungeon.idle.rpg&hl=vi", "videoId": "yaryxrL6KLs", "discordLink": "https://discord.gg/edenmod",
                     "image": "https://lh3.googleusercontent.com/fife/ALs6j_FZ2A8j_DRr1tfW4kVqpRXmZeVH-Td-vnPFT_XmTDyABmJZi5Y-kxLrVUnUFr3300EegEclE7hJrXK7QcGOniQHx30xoQ0-owL5EL29_uYhHySLxbbpGl7NazCgXdKbxdcG7lpwdFit6JLPMQGsV75EkqH7XtNv6B40zzvtkVDD3H5u5JRs9f6cusR73pj1JWjm1u9dNPh0E179ts-daVCg1f-4MF4q6YYj-TWmYWNAaKaCuU9CNj31IMVzTnO2nZKTb-9wvkXMHWK2W8QA7gX0GZy8MTS5OOS6YJzxR_KlEnaL2d4An_x5xTn1QiT_SG6DXcF_Yt17YdoCEbDpGz2BWBOVLCq2ebt9QLV1xNYCdk3TOJKixqtJliOzsWLhFKqNaN-hPYqUG5UXQnyNbu-uQJ1p0gw7ebgJhge1MaGtNdqLoWEfS_o__awIljWcGTMPt0_1JgXmmYRbjH2XjFZMt-Sw-v8qORcRS5cJ7z5skBrhZ8qrz5VM6xPkja0xYNsDXLqYu4KEFDT4-mI8FNs4ltegrFhDjbW6nzcH3jajpSk1cm8w702OWpSmU0KPffQciGm1vvgMYmqo5vNxuZAHfSL03OKpHySWKJT1yqYE4B4ZJijJmzlNnpm3xWbLhgGDr4D08iqbqxCt4l-A-qHGgvvpfipIKVkb0-G-poBQNb-LdKDIgX73FKMbV9cWKYRDbdwvprjUowgf2L33J8KW8C_qsCZLc6gKKwIJDI31ToMtcL6UgxDxaP3_M7lKrRduJuF2vwmoD5AFW1zkRZ_-6c7z77BYpimsUY_J2huY0upy-2ysWJOCCMipOYwDnLHLb49o_nDfmjW14INhGCoykMh7DCLPqBl1G1MVoLCQ6Q7_5gbpixjt20y_JG5Bt09ayVObesk2R8IlqrvrEXWegKMSkXssP8u47vt9ivhzK1E9w-K9XbAQo9y54bq2UJl6WqPrhcenXd2rN9-0g8j_5E9tXL7bAdjLI6JskqQWVUutbBNUGGXogaZ92b_et9D1XPs_w2OHXYIxNHCmf1Iii2WLUmgXlM7njAdxguuGx6GoGndT-dvre6GF0zj8VD99FAB7pnTjilANC0PBumZguj9M7soLUjzzIh17WqfzYSqDVz2-MaD7djsycz0WeywnzaTtKUHUGG-BVm7cwjrAIyOTSJ7l13B9w9djaJ7XC6HtbGaHmA96NfaEWFzeBZri75Z7aDAxfKpw5BPQrhmqAmJ-HQvlQxyacvXdTcDHFyE-abwt_ym81pLMT2hp27iKLowZ7QdIMk8g5vJ1gGT9PEeLFmXXwjSqSDm2HxbzCq8v8Uq9FCNPMvbKd0M3HftR02ICzoHkjV0sFcKuCS2ezUJPVGiqXCUA67nwt_qWsxAUjnJtJRrPO_ocsbTWhFIuyemwQqWmZg6j9fqPXvh3GqPcJb_reJ5vgMQ24zEVkRcW9ajUXx92KMQKuwKh1MRPSkicF3iXcTSqBdXPx1o-bglEkU9vcPeRqy_wRUHv-PLe0gXFMtXaF7j7g91WShgBdYliwOZkSawdEl2dQlKi0bs5xUBYJyjTXAKLp_fXCPvvd3fMrD1nblHLLkzngudIjtGJ90Dlg-81rPMuKrulIo_mH917-Kdja8jI=w1920-h868?auditContext=forDisplay"
                 },
+                
 
                 
             ];
@@ -1815,11 +1837,13 @@
                     };
                 });
 
+                // Chỉ sort nếu KHÔNG phải filter 'all'
                 if (currentStatusFilter === 'top-review') {
                     gamesWithRatings.sort((a, b) => b.totalRatings - a.totalRatings);
-                } else {
+                } else if (currentStatusFilter !== 'all') {
                     gamesWithRatings.sort((a, b) => b.averageRating - a.averageRating);
                 }
+                // Nếu là 'all', giữ nguyên thứ tự (đã đảo ngược ở renderGameList)
 
                 gamesWithRatings.forEach(game => {
                     const card = document.createElement('article');
@@ -1844,10 +1868,7 @@
                     card.innerHTML = `
                         <img class="game-card-image" src="${game.image || 'https://placehold.co/400x200/020010/a0aec0?text=No+Image'}" alt="Ảnh bìa game ${game.name}" onerror="this.onerror=null;this.src='https://placehold.co/400x200/020010/a0aec0?text=Image+Error';">
                         <h3>${game.name}</h3>
-                        <div class="info-item">
-                            <div class="icon-wrapper">${game.statusInfo.icon}</div>
-                            <span>Trạng thái: <strong class="status">${game.statusInfo.text}</strong></span>
-                        </div>
+                        <!-- Đã loại bỏ trạng thái game -->
                         <div class="info-item">
                             <div class="icon-wrapper"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r="1"/></svg></div>
                             <span>Dev: <strong>${game.devName || "Nobody"}</strong></span>
@@ -1955,19 +1976,25 @@
 
                 if (currentStatusFilter === 'vip') {
                     filteredGames = filteredGames.filter(game =>
-                        game.name.trim().toLowerCase().endsWith('vip)')
-                        || game.name.trim().toLowerCase().endsWith('vip')
-                    );
-                } else if (currentStatusFilter !== 'all' && currentStatusFilter !== 'top-review') {
-                    filteredGames = filteredGames.filter(game => game.statusInfo.key === currentStatusFilter);
-            }
+                        game.name.trim().toLowerCase().endsWith('vip)') ||
+                        game.name.trim().toLowerCase().endsWith('vip')
+                );
+            } else if (currentStatusFilter === 'updating') {
+                filteredGames = filteredGames.filter(game => game.statusInfo.key === 'updating');
+            } else if (currentStatusFilter === 'top-review') {
+            } else if (currentStatusFilter === 'all') {
+                filteredGames = filteredGames.filter(game => game.statusInfo.key !== 'stopped');
+        }
 
-            if (searchTerm) {
-                filteredGames = filteredGames.filter(game => game.name.toLowerCase().includes(searchTerm));
-            }
+        // Đảo ngược thứ tự nếu muốn (ví dụ: mới nhất lên đầu)
+        filteredGames = filteredGames.slice().reverse();
 
-            displayGames(filteredGames);
-        };
+        if (searchTerm) {
+            filteredGames = filteredGames.filter(game => game.name.toLowerCase().includes(searchTerm));
+        }
+
+        displayGames(filteredGames);
+    };
 
             const filterByStatus = (event, statusKey) => {
                 currentStatusFilter = statusKey;
