@@ -312,7 +312,7 @@
         .game-card-image {
             width: 100%;
             aspect-ratio: 16 / 9;
-            object-fit: contain; /* <-- ĐÃ THAY ĐỔI TẠI ĐÂY */
+            object-fit: contain;
             border-radius: 8px;
             margin-bottom: 1.25rem;
             background-color: var(--bg-primary);
@@ -320,18 +320,17 @@
 
         .game-card h3 {
             color: var(--text-primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-size: 1.3rem;
             font-weight: 600;
         }
         
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .mod-author-note {
+            font-size: 0.95rem;
+            color: var(--vip-color); /* MÀU NỔI BẬT DUY NHẤT */
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .features-wrapper {
@@ -1133,7 +1132,7 @@
                     "vip": true
                 },
                 {
-                    "name": "Sword Legend`화산파 키우기` (VIP)",  "note": "Free Shop, Drop Multiplier, Exp Multiplier, Damage Multiplier, Defense Multiplier, Speed",
+                    "name": "Sword Legend`화산파 키우기",  "note": "Free Shop, Drop Multiplier, Exp Multiplier, Damage Multiplier, Defense Multiplier, Speed",
                     "description": `Một kiếm sĩ sẽ thống lĩnh thế giới, anh bắt đầu viết lại truyền thuyết võ thuật!`,
                     "link": "https://play.google.com/store/apps/details?id=com.dragonheart.muhyeop", "videoId": "spWXFW9WT-o", "discordLink": "https://discord.gg/edenmod",
                     "image": "https://lh3.googleusercontent.com/fife/ALs6j_EqYhjThLM5rO1t2BOEttO44Lu-rvudVoB2cT_h5UTP1xdWGu_IxvDDuc9n4k5obncqsHH51aIRzI3NadPbE_doL0gmqgIlN51_5xBMorBn8QjJR0y-6QURRnMF3E7z-M6PtgphJjnH1FZ2EcSU9D9Rw5LCKRq5JCeRjL0z9s-QG5MY_T9qA3PtU5KSYWqvkLF3dred_O6UgUePz2ghnZ-R3u1TR9xaeyYa1mnBmDmUp2cHf9btGRBCFCcq2xdDC2iIL2HVsh7fsz6_v7cq-jZw6YX9JwyCn0VSIYp7M5b7Bo1-AdF3x_a43_QHFNNXzSYglEbXYY8Tlw0rUIdl0MUaBHi425iH0gyXA1M95Emmb8OYFIIGX16l3lLd8ray1i0XAYfaIDigQ9LU0B1oDsjbvr1Qax9Nyp2d4Yu8XC0MDSZ4Px8dVgf_IiDWvWK7LSjtgXXuZP2I2ZPIdwqtIKWSj2u0k2yJ2Pb2hBd_fkiAgIh7DTWHxOBHDcVtmkpfbQv6DpAzd39xKKmf73IJZ3ZwCMWl0Mlvy5elamBKHXZ3ZWLFzD9zj8QW_2Af5lIlOfC6Bjb4tsXD6G60m00GEXYQoDGz-WBNSRnASQ7uREPljLYlk5OqxKkJL6vuW4EGQXYJsJQ45mNPMzqZZZlDaxsNQt0u3JFZ7fCs_hcftLeZKm5hJdSPNM1V7oDVH7BNEIRyPLiDrcBw4Iabn2fIwjPICW1nItxjMa5mbrc3O77874Bri0a2mGU0RyLa32WcaelZpzjNVikO5IRPfbDU7pNSbABskS78bknELoopLEI4-X2GyyRPxdMsqnuvkcu_sutBbrcYzFBNPozACAGepneMXH0WgFjy_DpsKzjeQLHPtcrNZDAlmEChzigFw53HFVvwXcJJvHXdIP6obnntk_kQca0ESifjzjjTSSxjNB7ZdqjYd9sl9dh5xbWLiKoFfEOw_F5vD-jl8c0sIe_s9PpcMokVl0q9GfWFgf5qs872JSwKcAUcKdY_43q4nuZWfVtC4j4N7ZRduLsJSWy5xjGkz2cM6Jdlgmu41xIsv9j6tWHFRSAOWUM8yWRbMcBxPtC7rd_XP3sZvDqe5PflWK_aeMHFY3G9GwuSL-vRn6dyCSt2Kz5LsD6J_Lie4bemQ9xrsJhhB6d-vH2cd_q6gVZ8NbHyWABSs5ezUYa5dAYD2oifKClS0JJPs-8n6uD2JdkgDCMaIrWqrnajcGdzbG3xnZkoRKKPDKz1m6w2edvR379PiGrS27AfaeAgMFgp0Hq5UnE_R2rKLalM7YeyUOvjZjoKXGGkcw8mk-e277ZYSHuezFaZafY9MM7_V3DkrlleqH78mbZWUPnRsaJJ-Vgo2b8eyMFk4rW8EyCOjn-Cc_ChREjeutKZym5VDYN4DX2w9OKQ_CX2Uoq8I8ZsVItSHp2Nweav-QwNc15OfrvCYjUKnqXQBUhNisfMfkH_eCRJhPGIRaYdFPfVJ5E55iAQcL7MgEK4GkfuHZEdb9sffdOP6FjmgxkYRPQZbYk3JMJsWeq_I7UO5xDFYBazlEavS3O9OKIk6dNuzR5311GjXvOC1-sgC4T8xqa_DN5Yy_t1x4knB4M_wuRMJD8xVb3pRPQeNasuRm6-TL4=w1227-h868?auditContext=forDisplay",
@@ -1160,7 +1159,7 @@
                 return rawData.map(game => {
                     const features = (game.note || '').split(/,/).map(f => f.trim()).filter(f => f);
                     const id = game.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-                    return { ...game, id, features, devName: game.devName || "Vô danh", vip: game.vip || false };
+                    return { ...game, id, features, vip: game.vip || false };
                 });
             };
 
@@ -1190,6 +1189,7 @@
                         ${vipBadgeHTML}
                         <img class="game-card-image" src="${game.image || 'https://placehold.co/400x200/0d1117/8b949e?text=No+Image'}" alt="Ảnh bìa ${game.name}" onerror="this.onerror=null;this.src='https://placehold.co/400x200/0d1117/8b949e?text=Image+Error';">
                         <h3>${game.name}</h3>
+                        <p class="mod-author-note">100% apk and No root by Nobody</p>
                         <div class="features-wrapper"><strong>Tính năng Mod:</strong>${featuresHTML}</div>`;
 
                     card.addEventListener('click', () => showDetailView(game.id));
@@ -1278,5 +1278,3 @@
     </script>
 </body>
 </html>
-
-
