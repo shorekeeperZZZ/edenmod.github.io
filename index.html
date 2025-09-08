@@ -184,19 +184,20 @@
         .search-container {
             position: relative;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 2rem auto;
             width: 100%;
         }
 
         #searchInput {
             width: 100%;
-            padding: 14px 20px 14px 50px;
-            font-size: 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            transition: all 0.3s ease;
+            padding: 16px 24px 16px 54px;
+            font-size: 1.1rem;
+            border-radius: 14px;
+            border: 2px solid var(--primary-accent);
+            background: linear-gradient(90deg,#161b22 80%,#58a6ff22 100%);
+            color: #fff;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px #58a6ff22;
         }
 
         #searchInput::placeholder {
@@ -222,38 +223,34 @@
         .filter-controls {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
+            margin-bottom: 1.5rem;
         }
 
         .filter-btn {
-            padding: 8px 22px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-            background-color: transparent;
-            color: var(--text-secondary);
-            border-radius: 8px;
+            padding: 10px 28px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 2px solid var(--primary-accent);
+            background: linear-gradient(90deg,#161b22 80%,#58a6ff22 100%);
+            color: #fff;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px #58a6ff22;
         }
 
         .filter-btn:hover {
-            color: var(--text-primary);
-            border-color: var(--primary-accent);
-            background-color: rgba(88, 166, 255, 0.1);
+            color: #ffd700;
+            border-color: #ffd700;
+            background: linear-gradient(90deg,#ffd70022 80%,#58a6ff22 100%);
         }
 
         .filter-btn.active {
-            background-color: var(--primary-accent);
-            color: #fff;
-            border-color: var(--primary-accent);
-        }
-        
-        .filter-btn#filter-vip.active {
-            background-color: var(--vip-color);
-            color: var(--bg-primary);
-            border-color: var(--vip-color);
+            background: linear-gradient(90deg,#58a6ff 80%,#ffd700 100%);
+            color: #222;
+            border-color: #ffd700;
         }
         
         .game-counter {
@@ -270,67 +267,79 @@
         }
 
         .game-card {
-            background-color: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            background: linear-gradient(135deg, rgba(22,27,34,0.95) 70%, rgba(88,166,255,0.08) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 18px;
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            border: 2px solid var(--primary-accent);
+            box-shadow: 0 8px 32px 0 #58a6ff33, 0 2px 8px 0 #0005;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             display: flex;
             flex-direction: column;
-            animation: fadeIn 0.4s ease-out forwards;
+            animation: fadeIn 0.4s cubic-bezier(.4,0,.2,1) forwards;
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
 
+        .game-card.is-vip {
+            border-color: #ffd700 !important;
+            box-shadow: 0 8px 32px 0 #ffd70055, 0 2px 8px 0 #0005;
+        }
+
         .game-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border-color: var(--primary-accent);
+            transform: scale(1.04) translateY(-6px);
+            box-shadow: 0 16px 48px #58a6ff55, 0 2px 8px #0007;
+            border-color: #ffd700;
         }
         
         .game-card.is-vip:hover {
-            border-color: var(--vip-color);
+            border-color: #ffd700 !important;
+            box-shadow: 0 16px 48px #ffd70088, 0 2px 8px #0007;
         }
 
         .vip-badge {
             position: absolute;
             top: 0;
             right: 15px;
-            background: var(--vip-color);
-            color: var(--bg-primary);
+            background: linear-gradient(90deg,#ffd700 60%,#fff700 100%);
+            color: #222;
             padding: 10px 8px 4px 8px;
             font-weight: 700;
             font-size: 0.8rem;
             clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 88%, 0 100%);
             z-index: 3;
+            box-shadow: 0 0 8px #ffd700, 0 0 16px #ffd700;
+            text-shadow: 0 0 4px #fff;
         }
 
         .game-card-image {
             width: 100%;
             aspect-ratio: 16 / 9;
-            object-fit: contain;
-            border-radius: 8px;
-            margin-bottom: 1.25rem;
-            background-color: var(--bg-primary);
+            object-fit: cover;
+            border-radius: 24px;
+            background: linear-gradient(90deg,#161b22 80%,#58a6ff22 100%);
+            box-shadow: 0 2px 12px #58a6ff33;
+            display: block;
+            border: 4px solid #222;
         }
 
         .game-card h3 {
-            color: var(--text-primary);
+            color: #fff;
             margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.35rem;
+            font-weight: 700;
+            text-shadow: 0 0 8px #58a6ff44;
         }
         
         .mod-author-note {
             font-size: 0.95rem;
-            color: var(--vip-color); /* MÀU NỔI BẬT DUY NHẤT */
+            color: #ffd700;
             text-align: center;
             margin-bottom: 1rem;
-            font-weight: 600;
+            font-weight: 700;
+            text-shadow: 0 0 6px #ffd70088;
         }
 
         .features-wrapper {
@@ -390,11 +399,13 @@
         }
 
         .detail-content {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: clamp(1.5rem, 5vw, 2.5rem);
-            box-shadow: 0 8px 32px 0 var(--shadow-color);
+            background: rgba(22, 27, 34, 0.85);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 12px 48px 0 rgba(88,166,255,0.15), 0 2px 8px 0 rgba(0,0,0,0.25);
+            border: 2px solid var(--primary-accent);
+            border-radius: 24px;
+            padding: clamp(2rem, 6vw, 3rem);
+            transition: box-shadow 0.3s, border-color 0.3s;
         }
 
         #detail-title {
@@ -402,6 +413,8 @@
             font-weight: 700;
             color: #fff;
             margin-bottom: 2rem;
+            text-shadow: 0 0 12px #58a6ff, 0 0 24px #1f6feb;
+            letter-spacing: 2px;
         }
         
         #detail-title a {
@@ -424,8 +437,9 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            border: 2px solid var(--primary-accent);
+            box-shadow: 0 0 24px #58a6ff55;
         }
 
         #video-container iframe {
@@ -494,6 +508,29 @@
         #copy-discord-link:hover {
              border-color: var(--primary-accent);
              color: var(--primary-accent);
+
+        /* Nút tải APK nổi bật */
+        #download-link {
+            background: linear-gradient(90deg,#58a6ff,#ffd700);
+            color:#222;
+            font-weight:700;
+            border-radius:12px;
+            padding:14px 28px;
+            text-align:center;
+            text-decoration:none;
+            border:0;
+            box-shadow:0 4px 16px #58a6ff44;
+            font-size:1.1rem;
+            transition:transform 0.3s,box-shadow 0.3s;
+            display:none;
+        }
+        #download-link.visible {
+            display:inline-block;
+        }
+        #download-link:hover {
+            transform:scale(1.05);
+            box-shadow:0 8px 32px #ffd70088;
+        }
         }
 
         .footer {
@@ -646,55 +683,51 @@
             
             let currentFilter = 'all';
 
-            const rawGameData = [
+                        const rawGameData = [
                 {
                     "name": "Kho Báu Đại Chiến",  "note": "Damage Multiplier, Defense Multiplier",
                     "description": "Triệu tập thuyền viên, xây dựng đội hình và bắt đầu cuộc phiêu lưu trong tựa game đấu tướng đặc sắc.",
                     "link": "https://khobaudaichien.vn/", "videoId": "oB3DsSS7HX8", "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://lh3.googleusercontent.com/fife/ALs6j_EqbTq15JMeKOQdtpwZgG9xFxd0AYxPx01YiUJUWLQmuuyppQSrMki7Lps-gRogGEg3V2ZE7M8FO9BdbVS21ucvgLcLaIh-iWj6DmiXLEyPk_dl6IOOC7owVj9EFUWF9Y3tkrtij_v4xviB-cV_aLub1J4WYlklPxsfHI5E81Vr8uBqimx-unUCKyIeVQSHAkgx-D0yoyepnEoVgZnXAQX0_1gE_p05kkh0AtDSJkQwXond-Sd4r-S_AfYi7d8XZxZjTKwgpBI1OFqkuAJrx8di75XwhOkve44uyBqMHk2sn9i0GiDSCRoWQPsApkXnxVBa4xSIfpTAO4y_3UsgWQrqILvrywOCSmVmDe0ZoEIG7sBGfRj2ja4jnlBT2dB52s3uaQdF9H8evjNrW4kgCzEVnYwXlVP3aHKFVt0i39XCQc4ilOwTgJbOjF2IlpleU4uFVdxAyTth7fON5FweGlpb1Nq4Nk8h2Yts_0OQsXzo3ubt2F7h9y7SQpYhMk29W00HdVHKhj0meL5Sf54qTxtj5_G-a7vzbaLelzks9Fvq70wc80Pp7RP3hcXmwSz4i2DVq6Ba8ZidVw9fNJaeoQpgyw0_BqQiXiDulvIX5oMk8bpvYPZbqB20VzYLPaHMzVemLGDw5VISmS0RzOqWuFbRnt1AHSvvN8Z2lipxtq1iHrg1fjoRdp0ZnxyOy4cgEik-LF9TXpo34fMgCR0_ANJnh5ncSSpiZ5nbKVh3Y1qXrYU9WJVtU67v9ywY53r2QY04SNmJz6kuaZOwOE6v45ydTQtmWKqr0yd_SRXk0p3pTzkZELczw50xmq_f7Zk7C0CzT9rnOSVWqdQ6-izYWKIp9bM7G3PNVgHMRBRad1KgLKjaLgFel_S4_77BexOq5VyDJWb4_j8Bu-IauM2mxz1Ke3vEaCMamtf88xIrk47rFOKP_lSh5i6KMZ_M6HS2lX_1lzftvytM3cTffEkKyuifcqc-zo7A1fOOqPDxWpArOey7XHzBlBBteblySnQsgMN4VGWuBOHIMomrgwsevo4O-aNgTUqUZfzdc028c6JbA9CHCGVs9_4eoyDpXWCffelVMph4IhSzl2kLPWRf3PSws__ZwELGLzQnZyFYqGPAWxbNQsLdxd7TJoywgiUmN8jEyDxEmS07H8Xj0wCz2Znsr9pkdBGYyt8VYpfu--0xSs8__E2lIE35yHB0rsPRgmIFpSAn_TZ98r0d7LanPW-tuxGdpXLZPffBwnvh_Y2Ig89QPpuxPSr9bBQSRjl9XV6rnnRMV3nkmbhmC_UCCl9XFMnxRpul8RCK0_h61cldu9yVPM4mT8n0bctsGy8SHKrSsYr02PpJsnxYufuZyFpl0jpp_1YbVD0R1PGOOYpaHG8e59jy-txqPFoOPbO3A9PCGFeJWoTIsw1R0H7fEUcUhf7OJ7zf3qCHy8GD6X9V8ayJ_6GAydM02n0TOVsG2DTGTvZfe52XNHpBfYD5FxyuV6ag_ibRbDQ6eHyP6pmVSymdTT2z8v1jIGxYeRD8RcP6OJXgtbYx-oaWjk4sUYqLNu1JFr7d0eIlMX2sV5FnjG1usBBkLcAfKehnfy_Sc_J3qhp816SlK43fwBJ2p5HCQDQUDclijM-cnwnpCPvnf8m2HaoUv3B2PxuatsL3dpgevJG7nVl8=w1229-h959"
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/khobaudaichien.jpg?raw=true",
                 },
                 {
                     "name": "Thế Giới Hải Tặc",  "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown",
                     "description": "Triệu tập các hải tặc vĩ đại và trải nghiệm lối chơi kinh điển kết hợp những trận loạn chiến hấp dẫn.",
                     "link": "https://thegioihaitac.vn/home", "videoId": "L3VcW7Z994I", "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://lh3.googleusercontent.com/fife/ALs6j_F-ymh1xMoHayoqJECPfCaUwNUsehg9mIEHfUfarnR0uY43SHcqY1ewvS0bDaFcBNm8PPAI6c8NVPJtaOBaFt0yrdtcTMX6r09qp1vuF-k1t2MoZyP5ShOmU8dj12A1BaLisZzos8fnmQf0GmG7v3XmgD4LXfD5nOqyl9S4o_FRwpaokw71N6NsHNg2A0kfjR2eAjfh2kFXgeNQXl4HdO9BsPrDsD3dhlW3NllL9po-rskUQL6rGvyI2OdPfhKnNA8ZiiBYcULZsSW9dfFEIbrxCLwKQudtZmU-tewqFfqVCZZ0xsLe0pGPj_xrgNBaO0r5Pwb0qK02mUzZ3SD7pFwv4iDLhO0D5Rx-rPLiAnggEyP-JDP56_PAFmmGyvOvcX26g8ngE-WBnLiDvLFSM-yJiFhWsjSetaa6LsQzfFDNTgbx0uclbr_1M6xN7SuSvE04IN9Nlx91QxEZgoAax7bMqVtULIh4vTeBfZvhx6IV_CXz-pGqsMjc9gKHo4RejnahG1K-6zvunbuyYMtlj_vJl1C65tvSJV1yyOQsSJxVB3SqP9ZcTdLiOfGH-Ero3Hua1Cqmv3vL2355TfJBUg7OSNXW2HPPk0wSe2zyWjEdwA--BKraCAVmvPjcUDpOid2g-9eMoILnsU-IrY8nzbNMiUKJ3T5N6WB0ImXL1oqFgiGsE8JuQMMFP0_xH2Wp9xH5aW23pWXkwYcYO7lwMGrIEiXFqxHh-tmccq2lV__3MYRKpiYS1sFsZEyg2MB381jbf618oPfUBrx2QZVcrZPr9bp_j5fqMmQY-4GbyOZ3H4qeHfRY-i8wCQnt_N2c2SRDUmcBjb0j_4OBYGvb9k1RQsfq_Y-_ECC2OodOSekoELgaCFN8s1EYXy__xUMBWiZKykVN8NLrD06hhzhhqkT_r5JLJWeKnj1T1gDgpXYoPJpXmkktzjQIHMSOnWST0fCIjYRIWFKi_c2_WoIYHsMMiZNR7O5G7VQCH51PwRmfuZ07di3rt908uH5rRbYEN2JSQwkDRGdkmNTbSSY7PzlEKdxe0UWgqIEkMs4qjmiBbrLuusMWSjt8CD9ImBDUvxF0x_Te--A4EMaQF-Tahul68p7P-FFz8VeWAhn5Idrvi856NBfd8SW_VUyKf6JPZKUas8ENUy1Sb2ovn4GB8gYxxi-2WbzYKhrWQkoBPwK5oNu2of0ZTENB83INEXSaap-5R-k9QthlyCP5hp3DsK5bE4iked5okKrfwWtyvmuJpoGKdDtVThondlsEmQs6arJBJryr2LfZS39WAtcRNchlbfgxq0NJrqbC97N1m8e3XyM-1nA0jc8g8C56vwz9V1J8U1ydoko_GhyvP8xIzHSgb3SKOg_m3DTg3IOyjJ4dKPHkj6HJpu3AyIlibvpWHv2vTuxz24cyJ6oBnySmtZH2Otlk1VqYuXCRSI1QZM6iyl4RnqCSfI-30EMWkE-fOX-OpcJnO7W9N-Xnp-ThEfYpQ94duVQTUjAR5SfurtvBWn3BZyJDkOlsKvUVsSsURdvLEgzJmbFysj3ebJJdTqiNo78itNAOzUggzfQWXuQmo07riF9DM3UMOPYFgpmk7JkeocITeJ6mQ7kImm9A45JktLU90rPNECaZDM4k6f2Kr4WsRwtEFDRvg6rONdeQZ9aWLwdjl_xM=w1229-h959"
-                },
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/thegioihaitac.png?raw=true",                },
                 {
                     "name": "Đại Chiến Lục Đạo",  "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown",
                     "description": "Tham gia Học Viện Nhẫn Thuật, gặp lại các nhân vật quen thuộc và thực hiện các nhiệm vụ đầy thử thách.",
                     "link": "https://daichienlucdao.vn/", "videoId": "L3VcW7Z994I", "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://lh3.googleusercontent.com/fife/ALs6j_G2it2Y4vUDCRI1ZfUVQYUC1rSXMe7YBIu2mXbx1_DzOZcsNdLGaELOVVCZE3HvAmz0v9teM38WGRG4KYSlKw19Lbl7S6HVndVeHSwcZzRX_UgPjEJXsCDbDJSUg3vzO43_1ymcphrdSp-qeUbGWBF1fkxziLt8_BGsKRs2cc1qaORUEVK0yZR1vTsG6s63IZ9Nb_VH43UCfXZD6_M_xukOkv-duuVhkx8dwJ9Qw1lW3Na67grmsyuhjg_XmuCY0Gpf8qdivpDIEpzAtyPoaXHYp0yDcdWyIReLcRff4Jjj3laXZVsEcDrjBs4skFB9Ca_P2SA-4y6cK_sjG-WbixxqaAlNDvDP5HcPzxUXc5KwdGxvKXFe_thKLMdkY_mKecfLjKR9Xoz-ErZqLjzKALXXxZvH3JpCIMYUPau8FQ-yNvORYMz3-CqETePNwe6ffPP1eCoacQtHyTY4r0Pj-fG1O4z2GoywgD8xT4HTbSAF-dFYoxlaNAMjsAc1fPkUo0jF9bPSYMunUgV7DXspbdMqCwj8bayKuaxKkWyRJ7BgmvqTFrwrztSB5c-pX36R_hlnDzmYntC3yDqCjbl7Mnk1bDfJn4akmWsqJCoVHkLshNgw32ZHmyhMQI9tKjRYnee_epWV-pPhN3sBpPiA-QfD9VOf1bjUYUS52zq98MVi6_21zT94jXHj-b6Al61GEBYopRBK03nIVuEoMR0Uxd6L2OyYL2QwGO6NI5C-69Kv1iGxRLK0ikVnNrc0xVLYRm_Lj1qYxBuOWvA17Hwibpe3zXVpiFUlfLcdZTdY74tkWGKYwhZtTzObRNV9wyEzT7a8SyTsHUw_7UD1S_XDmlwjv2erOQbylkJB1bA8sy4AJWv3QlyAtHnz9JpqdfwAZ_SE3RSzaIxkB16Kz_9jJeRMcE0-r_lUQVpL5gYiBZ4l_-X49wau0t9z6HrWd9gmFweOEhS44OXKNhO2ihUk32n3_7LAIOLo7c9cgzxoLYEr6ddI1AZJhCyVk9kQya2FrwWdqj1gghNvD8oC1arTZLrBqWrmZUPZpQJWxhLhBucYY4UvzcKoqZMYJPX9J4VXvYP0Y-nqT7UMRX71yHheup3hcybGx8duktGdfFP-LGmMkK_XlALysfOdFWsDogFluUSPTWIGX_u8LgsfEjlWwuFGdS-pS664-ForXSt16aQ24H1iwAeDxiquvhrErz5bXh22CXK0H0T7c6LuR7d0S-bKcbPe7O7wOOv7pTqwk-0-ggqN-GQgpdLk0Hc_r7SN0mEXkbc0EiZrrAcW05wo2YRoZMZKRF7i7MobzOfUh9F1wzu5G7aucEPWIIbdG8krEWSS31TYPu7yHcYGUjcXD8ZacWFC_4KP-w4vL6JohjqUuVz6GJwx20R4RMrk3VgSZEp3bXNFBTB-aZtIpi_MV8I72_CZUHG5qbWf_MOWFxiWwaSsrD8-FeJuKZ4-UM5Fwf2KuRZIGPiyQo7kyKFDymbBbZtg0V3uyPbZ9xAhNZZTGfpNrLMoqXEDKrfGY_KFhRHKk957AApQ94xKNIjWUGziLWzJ-fCRC3eQRm2dbKOi-JdVod6VPJAfgfO22EojDDg7P7tRd0oGESQ5r-TqOcc_C197SnjZk-dggyzAw94svFwQP7eO8KZdA3Xy8fA473T89-PMCMx9=w1229-h959"
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/hocviennhanthuat-daichienlucdao.png?raw=true",
                 },
                 {
                     "name": "Mini Heroes: Magic Throne",  "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown",
                     "description": "Khám phá bí mật chiến thắng trong game nhập vai giả tưởng nhàn rỗi tại một vũ trụ song song.",
                     "link": "https://play.google.com/store/apps/details?id=com.and.brawl.en", "videoId": "rGex5U3xP1s", "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://lh3.googleusercontent.com/fife/ALs6j_HYVzslrchse5rPxv8ut8jGcxeSRbauMPtPWT_MY1XT-3GrYVgrML_Td8l6A7jnIUqGsJqYenEIk7IOYmlfz7qictfGaVZ7JEj0EOncvJEreLnrRjmJ02_lEwkQdWg5F8qyjZjxSdnXeV5wCix02SJMKuwUelNmnaNke956RC-ag4xwWT63x297Pv0fyVGmOf8Wz_vMx0-WTFvhmvXhyRcuVCcQuwYoa4r9oWYmsvvmB1EyRxomH6ALIPN95xecVoAA1S5WtpO_t8fycRek_5bMUlPQqU8XQ36rm0xbNZijVgIuDu_fw36C-fGQo6xnrPbnsIbtyhJacZouzdLymHmqLvkjqcOGttf0gZgkX2xvv1rNr6yYSkiE-JYVF1CvfgrHw8FUCTgnZSb9F6wyf6JpZi3XAedDKVF-9t5vFFKI48BszgICXzTOmuWEeeTi2yuiDxWVq7-Qq7ZKSGlKowyggT2UbeTylz3Lf1NUbSIEu4cAs2o-HmRRyre5UHB0Ru6TRMTjMbemFEGBqEl65ews-6F4QoG7gytRdwsZIKdNOsFcOc_vTYW14b9Z-EAbgBDfoqKRNwZLYsFxxSez_Cre-IqamqyZIXfVLli3LVOyhWucukA5JD5vfgnuc1ed_ShM0MgjgHXMO00nVDZZz_K1fcTD2vrgqeT3_j-G1L4QYdpw4j7sQmqf8_rWMfaB0pZBcrgYIhYJ3vJ35qlHQFWQXVaO9o9ewNaAO4EghZa3UPjG_wvAdEJ4r07Swra5XUCIJNi1zgQLLt9h0_hHE44FiRdbLvE2HEDyQVu6vnhcHwOriU8XrkqTQs6ZW0Jk9Wrw__4xYQ61pGQfB0fz5lFk99vT9n8cXXrak45npcMPKwLEk8GPSYT1dHuTMSp5ajaUfqgzcQuzt2Gl_MK-m4aMrp7GTp_2_m5S0tTFlY2Vo1Z_S8nEQCdbAQ8Rhe9uo7_oq7kh2KJpsOWZbhYXw3qoN2XdFfKwkrdrnC7Yx9C16xwh373I5LlqAazRT1SIRTmC8BCN_ppt7I1mDYskXyHn8iB6OinFKz77R4qvboJqXBrvsIb34303YpRbaL1l9Fo04wnctcXh0y0w_lE1t42rFS0nc9CwxyvQN_QTcznyDtfJdq3VPrE3bIpTQw_2t_bNxF_aLhM2WPcEmRG8p1po-69caZa5SwUZMus8ccWvXhSpxbzZ-F-F4wYKZsOdh5uJER4bpEqRxRd7IT30kGqqn3BS33SO6qf2ltRYw0Vc9_yzHYho-ocXECssNHa79oeqyc_iyyuyp3_DsQyUuGz2slvWGrImuUapZWdOC707pEN8k7z7ElaNEd-TvWgK5rdjXg899xY1jxpqtDcA0uMTyeRaopdF26u-KNnU2LpRTkn-XqjFnT0-Ek1LspVJy92V6JXDmboJS2oke1Cbrw_WAYNqqS4HWnOlkzyF8ynKPksXsIpepArvVyvJO6jJ_JCXWhj6PndU-1yBHJog8PbYQqi6vrDuMQ_2yRxZ_BNCDf1GuzjiGTOpKKVLxfLURVyAZBvbEg_Va7d4---vTraU93hhvNNEtdCMW-YengtLS_x5Dw9SUqwWg3O-Lam3xfESJvGAqj4Dy_pSSNBDeyKvfm7KyGj8De8nDyN1Hs2UHcTaYDp5cR-hQJQtVmd0IxTfQWgg4RY=w1229-h959"
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/miniheroesmagicthrone.png?raw=true",
                 },
                 {
                     "name": "3Q: Thành Chủ Tiêu Dao",  "note": "Damage Multiplier, Defense Multiplier, No Skill Cooldown, Speed Multiplier",
                     "description": "Game RPG chặt cây phong cách hài hước, chiến đấu với người chơi toàn cầu.",
                     "link": "https://play.google.com/store/apps/details?id=com.zjws.sea.vn", "videoId": "9WV3B_RtTKU", "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://lh3.googleusercontent.com/fife/ALs6j_H_-f3rD-zpMof3iZtYaNhceCe9d7l8L-CFIi15Mli2sjY6bBlHF3egv1XC4ymPLuWr11aNeklKKzol9zTIjo0ay7rtN0Whyy_gKIiySMQXPkLiPZD0SWz0aiBSZiBfXI1qJNCi9i6JYEyi6m08jswr3d5Josh3u24qnYU8y6djIx21J4C3nIbBri-msc-fuEKtDDWv3_b398NFciOg0zwCfTRzxm5AAPAvIvKhIq08r8qnsEYY3r8C23WPfN1_0hqZdki6Ehg_RLQbBWvuLu9yrwxrZZELh_fH_crfzx72WO-0y9wyDG7QGmEczgMa2HTBeMbHcueEV75E3dc_KQVemz3vE_i0I83BzSWzJ8JY9NL3cYHEiW4ZQU8VLtpjKymr9XkxS7yAVjuJFY6ekiVxBX-J63na9V31WgQD5GIzZ0uosNfxt78JxhHjkY7DxgwoZYmwq3UmIxEIbHTBfl8RocT6x57v70f1WiBXmuHTtnAo7VdNhOT_tO_TW-hdWAjeSLSSh794gXpggJf0cnllx3tAj_o1yZIRTosvfmZ6i6l_jQGQ-x_Bv1MEzy93DSOKlz-0SgkV_RFSFFtwH7-JMi9XLhACk1sTIQ8idJ1muGDJQgu-HXlM64-u7fa3a2yRLFBbJ2PTij_Cq4GQTYsC_Yc7A05Nj8W9r5KMKnFvSTHx_PL__r04EfU6ICdjBv6AZv2ZQyDi0KEgKgB0SWNErBS9y6dwx_2lgS8kvongmStMcrEIZccyuJYiIPxGtA6DkjCYvSnCK8fmzrox744WORKhCh-WM2F6Kavk_EWi9c_3Fl3X6r1k1omW4UylrhotzwDskJbQs8ur4J1sfd72pNvQe7Ipqh_bVpxL8MRAQOAqU79qqrdA9yEqzGqfEzqtfV9FGYrCX0_Gll37OqfU0Fw4lfiy7MwJ_JYvjJ7zSQZSQpR1r1wiA1_tZzi4fSu2jkRx_uNCqvCjO4lno1b15iYwsE_nsF2fgoGusPpQ2YS30J_fJs0v97jKjLNgW_-Mv8dWUV1fyy8qVb948NWk6W431VP_W2LS7r-CLWETgb40vJH9XnjvOBaXWTYj6An0EgFbdETlrcgL1jaZlJJIKV8VXjLGy-zMdKgCPEoqLV_QYyUkHh_sjBD6znKyyKWwy453xJz8HqQ4bLVi7Tkm_TVkNmgRteHT4_qE4maYGm-4_7ta0kIeXRDUP4i7mHMgvzawhPTaf1nv4vtLEM89hs5UiRz6UvjOZMeaBmMSGO3qmd1d3E64F6EyoVWuf5601vpu3G-pgksvCAg6AVwoJvwH0ju4sgdKhM7wyvjIEA0oB8xJi_KT2bF-mPxzLtMYhZTomGM8cha_s1Ic0kBekRbU9v1R4wi5CtSioLoSTGNZnQTj_pWF7LCtuluntAWxJxNQgV4he1HsvNE-IvoZAbn9YoBPfhSxRFAIG0I5hZ716wKbElXxhR5R3gVVmDQUzVm215qrwo5C1G_peSHmqDzOQhBpHLdPjPhlFRyB60xIcYO_3z7BbkzFShpd_YMt-l6PDbtfsI5lYsiV029CBn9XucVGqRqS1O3RxjeTzsGiGJJhuwG9J2h72vbx1ir1rRHeVW92lpY7unRDX9RGyTF8ENwwSSBoH6yI2ajSTf3RuVxSu8ya-Ayy25AFSkqjF9liQUk=w1229-h959"
-                },
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/3qthanhchutieudao.png?raw=true",},
                 {
                     "name": "Loạn Đấu Tây Du",  "note": "Damage Multiplier, Defense Multiplier, Always Win",
                     "description": "Game thủ tháp siêu nhàn rỗi, nơi bạn tập kết Anh Hùng để xây dựng tường thành và pháo đài.",
                     "link": "https://play.google.com/store/apps/details?id=com.vngw.gp", "videoId": "UhNC-eXti_M", "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://lh3.googleusercontent.com/fife/ALs6j_Eor02o6Sd1brWhDBtWEtk-j4udwNFY7sevsk3kXPuCYSerQFuExTzl12x9tQAyBopbJPwrMgwmwgLj9hwxBsovy7d8fuz9AdaSnNMQQ7N8qMok9A5UKxOiSulHOZT_b4hjgCKqOcnVzkIXs7xJncrcon0sHoGjJhA1EvJd-sVfGp2KnRgtyqQOs1DYPQgbFlpfAZp3aqL8YMgdbYQDE0-wEuf7rWokkw9mlq7-5QYkIpta1XKfZ9D8QMwHg4YkJBTkMyrEVd0juMnPgjiNlnGKUA0gRkIZSdd19v7w9xmFKa8dRf9Q9ArOR-1taVz3W6Mxf9QaY3ORoHNi0MB6c7oRWF1QyTWn_HngqCpD4l48OpFDTzC_NkmWSnIJyG8hlPJGngZ5TgvGxQ7QcRTRtfbGaVm2NwkA-wlai3-rcCTcBr2btbnU5qvfeCNsRiRwijRlsddFzM0Es9JFC6rY_9uvPqjctFHvS-pHChMXE2v53gEM0_sZmtToeHnM9ZWBRIEFbjRLuvyelmKZOKISjQJ0pzKvgH1M9apRpqVuGwOSEAaiN3ziXo7eM_TluFdVmrDmtkn_C0aA-BDZUWnFXgK8qEO8M0DQdSzBHFIQ5iA5QQ5wUgZyy5lFA8GBfHgP_oUdwtZA8ySqnGs__0rFkiJr6wsPTYHV-oOnisU29j24C9x8H_GH9YpjPQw4wi0cjLlgIkOmVAltQ2stEnzSRWZUplUpEgoHGoN9j5jpqRpRYiSUTQO2ngRpHSm21BJPC2cJ18aUfXIjvMDarBdD6TO30zW1SiiQCfkIX4wfxSjQdhueTMnwkozcfjbhRi6GJ40RC5BJMe3vnJ6q4BfjlafsB4wGZ-RyvwIaMBGRjkJ-t5UTjIIhYMbVx_AAZP6mVPrnxHvvAbJ5nq55WPyqEEhLuxd4AhaOV6_FtjG7VpSb9QsZ3EbvJAXxH5ROOHGp-LShiWRLsDvZ9Ez8M1Or0-UgOtv7fCMSFkxhkRWkOIfrhv5DCqR9X0MgrIK0398btZ1iDOYCEx0xi1w6M9-ckZ96LXZIQDuNl8RF8ZLQeYN33V3JKqs3FC1vFLjJv9v968A78ODIJC8dzgLCABJFhiFVSNdWYJaLXXrNioGspLVx-WjkLt49dLj-7O12L0xq83JRZRgjqQBDJocBS0HYpW620i11Gib1u587RW7Ed0GCgzEuxSxqDjApOxaclHBMqoY-zEGdc5JJ15VV566QpV-1m_BGy13YjnPSPZBhikUoCY70crHEKFcA6fEo2kYhAdAmMZbRYEDpZQoz-C8uxu5Iiu0s1FTMaA68xcNM2EoQNJunWLWGiQrMQ8XWDif-yNrJiVMIvo_ma6C5o3mBJZNau7AopYT1-rNnx7MDE9J-8V4_HfJSEjm5Z4GfwPYiEVfUTYTksdvYcGivZhNCkjvq1rPACsLmllK9bWdqNrcQJTdprJm1JMC_X95TCHbzRuBuTSxHnZ7BX6DiwpoK645nLMcF37IqcQFeNrpJosh2FO-4AcLhR2pgG-2-8pWXvsD7ZLVo_pX77uu0v3SXqKc02pvuqM3_35gNsllj484wIm7ITunLK1acQBWKON6-DXTyjJta77CbDUAQpnW7iMds3VKgR8NjaUO4TO36MSKPr69bB96z9ddhtsThcA-HsrKpiu5QW1IZ=w1229-h959"
-                },
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/loandautaydu.png?raw=true",},
                 {
                     "name": "Võ Đài Nhẫn Giả",  "note": "Damage Multiplier, Defense Multiplier",
                     "description": "So tài trên võ đài để tìm ra nhẫn giả mạnh nhất.", "link": "https://vodainhangia.com/",
                     "videoId": "oB3DsSS7HX8", "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://lh3.googleusercontent.com/fife/ALs6j_EbIyLG48iraHQsO2EAoBn8dr40_ZFpOJF9tRCp99KUtIOv4IhNd6kDXBH3rYfxA162ZkRvMLBTwnTux3rSMzpsiohq-JBSrxgapiOn_Ziy07RSUpEEeh4NmOBLUnGBnQtpY0jopbOlE9MWGpflANHDMmpk1wKPbmwxTFbjhycwDnR0PGGNfbs2WtGchciJH3gqr8ZcdMNn9FIwBHa3flkfi--_JVVXyB_LV-u6Cv86MGqclLYe-Ole9xirR6R9anq3fqvd5QnhqV3AmoknX1Psb9RCpr6ESlK2EHAjMeN0YDwYp50PYUFjwGv_P2xiA7x_vZaZCa7iVRfp8jqv56FqAbHbgemEsJqmPQoQe_800FEPMX9fuVR7EY7uOWkucsIFXnN2Ra73ViqYa-G_l9D7UnF8ViCMHnJU3KMGSxAZZPiD2S2bn13OhlZOwGIkdcnF11QAW6anir2IxJ3H_GRk5g5ABM19M66lWw-KGDxQjt9AgnbYVsYFydQdvWMV8HIRttYpfmmDkcCieTcY0_yKYE1OKa5rwHzhmPDZX-aiE6T5j8LtWXVwbX2jA1kpgWt6GcAvyHNzqAX6-3kWE73JXYkp7BA-_dzAIh2n7SO7xsCyJ1D7zfGjcriKdi4DzybfUSFqFGH9Dcn1RZJTaqi0fMd1iN89P9YwmlglbIngaGOmBdsz9C2uGrLO_EZLSg691adqyW7Q2hylvD3h6Z8-_hxrcFzktQl5x03e9434bkwWl4fzP3fTDDJ-ALRrSFNETSJm7mUb7gpFUlnmzuqf2T0MQb2swQlZQjHFc-ihU2XCGvrMQwdHM8q15ha0o7LvltOrd8Mfo-cAvB8BXCVusKb1oq4WcfBEK-EHt8kzbYeLcxYrlVNLkv2jLrmJAa5tqjak09qlSghJFHSpzhVbsBU4oRuVMo06rpM_smoSNVrqWU6fITucc1UX_IWOpfWIKtvHZAXRVuqlaSJbArw_l-0awdSQ55hSjYxQ7XMuCjZnkmT4NKIKFav28ehBWXmhD12c3HG_qnyswl4KF5EfIawNWLYDZpN6h6grZNJdKTf5x1y4aeiPRMmnCzEJHOFNmgwfQXGOW7bFd7UDU5ZjygElWPmHpfqO2YQxNxX_AtezQFKyz4MgtXmSUKUgGpCCA79Fxpgn-NEpoZY6isterGLHMZRykvU6MtqbhGDf3Z-rq6LA5hgvCocMsWlhKefT_HS69dVVY1DKZ55L6q_FfI2P7onBfoSE4eFi2rX4GqadLwYwR6-r2_EOKfNibx1nGb1VTVPxnNdlyJWDXOD26aSDLP8jBt-gHTUDOry8ViwSxcX3F5nnuUhYvPp_1ZeYWY3XyYpcSrCJ5R0UYPFNNyAtTTOsShWoHCoazGHqFSTH5i4HpMmTlfy12NJMqqsnXT_EABz5wSg2G7enadtG7n0knrG238j12U4S1HncEJT0mA4eDkWwfxNC_ATotFJ5-OR6e40VstfZs2MBUrCdhzTOIRvJ9T7NbWE_Uw72xo65A4Br0_3MQ4-0ZGKy7CeHphovn11y7NWDkskT2-6L30tLTpxwDdMCe7SKVNup141VUIR0YMNjRZQP16N7G5QT0uW806IsDvBbVhbqSnhpz4ec4D8T_WJIvXzc5jHznJmMEvrOrWyvKTxJJfv1pATWHfguTBw=w1229-h959"
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/vodainhangia.png?raw=true",
                 },
                 {
                     "name": "Nhẫn Giới Truyền Thuyết",  "note": "Damage Multiplier, Defense Multiplier",
                     "description": "Viết nên huyền thoại của riêng bạn trong thế giới ninja.", "link": "http://nhangioitruyenthuyet.top/",
                     "videoId": "oB3DsSS7HX8", "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://lh3.googleusercontent.com/fife/ALs6j_H0zFWtMwS__KJq4oP7LhuPdEZ28GaTkOLN9Cu8ir3JWN7Qin68YoLREpnAJXLvixSi0MEfZaXODAnGnhVS-ApgOOewokyuKE1DhtiGuyM2JB24umsbOUuMPwofm9IhujaDhYyFltYSa6eWJ3n_ZqvnjAnJHNi7JJXazqZmr6DG586VoBAtAuwMnXtGudnE-2nWs73QH8OccMlFlgSYa9eiZ-0dia59NMb1zdNpFb1mxz-kyaUaFYqxbbyiLbbLLk6XCWNvOWtJiBILL0mXBj4wI-fWyoRMF-Ds6KteRgmAXwr_-O8MetlX253ttTuhH3XPZIjPfqgwJF57kiS2tyFTg4Wc4SCyuXpzuHZXzm5KA7KWwx1LWNpWTY1pfSDWGI58X6SjtXNG2n0v4fHZt1LAKmueuuqjKWBiH72s0Zxjie1kpWghCjrtOI4MrAnQgp253qUoWfPUMtElPlOvUttebQBriuYbbhe9IfZgmYb7uuuzUImVLH2ymIPTkN2xtVlcuKpjQvhWZuqSkTENShlkChn_dKmrLRQ7NKcaaF8cU6Cz_stOslEqWg36LLq2vXlXnXd3WiAdqr_BvXtMToI5YtEntaDPuGHrArk4ubTKbzxTifL2fhe3ma_c44H9gVa_ycjFnQMtVfx3JlunUpeD8wdgKENUVBZoJYn0u1lFzwiBfC2FDSxD7Mr1S2dMuOftWwHmWg1NGBr7kvINRGgWAGLur61PUfw-t3kUL8LmascAQvluzmAADKATJzMUiZE8pBDrGAhrqMAPMfJbeKl0Lk2kD2XOvL_Fi_NyWKL4rF9uT1iZ-4w9ykcbQuDKfQ4SxQRl7jvj_1SWJl0rm2porTV-I2yS7azqSjXgbCKDZIBowQ9A7Hm9s2LGXwBwLIDoVRORwrmILXSbS85Hm42WxMjNZAhBBh6wSI5fz2W9dGk6sFP52lsUPMfRZVCJNo8prt5SF4nF1JqzwJhUyzplyXdaVFzuH-xSG4rOBDAxlmpu_4lrzVO5rxpP9kfZjt5YLU1hjQibOd4Vms0_Ng1rqw2reSLs674V7d9hkeEA2od9spV0zRNIzqcEikEY4V0NtqZjHb6-LqbV8dMHgQd_p4e02mJospOtu2R7bcDVoNjzShPBZDAr4nXuJrCHCu5LUgdqHNBEG20nsMdaIWVbf_mevDYkh05a7bQSUp3te2V1MNfzfr-bwJ5kxhANJiwVySNcEkPAvL6q5s4ayPRfrpv6BZUZc2yu6JQmKUpOQF8VU_kbQ2zgFlAENFO9c-M9yUeVqJn6ENcz7_TAq5TVQ0_hEVwGOGDV-I0SoXtBL5c4M1XVMJ-HkXAMJ8vUCHvKlnfD4n6tZXujlwTalJ5HReM2e-5JklEn6my6BFTXjFQap-mgj4gViQcX_rMMZCHm_Eh4y2Hrrs3KrJ3-kzNlxkWlq928Pw7sMysq5tNmGPdI4VMiIbv_zE9q3IhdX32U2K_bo5F40XsyHKV2fxd9vE1dDMEoLWHkXQ1II_k29o7TL73ggNixnSM6tqMiRBfEl9vHbZjOyUxd4-k_4KOW0RdxwKvQR-8I4DautlpAOtmBkOiZMjFBps1Po3fQN-TO6sNg8kCYctKkNT82pjzU-giFcHex6oyRGOh10MmmJq7tUqlLIaR7gCC2hLAQGgL5sbMsNwfj=w1229-h959"
-                },
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/nhangioitruyenthuyet.png?raw=true",},
                 {
                     "name": "Anh Trai Tam Quốc",  "note": "Damage Multiplier, Defense Multiplier",
                     "description": "Các anh hùng Tam Quốc trong một diện mạo hoàn toàn mới.", "link": "https://www.facebook.com/anhtraitamquoc/",
@@ -1355,6 +1388,18 @@ Cho dù bạn là người chơi bình thường hay lão luyện, sự hồi h�
                     `<li class="feature-tag">${f}</li>`
                 ).join('');
                 document.getElementById('detail-discord-link').href = game.discordLink || "https://discord.gg/edenmod";
+
+                // Hiện nút tải APK nếu có link
+                const downloadLink = document.getElementById('download-link');
+                if (downloadLink) {
+                    if (game.link) {
+                        downloadLink.classList.add('visible');
+                        downloadLink.href = game.link;
+                    } else {
+                        downloadLink.classList.remove('visible');
+                        downloadLink.href = "#";
+                    }
+                }
 
                 mainView.style.display = 'none';
                 detailView.style.display = 'block';
