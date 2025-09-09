@@ -591,18 +591,57 @@
         <div class="spinner"></div>
     </div>
     
-    <header class="header">
+    <style>
+.electric-border {
+    position: relative;
+    border: 4px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(90deg,#58a6ff,#ffd700,#58a6ff,#ffd700);
+    background-size: 400% 400%;
+    animation: electric 2s linear infinite;
+    box-shadow: 0 0 24px #58a6ff88, 0 0 32px #ffd70088;
+}
+@keyframes electric {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.electric-text {
+    color: #fff;
+    text-shadow:
+        0 0 8px #58a6ff,
+        0 0 16px #ffd700,
+        0 0 32px #222;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+</style>
+
+<header class="header electric-border" style="position: relative; overflow: hidden; min-height: 340px; display: flex; align-items: center; justify-content: center;">
+    <img src="banner-edenmod.png" alt="Eden Mod Banner"
+         style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+    <div style="position: relative; z-index: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <img src="edenimage.png" alt="Eden Mod Logo" class="header-logo" onerror="this.style.display='none'">
-        <h1>Eden Mod</h1>
-        <p>
-            <b>Không Root:</b> Mod game an toàn, không can thiệp hệ thống.<br>
-            <b>Không Phí:</b> Mod chất lượng, miễn phí - vì đam mê.<br>
-            <b>Không "Làm màu":</b> Uy tín là hàng đầu, chất lượng là giá trị cốt lõi.<br>
-        </p>
-        <a href="https://discord.gg/edenmod" target="_blank" rel="noopener noreferrer" class="discord-button">
+        <h1 class="electric-border electric-text" style="margin-bottom: 1rem; padding: 0.3em 1em; background: rgba(22,27,34,0.55); border-radius: 18px; display: inline-block;">
+            EDENMOD.NET
+        </h1>
+        <div style="margin-bottom: 1.5rem; text-align: center; padding: 0.5em 1em; background: rgba(22,27,34,0.45); font-size: 1.2rem; border-radius: 14px; max-width: 480px; display: flex; flex-direction: column; gap: 0.5em;">
+            <div>
+                <b style="color:#ede32a; text-shadow:0 0 8px #fff;">Không Root:</b> Mod game an toàn, không can thiệp hệ thống.
+            </div>
+            <div>
+                <b style="color:#58a6ff; text-shadow:0 0 8px #fff;">Không Phí:</b> Mod chất lượng, miễn phí.
+            </div>
+            <div>
+                <b style="color:#ede32a; text-shadow:0 0 8px #fff;">Không "Làm màu":</b> Uy tín là hàng đầu, chất lượng là giá trị cốt lõi.
+            </div>
+        </div>
+        <a href="https://discord.gg/edenmod" target="_blank" rel="noopener noreferrer"
+           class="discord-button electric-border" style="font-size:1.2rem; font-weight:700;">
             Gia nhập Discord
         </a>
-    </header>
+    </div>
+</header>
 
     <div class="container">
         <div id="content-wrapper">
