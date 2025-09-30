@@ -314,6 +314,28 @@
             text-shadow: 0 0 4px #fff;
         }
 
+        /* FREE badge */
+        .free-badge {
+            position: absolute;
+            top: 0;
+            left: 15px;
+            background: linear-gradient(90deg,#4ade80 60%,#22c55e 100%);
+            color: #052e16;
+            padding: 10px 8px 4px 8px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 88%, 0 100%);
+            z-index: 3;
+            box-shadow: 0 0 8px #4ade80, 0 0 16px #22c55e;
+            text-shadow: 0 0 4px #fff;
+        }
+
+        /* Optional card accent for free games */
+        .game-card.is-free {
+            border-color: #22c55e !important;
+            box-shadow: 0 8px 32px 0 #22c55e33, 0 2px 8px 0 #0005;
+        }
+
         .game-card-image {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -653,6 +675,7 @@
                     <div class="filter-controls">
                         <button id="filter-all" class="filter-btn active">Tất cả</button>
                         <button id="filter-vip" class="filter-btn">VIP</button>
+                        <button id="filter-free" class="filter-btn">FREE</button>
                     </div>
                 </section>
 
@@ -690,6 +713,7 @@
                     <div class="detail-actions">
                         <a id="detail-discord-link" href="#" target="_blank" rel="noopener noreferrer">Vào Server Discord</a>
                         <button id="copy-discord-link" onclick="copyDiscordLink(this)">Sao chép Link</button>
+                        <a id="download-link" href="#" target="_blank" rel="noopener noreferrer">Tải / Mở</a>
                     </div>
                 </div>
             </section>
@@ -1458,6 +1482,105 @@ Mọi thứ bắt đầu từ Tháp Đen`,
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/DemonKingLegend.webp?raw=true",
                     "vip": false
                 },
+                                {
+                    "name": "Heroes Evolved 5v5 MOBA",
+                    "note": "Zoom Hack",
+                    "description": "Tham gia vào thế giới MOBA cổ điển cùng \"Heroes Evolved\", một trò chơi di động 5v5 đầy đủ tinh hoa của chiến lược và hành động, cảm hứng từ Dota. Trải nghiệm phong cách MOBA cổ điển kết hợp với những yếu tố hiện đại, với hơn 130+ anh hùng tuỳ chỉnh đa dạng.",
+                    "link": "https://play.google.com/store/apps/details?id=com.rsg.heroesevolved",
+                    "videoId": "4G0XzDopj0w",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Heroes Evolved 5v5 MOBA.png?raw=true",
+                    "free": true,
+                    "vip": false
+                },
+                                {
+                    "name": "Snacky Girls",
+                    "note": "Attack Speed Multiplier, God Mod, High Quest Reward",
+                    "description": "Chơi game nhập vai siêu cấp nhàn rỗi, dễ dàng và đơn giản dành cho các cô nàng Snacky. Huấn luyện những nhân vật xinh đẹp và đánh bại quái vật! Tận hưởng game nhập vai chiến thuật nhàn rỗi này trong thời gian rảnh rỗi của bạn!",
+                    "link": "https://play.google.com/store/apps/details?id=com.ignm.girlowners",
+                    "videoId": "hZHrPAboQUw",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Snacky Girls.png?raw=true",
+                    "free": true,
+                    "vip": false
+                },
+                                {
+                    "name": "Swamp Attack 2",
+                    "note": "Dumb Ennemies, High Golds & Cards Rewards, Unlimited Ammo",
+                    "description": "Hãy sẵn sàng cho một làn sóng hành động mới trong Swamp Attack 2! Đầm lầy đang bị tấn công, và bạn có thể tham gia chiến đấu dù có kết nối internet hay không. Hoàn hảo để chơi mọi lúc, mọi nơi! Đây chính là tựa game hành động ngoại tuyến mà bạn hằng mong đợi.",
+                    "link": "https://play.google.com/store/apps/details?id=com.hyperdotstudios.swampattack2",
+                    "videoId": "BxIAfNfXABs",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Swamp Attack 2.png?raw=true",
+                    "free": true,
+                    "vip": false
+                },
+                                {
+                    "name": "Cat Legend Idle RPG",
+                    "note": "God Mod, Inject Diamonds, Inject Rubys, Inject Golds",
+                    "description": "Hãy tham gia vào cuộc phiêu lưu hoành tráng cùng những chú mèo đáng yêu của bạn trong trò chơi nhập vai nhàn rỗi hấp dẫn này! Mở khóa thế giới đầy quái vật khổng lồ, vương quốc huyền thoại và các trận chiến chiến lược. Hợp nhất và phát triển các anh hùng mèo của bạn, tham gia vào các trận chiến PvP ly kỳ và gia nhập liên minh để chinh phục vương quốc. Với đồ họa quyến rũ và lối chơi hấp dẫn, trò chơi này mang đến nhiều giờ giải trí cho cả những người yêu mèo và những người đam mê RPG. Đắm mình vào thế giới của Cat Legends và trở thành sát thủ nhàn rỗi tuyệt đỉnh!",
+                    "link": "https://play.google.com/store/apps/details?id=com.DreamsStudio.CatLegendsIdleRPG",
+                    "videoId": "iUEN-kvTfyk",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Cat Legend Idle RPG.png?raw=true",
+                    "free": true,
+                    "vip": false
+                },
+                                {
+                    "name": "Tanks A Lot",
+                    "note": "Free, Damage Multiplier, No Skill Cooldown",
+                    "description": "Damage Multiplier, Enemies Visible Bush, Can Always Shoot, ESP",
+                    "link": "https://play.google.com/store/apps/details?id=com.idspe.tanks2",
+                    "videoId": "xVVDCFpNqnU",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tanks A Lot.png?raw=true",
+                    "free": true,
+                    "vip": false
+                },
+                                {
+                    "name": "Zooba",
+                    "note": "Enemies Visible Bushed, Zoom Hack, ESP",
+                    "description": "",
+                    "link": "https://play.google.com/store/apps/details?id=com.wildlife.games.battle.royale.free.zooba",
+                    "videoId": "U9QGjD5X190",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Zooba.png?raw=true",
+                    "free": true,
+                    "vip": false
+                },
+                                {
+                    "name": "Guild of Heroes Adventure RPG",
+                    "note": "No Skills Cooldown, Attack Speed Multiplier, No Decrease Systems",
+                    "description": "Một thế giới kỳ diệu của cuộc phiêu lưu nhập vai hành động cổ điển đang kêu gọi các pháp sư và hiệp sĩ anh hùng. Khám phá các thành phố thời trung cổ và ngục tối đen tối, chiến đấu chống lại quái vật hoặc đột kích hang ổ rồng. Kỷ nguyên phép thuật đã đến, vì vậy bạn nên chuẩn bị sẵn sàng để gặp những chú lùn gian xảo và yêu tinh cổ đại, pháp sư orc xấu xa và phù thủy troll. Hành động hoành tráng, hang động tối tăm, nhiệm vụ và cuộc đột kích đang chờ đón.",
+                    "link": "https://play.google.com/store/apps/details?id=com.goplaytoday.guildofheroes",
+                    "videoId": "AnPDeyeOkuM",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Guild of Heroes Adventure RPG.png?raw=true",
+                    "free": true,
+                    "vip": false
+                },
+                                {
+                    "name": "7Billion Zombies Final Stand",
+                    "note": "Attack Speed Multiplier, 100% Crit Rate, Crit Damage Multiplier",
+                    "description": "🚨 7 TỶ ZOMBIE ĐÃ CHIẾM LẤY – HY VỌNG CUỐI CÙNG CỦA NHÂN LOẠI BẮT ĐẦU TỪ BẠN! 🚨",
+                    "link": "https://play.google.com/store/apps/details?id=com.candysoft.SBZombiesRe5",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/7Billion Zombies Final Stand.png?raw=true",
+                    "free": true,
+                    "vip": false
+                },
+                                {
+                    "name": "Brotato",
+                    "note": "God Mod, Damage Multiplier, High Luck Stats, High Harvest, VIP Enabled",
+                    "description": "",
+                    "link": "https://play.google.com/store/apps/details?id=com.brotato.shooting.survivors.action.roguelike",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Brotato.webp?raw=true",
+                    "free": true,
+                    "vip": false
+                },
 
             ];
 
@@ -1465,7 +1588,9 @@ Mọi thứ bắt đầu từ Tháp Đen`,
                 return rawData.map(game => {
                     const features = (game.note || '').split(/,/).map(f => f.trim()).filter(f => f);
                     const id = game.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-                    return { ...game, id, features, vip: game.vip || false };
+                    // Determine if a game is FREE: only when explicitly set to true
+                    const isFree = game.free === true;
+                    return { ...game, id, features, vip: game.vip || false, free: isFree };
                 });
             };
 
@@ -1482,7 +1607,10 @@ Mọi thứ bắt đầu từ Tháp Đen`,
                 
                 games.slice().reverse().forEach(game => {
                     const card = document.createElement('article');
-                    card.className = `game-card ${game.vip ? 'is-vip' : ''}`;
+                    const classes = ['game-card'];
+                    if (game.vip) classes.push('is-vip');
+                    if (game.free) classes.push('is-free');
+                    card.className = classes.join(' ');
                     card.dataset.gameId = game.id;
 
                     const featuresHTML = game.features.length > 0 ?
@@ -1490,8 +1618,10 @@ Mọi thứ bắt đầu từ Tháp Đen`,
                         '<p style="font-size: 0.9rem; color: var(--text-secondary);">Chưa có thông tin.</p>';
                         
                     const vipBadgeHTML = game.vip ? `<div class="vip-badge">VIP</div>` : '';
+                    const freeBadgeHTML = game.free ? `<div class="free-badge">FREE</div>` : '';
 
                     card.innerHTML = `
+                        ${freeBadgeHTML}
                         ${vipBadgeHTML}
                         <img class="game-card-image" src="${game.image || 'https://placehold.co/400x200/0d1117/8b949e?text=No+Image'}"
                             alt="Ảnh bìa ${game.name}" loading="lazy"
@@ -1520,15 +1650,16 @@ Mọi thứ bắt đầu từ Tháp Đen`,
                 ).join('');
                 document.getElementById('detail-discord-link').href = game.discordLink || "https://discord.gg/edenmod";
 
-                // Hiện nút tải APK nếu có link
+                // Hiện nút tải / mở nếu có link
                 const downloadLink = document.getElementById('download-link');
                 if (downloadLink) {
                     if (game.link) {
                         downloadLink.classList.add('visible');
                         downloadLink.href = game.link;
+                        downloadLink.textContent = game.free ? 'Mở / Tải (Miễn phí)' : 'Mở / Tải';
                     } else {
                         downloadLink.classList.remove('visible');
-                        downloadLink.href = "#";
+                        downloadLink.href = '#';
                     }
                 }
 
@@ -1543,6 +1674,8 @@ Mọi thứ bắt đầu từ Tháp Đen`,
                 
                 if (currentFilter === 'vip') {
                     filteredGames = filteredGames.filter(game => game.vip);
+                } else if (currentFilter === 'free') {
+                    filteredGames = filteredGames.filter(game => game.free);
                 }
                 
                 if (searchTerm) {
@@ -1581,8 +1714,22 @@ Mọi thứ bắt đầu từ Tháp Đen`,
                     currentFilter = 'vip';
                     filterVipBtn.classList.add('active');
                     filterAllBtn.classList.remove('active');
+                    // deactivate free btn if active
+                    const filterFreeBtn = document.getElementById('filter-free');
+                    if (filterFreeBtn) filterFreeBtn.classList.remove('active');
                     renderGameList();
                 });
+
+                const filterFreeBtn = document.getElementById('filter-free');
+                if (filterFreeBtn) {
+                    filterFreeBtn.addEventListener('click', () => {
+                        currentFilter = 'free';
+                        filterFreeBtn.classList.add('active');
+                        filterAllBtn.classList.remove('active');
+                        filterVipBtn.classList.remove('active');
+                        renderGameList();
+                    });
+                }
 
                 const scrollToTopBtn = document.getElementById('scroll-to-top');
                 window.addEventListener('scroll', () => {
