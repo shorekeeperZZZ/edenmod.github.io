@@ -348,11 +348,19 @@
         }
 
         .game-card h3 {
-            color: #fff;
+            color: var(--primary-accent);
             margin-bottom: 0.5rem;
             font-size: 1.35rem;
             font-weight: 700;
             text-shadow: 0 0 8px #58a6ff44;
+        }
+
+        /* Keep title color stable on hover (don't inherit border hover color) */
+        .game-card:hover h3,
+        .game-card.is-free:hover h3,
+        .game-card.is-vip:hover h3 {
+            color: var(--primary-accent) !important;
+            text-shadow: 0 0 8px #58a6ff44 !important;
         }
         
         .mod-author-note {
@@ -672,10 +680,14 @@
                     <div class="search-container">
                         <input type="text" id="searchInput" placeholder="Tìm kiếm game bạn muốn...">
                     </div>
-                    <div class="filter-controls">
-                        <button id="filter-all" class="filter-btn active">Tất cả</button>
-                        <button id="filter-vip" class="filter-btn">VIP</button>
-                        <button id="filter-free" class="filter-btn">FREE</button>
+                    <div style="display:flex; gap:1rem; align-items:center; justify-content:center; flex-wrap:wrap;">
+                        <div class="filter-controls">
+                            <button id="filter-all" class="filter-btn active" data-i18n="all">Tất cả</button>
+                            <button id="filter-free" class="filter-btn" data-i18n="free">FREE</button>
+                            <button id="filter-normal" class="filter-btn" data-i18n="normal">Normal</button>                           
+                            <button id="filter-vip" class="filter-btn" data-i18n="vip">VIP</button>
+                        </div>
+                        <!-- language toggle removed -->
                     </div>
                 </section>
 
@@ -747,7 +759,7 @@
             let currentFilter = 'all';
 
                         const rawGameData = [
-                {
+{
                     "name": "Kho Báu Đại Chiến",  "note": "Damage Multiplier, Defense Multiplier",
                     "description": "Triệu tập thuyền viên, xây dựng đội hình và bắt đầu cuộc phiêu lưu trong tựa game đấu tướng đặc sắc.",
                     "link": "https://khobaudaichien.vn/", "videoId": "oB3DsSS7HX8", "discordLink": "https://discord.gg/edenmod",
@@ -1652,7 +1664,7 @@
                     "note": "Damage Multiplier, Defense Multiplier",
                     "description": `Grant "Dipsplay over other app" permission before open the game. Otherwise, will be forced close immediately. The permission text different in some device. Just grant all permission to the app`,
                     "link": "https://play.google.com/store/apps/details?id=com.gnchyc.gp",
-                    "videoId": "xxx",
+                    "videoId": "Lb3myPUSxzU",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/RainBowTale.webp?raw=true",
                     "free": false,
@@ -1663,11 +1675,22 @@
                     "note": "Damage Multiplier, Defense Multiplier, Auto-Battle (Dungeon)",
                     "description": `Auto battle feature must be enabled/disabled before enter the battle. The toggle wont working in battle. Thats mean you cannot turn on/off the feature in battle`,
                     "link": "https://play.google.com/store/apps/details?id=com.egtaz.marketstore",
-                    "videoId": "xxx",
+                    "videoId": "HXxeBASqe6U",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/RumblePiratesCN.webp?raw=true",
                     "free": false,
                     "vip": false
+                },
+                                {
+                    "name": "Slayer Legend",
+                    "note": "Damage Multiplier, Damage Reduction, Auto Kill, Gold Drop Multiplier, Freeze Gold, Exp Drop Multiplier, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.gear2.growslayer",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Slayer Legend.png?raw=true",
+                    "free": false,
+                    "vip": true
                 },
 
             ];
@@ -1764,6 +1787,8 @@
                     filteredGames = filteredGames.filter(game => game.vip);
                 } else if (currentFilter === 'free') {
                     filteredGames = filteredGames.filter(game => game.free);
+                } else if (currentFilter === 'normal') {
+                    filteredGames = filteredGames.filter(game => !game.vip && !game.free);
                 }
                 
                 if (searchTerm) {
@@ -1793,8 +1818,13 @@
                 
                 filterAllBtn.addEventListener('click', () => {
                     currentFilter = 'all';
+                    // activate only the all button
                     filterAllBtn.classList.add('active');
                     filterVipBtn.classList.remove('active');
+                    const filterFreeBtn = document.getElementById('filter-free');
+                    if (filterFreeBtn) filterFreeBtn.classList.remove('active');
+                    const filterNormalBtn = document.getElementById('filter-normal');
+                    if (filterNormalBtn) filterNormalBtn.classList.remove('active');
                     renderGameList();
                 });
 
@@ -1805,8 +1835,24 @@
                     // deactivate free btn if active
                     const filterFreeBtn = document.getElementById('filter-free');
                     if (filterFreeBtn) filterFreeBtn.classList.remove('active');
+                    const filterNormalBtn = document.getElementById('filter-normal');
+                    if (filterNormalBtn) filterNormalBtn.classList.remove('active');
                     renderGameList();
                 });
+
+                // Normal filter (games that are not VIP and not FREE)
+                const filterNormalBtn = document.getElementById('filter-normal');
+                if (filterNormalBtn) {
+                    filterNormalBtn.addEventListener('click', () => {
+                        currentFilter = 'normal';
+                        filterNormalBtn.classList.add('active');
+                        filterAllBtn.classList.remove('active');
+                        filterVipBtn.classList.remove('active');
+                        const filterFreeBtn = document.getElementById('filter-free');
+                        if (filterFreeBtn) filterFreeBtn.classList.remove('active');
+                        renderGameList();
+                    });
+                }
 
                 const filterFreeBtn = document.getElementById('filter-free');
                 if (filterFreeBtn) {
@@ -1815,6 +1861,8 @@
                         filterFreeBtn.classList.add('active');
                         filterAllBtn.classList.remove('active');
                         filterVipBtn.classList.remove('active');
+                        const filterNormalBtn = document.getElementById('filter-normal');
+                        if (filterNormalBtn) filterNormalBtn.classList.remove('active');
                         renderGameList();
                     });
                 }
@@ -1826,6 +1874,8 @@
                 scrollToTopBtn.addEventListener('click', () => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
+
+                // language toggle removed in test.html
             };
 
             initApp();
