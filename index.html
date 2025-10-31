@@ -613,7 +613,14 @@
             .video-wrapper { max-width: 100%; }
             #detail-title { font-size: 1.5rem; }
         }
-    </style>
+    
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  #policy-modal-backdrop { transition: none !important; }
+  .policy-links a, .policy-actions button { transition: none !important; }
+  .policy-links a:hover, .policy-actions button:hover { transform: none !important; }
+}
+</style>
 
 <style>
 /* --- Announcement Modal --- */
@@ -691,6 +698,8 @@
 .policy-checkbox { display: inline-flex; gap: 8px; align-items: center; }
 .policy-checkbox input { width: 18px; height: 18px; }
 </style>
+
+<link rel="preconnect" href="https://discord.gg" crossorigin>
 </head>
 
 <body>
@@ -713,6 +722,10 @@
         Vì vậy, trải nghiệm khi bạn mua/dùng có thể <u>không giống</u> hoàn toàn với video demo.</p>
 <div class="policy-links">
   <a href="https://discord.gg/edenmod" target="_blank" rel="noopener">Tham gia Discord</a>
+
+
+
+<p>Trong trường hợp máy chủ mod/cheat bị xóa hoặc đóng, mọi giao dịch mua liên quan sẽ không được hoàn tiền.</p>
 </div>
 
         <p>Vui lòng <strong>xem thông báo Update thường xuyên</strong> để nắm thông tin mới nhất.</p>
@@ -725,6 +738,10 @@
         This means your purchase/use may <u>not exactly match</u> the demo video.</p>
 <div class="policy-links">
   <a href="https://discord.gg/edenmod" target="_blank" rel="noopener">Join Discord</a>
+
+
+
+<p>In case the mod/cheat server is deleted or shut down. Any related purchases will not be refunded.</p>
 </div>
 
         <p>Please <strong>check updates regularly</strong> to stay current.</p>
@@ -886,7 +903,7 @@
 
                         const rawGameData =  [
 
-                {
+                                {
                     "name": "Kho Báu Đại Chiến",  "note": "Damage Multiplier, Defense Multiplier",
                     "description": "Triệu tập thuyền viên, xây dựng đội hình và bắt đầu cuộc phiêu lưu trong tựa game đấu tướng đặc sắc.",
                     "link": "https://khobaudaichien.vn/", "videoId": "oB3DsSS7HX8", "discordLink": "https://discord.gg/edenmod",
@@ -2375,26 +2392,55 @@ DONT USE MOD IN TUTORIAL MAP/STAGE`,
         });
     </script>
 
+
 <script>
-// --- Announcement Modal Logic (bilingual) ---
+// --- Announcement Modal Logic (bilingual, v2) ---
 (function() {
   const BACKDROP_ID = 'policy-modal-backdrop';
-  const KEY_DISMISS_UNTIL = 'edenmod_policy_dismiss_until_3h';
+  const KEY_UNTIL   = 'edenmod_policy_dismiss_until_3h';
+  const KEY_LANG    = 'edenmod_policy_lang';
+  const KEY_VER     = 'edenmod_policy_version';
+  const NOTICE_VERSION = '2025-10-31-v2'; // bump this when text/logic changes
   const DISMISS_HOURS = 3;
 
+  // Storage helpers (fallback to cookie if localStorage blocked)
+  function setStore(key, val) {
+    try { localStorage.setItem(key, val); }
+    catch(e) {
+      try {
+        document.cookie = encodeURIComponent(key) + '=' + encodeURIComponent(val) + '; path=/; max-age=' + (365*24*3600);
+      } catch(e2){}
+    }
+  }
+  function getStore(key) {
+    try { return localStorage.getItem(key); }
+    catch(e) {
+      const m = document.cookie.match(new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)'));
+      return m ? decodeURIComponent(m[1]) : null;
+    }
+  }
+  function delStore(key) {
+    try { localStorage.removeItem(key); }
+    catch(e) {
+      document.cookie = encodeURIComponent(key) + '=; path=/; max-age=0';
+    }
+  }
+
   const $backdrop = document.getElementById(BACKDROP_ID);
-  const $langVI = document.getElementById('lang-vi');
-  const $langEN = document.getElementById('lang-en');
-  const $boxVI  = document.getElementById('policy-vi');
-  const $boxEN  = document.getElementById('policy-en');
-  const $dont7  = document.getElementById('dont-show-3h');
-  const $close  = document.getElementById('policy-close');
-  const $ok     = document.getElementById('policy-accept');
+  const $modal    = document.getElementById('policy-modal');
+  const $langVI   = document.getElementById('lang-vi');
+  const $langEN   = document.getElementById('lang-en');
+  const $boxVI    = document.getElementById('policy-vi');
+  const $boxEN    = document.getElementById('policy-en');
+  const $dont3h   = document.getElementById('dont-show-3h');
+  const $close    = document.getElementById('policy-close');
+  const $ok       = document.getElementById('policy-accept');
   const $dontText = document.getElementById('dont-show-text');
 
-  // Language auto: default VI if vi-*; else EN
+  // Language: read stored, else infer from browser
+  const storedLang = (getStore(KEY_LANG) || '').toLowerCase();
   const browserLang = (navigator.language || '').toLowerCase();
-  const preferVI = browserLang.startsWith('vi');
+  const preferVI = storedLang ? storedLang === 'vi' : browserLang.startsWith('vi');
 
   function setLang(lang) {
     const vi = lang === 'vi';
@@ -2405,37 +2451,86 @@ DONT USE MOD IN TUTORIAL MAP/STAGE`,
     $boxVI.style.display = vi ? '' : 'none';
     $boxEN.style.display = vi ? 'none' : '';
     $dontText.textContent = vi ? 'Đừng hiện lại trong 3 giờ' : "Don't show again for 3 hours";
+    setStore(KEY_LANG, vi ? 'vi' : 'en');
   }
-
-  function showModal() { $backdrop.classList.add('show'); $backdrop.setAttribute('aria-hidden','false'); }
-  function hideModal() { $backdrop.classList.remove('show'); $backdrop.setAttribute('aria-hidden','true'); }
 
   function shouldShow() {
     try {
-      const until = localStorage.getItem(KEY_DISMISS_UNTIL);
-      if (!until) return true;
-      const now = Date.now();
-      return now > Number(until);
+      const ver = getStore(KEY_VER);
+      if (ver !== NOTICE_VERSION) return true;
+      const until = Number(getStore(KEY_UNTIL) || 0);
+      return Date.now() > until;
     } catch(e) { return true; }
   }
 
-  function dismiss(save7d) {
-    if (save7d) {
+  function afterDismiss(save3h) {
+    try { setStore(KEY_VER, NOTICE_VERSION); } catch(e){}
+    if (save3h) {
       const until = Date.now() + DISMISS_HOURS*60*60*1000;
-      try { localStorage.setItem(KEY_DISMISS_UNTIL, String(until)); } catch(e) {}
+      try { setStore(KEY_UNTIL, String(until)); } catch(e){}
     } else {
-      try { localStorage.removeItem(KEY_DISMISS_UNTIL); } catch(e) {}
+      try { delStore(KEY_UNTIL); } catch(e){}
     }
+  }
+
+  function showModal() {
+    $backdrop.classList.add('show');
+    $backdrop.setAttribute('aria-hidden','false');
+    trapFocus(true);
+  }
+  function hideModal() {
+    $backdrop.classList.remove('show');
+    $backdrop.setAttribute('aria-hidden','true');
+    trapFocus(false);
+  }
+
+  // Focus trap & keyboard
+  let prevActive = null;
+  function trapFocus(activate) {
+    if (activate) {
+      prevActive = document.activeElement;
+      // Focus first focusable within modal
+      const focusables = getFocusable();
+      (focusables[0] || $ok || $close || $modal).focus({preventScroll:true});
+      document.addEventListener('keydown', onKey);
+    } else {
+      document.removeEventListener('keydown', onKey);
+      if (prevActive && prevActive.focus) { prevActive.focus(); }
+    }
+  }
+  function getFocusable() {
+    return Array.from($modal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )).filter(el => !el.hasAttribute('disabled') && el.tabIndex !== -1);
+  }
+  function onKey(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      dismiss($dont3h?.checked);
+    } else if (e.key === 'Tab') {
+      const focusables = getFocusable();
+      if (focusables.length === 0) return;
+      const idx = focusables.indexOf(document.activeElement);
+      if (e.shiftKey) {
+        if (idx <= 0) { e.preventDefault(); focusables[focusables.length - 1].focus(); }
+      } else {
+        if (idx === -1 || idx >= focusables.length - 1) { e.preventDefault(); focusables[0].focus(); }
+      }
+    }
+  }
+
+  function dismiss(save3h) {
+    afterDismiss(save3h);
     hideModal();
   }
 
   // Events
   $langVI?.addEventListener('click', () => setLang('vi'));
   $langEN?.addEventListener('click', () => setLang('en'));
-  $close?.addEventListener('click', () => dismiss($dont7?.checked));
-  $ok?.addEventListener('click',   () => dismiss($dont7?.checked));
+  $close?.addEventListener('click', () => dismiss($dont3h?.checked));
+  $ok?.addEventListener('click',   () => dismiss($dont3h?.checked));
   $backdrop?.addEventListener('click', (e) => {
-    if (e.target === $backdrop) dismiss($dont7?.checked);
+    if (e.target === $backdrop) dismiss($dont3h?.checked);
   });
 
   // Init
@@ -2443,5 +2538,6 @@ DONT USE MOD IN TUTORIAL MAP/STAGE`,
   if (shouldShow()) showModal();
 })();
 </script>
+
 </body>
 </html>
