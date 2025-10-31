@@ -614,9 +614,136 @@
             #detail-title { font-size: 1.5rem; }
         }
     </style>
+
+<style>
+/* --- Announcement Modal --- */
+#policy-modal-backdrop {
+  position: fixed; inset: 0; display: none;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
+  z-index: 2000;
+}
+#policy-modal-backdrop.show { display: grid; place-items: center; }
+
+#policy-modal {
+  width: min(720px, 92vw);
+  background: var(--glass-bg, #0d1117);
+  border: 1px solid var(--border-color, #30363d);
+  border-radius: 16px;
+  box-shadow: 0 12px 48px rgba(0,0,0,.45);
+  color: var(--text-primary, #e6edf3);
+  overflow: hidden;
+}
+
+.policy-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; background: var(--bg-secondary, #0b0f14);
+  border-bottom: 1px solid var(--border-color, #30363d);
+}
+.policy-head h3 { font-size: 1.05rem; letter-spacing: .5px; margin: 0; }
+.policy-lang {
+  display: inline-flex; gap: 6px; background: #00000022; padding: 4px;
+  border-radius: 10px; border: 1px solid var(--border-color, #30363d);
+}
+.policy-lang button {
+  border: 0; background: transparent; color: var(--text-secondary, #9da7b3);
+  padding: 6px 10px; border-radius: 8px; cursor: pointer; font-weight: 700;
+}
+.policy-lang button.active { background: var(--primary-accent, #238636); color: #fff; }
+
+.policy-body {
+  padding: 18px; display: grid; gap: 12px;
+}
+.policy-box {
+  background: rgba(22,27,34,.7);
+  border: 1px dashed var(--primary-accent, #238636);
+  border-radius: 12px; padding: 14px;
+}
+.policy-box strong { color: #ffd700; }
+
+.policy-links {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px;
+}
+.policy-links a {
+  text-decoration: none; font-weight: 700; border-radius: 10px;
+  padding: 10px 14px; border: 1px solid var(--primary-accent, #238636);
+  background: linear-gradient(90deg,#161b22 80%,#58a6ff22 100%);
+  color: #fff; transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.policy-links a:hover { transform: translateY(-2px); border-color: #ffd700; }
+
+.policy-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; padding: 14px 18px; border-top: 1px solid var(--border-color, #30363d);
+  background: var(--bg-secondary, #0b0f14);
+}
+.policy-actions { display: inline-flex; gap: 10px; align-items: center; }
+.policy-actions button {
+  border: 1px solid var(--border-color, #30363d);
+  background: var(--primary-accent, #238636); color: #fff;
+  font-weight: 700; border-radius: 10px; padding: 10px 14px;
+  cursor: pointer; transition: transform .2s, background-color .2s;
+}
+.policy-actions button.secondary {
+  background: transparent; color: var(--text-primary, #e6edf3);
+}
+.policy-actions button:hover { transform: translateY(-1px); }
+
+.policy-checkbox { display: inline-flex; gap: 8px; align-items: center; }
+.policy-checkbox input { width: 18px; height: 18px; }
+</style>
 </head>
 
 <body>
+<!-- Announcement Modal (VI/EN) -->
+<div id="policy-modal-backdrop" aria-hidden="true">
+  <div id="policy-modal" role="dialog" aria-modal="true" aria-labelledby="policy-title">
+    <div class="policy-head">
+      <h3 id="policy-title">Thông báo / Announcement</h3>
+      <div class="policy-lang" role="tablist" aria-label="Language toggle">
+        <button id="lang-vi" class="active" role="tab" aria-selected="true">VI</button>
+        <button id="lang-en" role="tab" aria-selected="false">EN</button>
+      </div>
+    </div>
+
+    <div class="policy-body">
+      <!-- VI -->
+      <div id="policy-vi" class="policy-box">
+        <p><strong>Lưu ý quan trọng:</strong> Các mod sẽ được cập nhật theo từng game. 
+        <u>Nếu game đã vá lỗi/fix</u>, chúng tôi sẽ <u>xóa các chức năng bị ảnh hưởng</u>. 
+        Vì vậy, trải nghiệm khi bạn mua/dùng có thể <u>không giống</u> hoàn toàn với video demo.</p>
+<div class="policy-links">
+  <a href="https://discord.gg/edenmod" target="_blank" rel="noopener">Tham gia Discord</a>
+</div>
+
+        <p>Vui lòng <strong>xem thông báo Update thường xuyên</strong> để nắm thông tin mới nhất.</p>
+      </div>
+
+      <!-- EN -->
+      <div id="policy-en" class="policy-box" style="display:none;">
+        <p><strong>Important:</strong> Mods are updated per game. 
+        If a game gets <u>patched/fixed</u>, we will <u>remove affected features</u>. 
+        This means your purchase/use may <u>not exactly match</u> the demo video.</p>
+<div class="policy-links">
+  <a href="https://discord.gg/edenmod" target="_blank" rel="noopener">Join Discord</a>
+</div>
+
+        <p>Please <strong>check updates regularly</strong> to stay current.</p>
+      </div>
+    </div>
+
+    <div class="policy-foot">
+      <label class="policy-checkbox">
+        <input type="checkbox" id="dont-show-3h">
+        <span id="dont-show-text">Đừng hiện lại trong 3 giờ</span>
+      </label>
+      <div class="policy-actions">
+        <button class="secondary" id="policy-close">Đóng / Close</button>
+        <button id="policy-accept">Tôi đã hiểu / I understand</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <div id="preloader">
         <div class="spinner"></div>
     </div>
@@ -757,8 +884,9 @@
             
             let currentFilter = 'all';
 
-                        const rawGameData = [
-{
+                        const rawGameData =  [
+
+                {
                     "name": "Kho Báu Đại Chiến",  "note": "Damage Multiplier, Defense Multiplier",
                     "description": "Triệu tập thuyền viên, xây dựng đội hình và bắt đầu cuộc phiêu lưu trong tựa game đấu tướng đặc sắc.",
                     "link": "https://khobaudaichien.vn/", "videoId": "oB3DsSS7HX8", "discordLink": "https://discord.gg/edenmod",
@@ -1388,7 +1516,8 @@
                     "vip": true
                 },
                 {
-                    "name": "Rumble Pirates", "note": "Damage Multiplier, Defense Multiplier, Auto-Battle (Dungeon)",
+                    "name": "Rumble Pirates (Global Version)", 
+                    "note": "Damage Multiplier, Defense Multiplier, Auto-Battle (Dungeon)",
                     "description": `🏆 Thủy thủ đoàn đã tập hợp. Cuộc phiêu lưu cướp biển của bạn bắt đầu ngay! 🏆`,
                     "link": "https://play.google.com/store/apps/details?id=com.tamamsmart.hzsd", "videoId": "HXxeBASqe6U", "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Rumble_Pirates.webp?raw=true",
@@ -1669,8 +1798,8 @@
                     "free": false,
                     "vip": false
                 },
-                                {
-                    "name": "海盜團很忙：Team RPG",
+                {
+                    "name": "海盜團很忙：Team RPG (CN Version)",
                     "note": "Damage Multiplier, Defense Multiplier, Auto-Battle (Dungeon)",
                     "description": `Auto battle feature must be enabled/disabled before enter the battle. The toggle wont working in battle. Thats mean you cannot turn on/off the feature in battle`,
                     "link": "https://play.google.com/store/apps/details?id=com.egtaz.marketstore",
@@ -1680,7 +1809,7 @@
                     "free": false,
                     "vip": false
                 },
-                                {
+                {
                     "name": "Slayer Legend",
                     "note": "Damage Multiplier, Damage Reduction, Auto Kill, Gold Drop Multiplier, Freeze Gold, Exp Drop Multiplier, Speed",
                     "description": ``,
@@ -2045,6 +2174,17 @@ DONT USE MOD IN TUTORIAL MAP/STAGE`,
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "해적단 키우기：Team RPG (KR)",
+                    "note": "Damage Multiplier, Defense Multiplier, Auto-Battle (Dungeon)",
+                    "description": `Auto battle feature must be enabled/disabled before enter the battle. The toggle wont working in battle. Thats mean you cannot turn on/off the feature in battle`,
+                    "link": "https://play.google.com/store/apps/details?id=com.egtaz.marketstore",
+                    "videoId": "HXxeBASqe6U",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/해적단 키우기(KR).png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
 
             ];
 
@@ -2234,5 +2374,74 @@ DONT USE MOD IN TUTORIAL MAP/STAGE`,
             initApp();
         });
     </script>
+
+<script>
+// --- Announcement Modal Logic (bilingual) ---
+(function() {
+  const BACKDROP_ID = 'policy-modal-backdrop';
+  const KEY_DISMISS_UNTIL = 'edenmod_policy_dismiss_until_3h';
+  const DISMISS_HOURS = 3;
+
+  const $backdrop = document.getElementById(BACKDROP_ID);
+  const $langVI = document.getElementById('lang-vi');
+  const $langEN = document.getElementById('lang-en');
+  const $boxVI  = document.getElementById('policy-vi');
+  const $boxEN  = document.getElementById('policy-en');
+  const $dont7  = document.getElementById('dont-show-3h');
+  const $close  = document.getElementById('policy-close');
+  const $ok     = document.getElementById('policy-accept');
+  const $dontText = document.getElementById('dont-show-text');
+
+  // Language auto: default VI if vi-*; else EN
+  const browserLang = (navigator.language || '').toLowerCase();
+  const preferVI = browserLang.startsWith('vi');
+
+  function setLang(lang) {
+    const vi = lang === 'vi';
+    $langVI.classList.toggle('active', vi);
+    $langVI.setAttribute('aria-selected', vi ? 'true' : 'false');
+    $langEN.classList.toggle('active', !vi);
+    $langEN.setAttribute('aria-selected', !vi ? 'true' : 'false');
+    $boxVI.style.display = vi ? '' : 'none';
+    $boxEN.style.display = vi ? 'none' : '';
+    $dontText.textContent = vi ? 'Đừng hiện lại trong 3 giờ' : "Don't show again for 3 hours";
+  }
+
+  function showModal() { $backdrop.classList.add('show'); $backdrop.setAttribute('aria-hidden','false'); }
+  function hideModal() { $backdrop.classList.remove('show'); $backdrop.setAttribute('aria-hidden','true'); }
+
+  function shouldShow() {
+    try {
+      const until = localStorage.getItem(KEY_DISMISS_UNTIL);
+      if (!until) return true;
+      const now = Date.now();
+      return now > Number(until);
+    } catch(e) { return true; }
+  }
+
+  function dismiss(save7d) {
+    if (save7d) {
+      const until = Date.now() + DISMISS_HOURS*60*60*1000;
+      try { localStorage.setItem(KEY_DISMISS_UNTIL, String(until)); } catch(e) {}
+    } else {
+      try { localStorage.removeItem(KEY_DISMISS_UNTIL); } catch(e) {}
+    }
+    hideModal();
+  }
+
+  // Events
+  $langVI?.addEventListener('click', () => setLang('vi'));
+  $langEN?.addEventListener('click', () => setLang('en'));
+  $close?.addEventListener('click', () => dismiss($dont7?.checked));
+  $ok?.addEventListener('click',   () => dismiss($dont7?.checked));
+  $backdrop?.addEventListener('click', (e) => {
+    if (e.target === $backdrop) dismiss($dont7?.checked);
+  });
+
+  // Init
+  setLang(preferVI ? 'vi' : 'en');
+  if (shouldShow()) showModal();
+})();
+</script>
 </body>
 </html>
