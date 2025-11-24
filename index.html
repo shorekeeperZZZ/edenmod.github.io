@@ -538,6 +538,7 @@
         #copy-discord-link:hover {
              border-color: var(--primary-accent);
              color: var(--primary-accent);
+        }
 
         /* Nút tải APK nổi bật */
         #download-link {
@@ -560,7 +561,6 @@
         #download-link:hover {
             transform:scale(1.05);
             box-shadow:0 8px 32px #ffd70088;
-        }
         }
 
         .footer {
@@ -703,7 +703,6 @@
 </head>
 
 <body>
-<!-- Announcement Modal (VI/EN) -->
 <div id="policy-modal-backdrop" aria-hidden="true">
   <div id="policy-modal" role="dialog" aria-modal="true" aria-labelledby="policy-title">
     <div class="policy-head">
@@ -715,7 +714,6 @@
     </div>
 
     <div class="policy-body">
-      <!-- VI -->
       <div id="policy-vi" class="policy-box">
         <p><strong>Lưu ý quan trọng:</strong> Các mod sẽ được cập nhật theo từng game. 
         <u>Nếu game đã vá lỗi/fix</u>, chúng tôi sẽ <u>xóa các chức năng bị ảnh hưởng</u>. 
@@ -731,7 +729,6 @@
         <p>Vui lòng <strong>xem thông báo Update thường xuyên</strong> để nắm thông tin mới nhất.</p>
       </div>
 
-      <!-- EN -->
       <div id="policy-en" class="policy-box" style="display:none;">
         <p><strong>Important:</strong> Mods are updated per game. 
         If a game gets <u>patched/fixed</u>, we will <u>remove affected features</u>. 
@@ -831,8 +828,7 @@
                             <button id="filter-normal" class="filter-btn" data-i18n="normal">PLUS</button>                           
                             <button id="filter-vip" class="filter-btn" data-i18n="vip">VIP</button>
                         </div>
-                        <!-- language toggle removed -->
-                    </div>
+                        </div>
                 </section>
 
                 <div id="gameCounter" class="game-counter"></div>
@@ -869,6 +865,7 @@
                     <div class="detail-actions">
                         <a id="detail-discord-link" href="#" target="_blank" rel="noopener noreferrer">Vào Server Discord</a>
                         <button id="copy-discord-link" onclick="copyDiscordLink(this)">Sao chép Link</button>
+                        <a id="download-link" href="#" target="_blank">Tải Game</a>
                     </div>
                 </div>
             </section>
@@ -2762,6 +2759,40 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
   setLang(preferVI ? 'vi' : 'en');
   if (shouldShow()) showModal();
 })();
+</script>
+
+<script>
+    // --- Anti-DevTools Script ---
+    // Ngăn chặn chuột phải và các phím tắt F12, Inspect
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    }, false);
+
+    document.addEventListener('keydown', function(e) {
+        // Chặn F12
+        if (e.key === 'F12' || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Chặn Ctrl + Shift + I (Inspect)
+        // Chặn Ctrl + Shift + J (Console)
+        // Chặn Ctrl + Shift + C (Inspect Element)
+        if (e.ctrlKey && e.shiftKey && (
+            e.key === 'I' || e.keyCode === 73 ||
+            e.key === 'J' || e.keyCode === 74 ||
+            e.key === 'C' || e.keyCode === 67
+        )) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Chặn Ctrl + U (Xem Source Code)
+        if (e.ctrlKey && (e.key === 'U' || e.keyCode === 85)) {
+            e.preventDefault();
+            return false;
+        }
+    });
 </script>
 
 </body>
