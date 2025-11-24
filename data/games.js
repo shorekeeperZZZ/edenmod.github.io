@@ -1526,7 +1526,7 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "note": "Free Shop, One Hit Kill, God Mode, Speed",
                     "description": `Click to enable every battle battle`,
                     "link": "https://play.google.com/store/apps/details?id=com.NboxGames.MercenaryChildren&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "j1MroZnKLb8",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/MercenaryChildren.png?raw=true",
                     "free": false,
@@ -1547,3 +1547,4 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
 
 
 ]
+
