@@ -61,9 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 ${freeBadgeHTML}
                 ${vipBadgeHTML}
-                <img class="game-card-image" src="${game.image || 'https://placehold.co/400x200/0d1117/8b949e?text=No+Image'}"
-                    alt="Ảnh bìa ${game.name}" loading="lazy"
-                    onerror="this.onerror=null;this.src='https://placehold.co/400x200/0d1117/8b949e?text=Image+Error';">
+                <img class="game-card-image" 
+                    src="${(game.image || '').replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/')}"
+                    alt="Ảnh bìa ${game.name}" 
+                    loading="lazy"
+                    onerror="
+                        if (!this.dataset.retried) {
+                            this.dataset.retried = true; 
+                            this.src = this.src; /* Thử tải lại 1 lần nữa */
+                        } else {
+                            this.onerror = null; 
+                            this.src = 'https://placehold.co/400x200/0d1117/8b949e?text=Image+Error';
+                        }
+                    ">
                 <h3>${game.name}</h3>
                 <p class="mod-author-note">100% apk and No root by Nobody</p>
                 <div class="features-wrapper"><strong>Tính năng Mod:</strong>${featuresHTML}</div>`;
