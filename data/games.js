@@ -1531,7 +1531,19 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/MercenaryChildren.png?raw=true",
                     "free": false,
                     "vip": false
+                },
+                {
+                    "name": "TEST",
+                    "note": "",
+                    "description": ``,
+                    "link": "xxx",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/xxx.png?raw=true",
+                    "free": true,
+                    "vip": false
                 }
                 
+
 
 ]
