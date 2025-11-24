@@ -1,1 +1,1 @@
-# [Thông tin Các game được mod](https://shorekeeperzzz.github.io/edenmod.github.io/)
+# [Thông tin Các game được mod](https://edenmodgames.netlify.app/)
