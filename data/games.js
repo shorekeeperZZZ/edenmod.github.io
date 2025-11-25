@@ -1526,25 +1526,24 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "note": "Free Shop, One Hit Kill, God Mode, Speed",
                     "description": `Click to enable every battle battle`,
                     "link": "https://play.google.com/store/apps/details?id=com.NboxGames.MercenaryChildren&ref=edenmod.net",
-                    "videoId": "j1MroZnKLb8",
+                    "videoId": "xxx",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/MercenaryChildren.png?raw=true",
                     "free": false,
                     "vip": false
                 },
                 {
-                    "name": "TEST",
-                    "note": "",
+                    "name": "Fortress Saga: AFK RPG",
+                    "note": "Damage Multiplier, Damage Reduction, Freeshop, Drop Multiplier, Freeze Currency, Speed",
                     "description": ``,
-                    "link": "xxx",
+                    "link": "https://play.google.com/store/apps/details?id=com.cookapps.bm.fortresssaga&ref=edenmod.net",
                     "videoId": "xxx",
                     "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/xxx.png?raw=true",
-                    "free": true,
-                    "vip": false
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Fortress Saga AFK RPG.png?raw=true",
+                    "free": false,
+                    "vip": true
                 }
                 
-
+                
 
 ]
-
