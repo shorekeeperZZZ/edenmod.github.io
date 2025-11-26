@@ -1542,7 +1542,30 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Fortress Saga AFK RPG.png?raw=true",
                     "free": false,
                     "vip": true
-                }
+                },
+                {
+                    "name": "Unknown Knights: Pixel RPG",
+                    "note": "Damage Multiplier, Damage Reduction, Custom Reward, No Ads, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.cookapps.bm.unknownknight&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Unknown Knights Pixel RPG.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Pixel Brave: Idle RPG",
+                    "note": "Weak Enemy, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=xyz.lightgame.tuantuan&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Pixel Brave Idle RPG.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                
                 
                 
 
