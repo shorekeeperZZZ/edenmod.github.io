@@ -1575,9 +1575,19 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Heroll Dice Roguelike.png?raw=true",
                     "free": false,
                     "vip": true
-                }
+                },
+                {
+                    "name": "Dual Blader : Idle Action RPG",
+                    "note": "Damage Multiplier, Damage Reduction, Resource Injection, Coin Always Increase Exponentially, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.superbox.aos.dualblade&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Dual Blader Idle Action RPG.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
                 
-                
-                
+                                
 
 ]
