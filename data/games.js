@@ -1598,6 +1598,28 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "Castle Defenders Clash",
+                    "note": "Damage Multiplier, God Mode, Freeze Currencies (Some) [Risky], Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.mobirix.projectdf1&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Castle Defenders Clash.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Fantasy Mercenary",
+                    "note": "Damage Multiplier, Damage Reduction, Freeze Currencies (Some), Spend To Earn (Some), Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.signature.mercenary&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Fantasy Mercenary.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
                 
                                 
 
