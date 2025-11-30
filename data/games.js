@@ -1,4 +1,4 @@
-window.gameDataSource = [  // <--- QUAN TRỌNG: Phải có dòng này ở đầu file
+window.gameDataSource = [
 {
                     "name": "Kho Báu Đại Chiến",  "note": "Damage Multiplier, Defense Multiplier",
                     "description": "Triệu tập thuyền viên, xây dựng đội hình và bắt đầu cuộc phiêu lưu trong tựa game đấu tướng đặc sắc.",
@@ -1581,9 +1581,20 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "note": "Damage Multiplier, Damage Reduction, Resource Injection, Coin Always Increase Exponentially, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.superbox.aos.dualblade&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "IQ3iViLXAfM",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Dual Blader Idle Action RPG.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Hero Assemble: Epic Idle RPG",
+                    "note": "Damage Multiplier, Damage Reduction, Freeze Currencies (Some), Earn Multiplier (Some), Ads Free, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.cookapps.heroassemble&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Hero Assemble Epic Idle RPG.png?raw=true",
                     "free": false,
                     "vip": true
                 },
