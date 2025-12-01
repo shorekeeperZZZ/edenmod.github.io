@@ -1612,7 +1612,7 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                 {
                     "name": "Fantasy Mercenary",
                     "note": "Damage Multiplier, Damage Reduction, Freeze Currencies (Some), Spend To Earn (Some), Speed",
-                    "description": ``,
+                    "description": `Don't Summon And Upgrade Too Fast.`,
                     "link": "https://play.google.com/store/apps/details?id=com.signature.mercenary&ref=edenmod.net",
                     "videoId": "7YxUhyqyGQo",
                     "discordLink": "https://discord.gg/edenmod",
