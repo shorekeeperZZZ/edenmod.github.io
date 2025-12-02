@@ -1625,11 +1625,22 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "note": "Damage Multiplier, Damage Reduction, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=group.theorigin.themaxlevelreturner&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "nlPNmNyq30s",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Max Level Idle.png?raw=true",
                     "free": false,
                     "vip": true
+                },
+                {
+                    "name": "Party Heroes",
+                    "note": "Damage Multiplier, Damage Reduction, Drop Multiplier, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.mPeakGames.PartyHeroes&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Party Heroes.png?raw=true",
+                    "free": false,
+                    "vip": false
                 },
                                 
 
