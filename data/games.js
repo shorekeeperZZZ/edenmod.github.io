@@ -1636,9 +1636,31 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "note": "Damage Multiplier, Damage Reduction, Drop Multiplier, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.mPeakGames.PartyHeroes&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "Y1p0pjL8Rf8",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Party Heroes.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+                {
+                    "name": "SHARK GIRLS : IDLE RPG(강남상어 키우기 : 싱싱한 방치 RPG)",
+                    "note": "Damage Multiplier, God Mode, Auto Clear, Free Shop, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.bluesom.FreshRpg",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/SHARK GIRLS IDLE RPG.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+                {
+                    "name": "VTuber : Idle RPG(버튜버 키우기 : 방치형 RPG)",
+                    "note": "Damage Multiplier, God Mode, Diamond, Heart Injection, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.scon.project_m",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/VTuber Idle RPG.png?raw=true",
                     "free": false,
                     "vip": false
                 },
