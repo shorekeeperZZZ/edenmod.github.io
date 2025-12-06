@@ -1664,6 +1664,28 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Pixelmon Idle",
+                    "note": "God Mode, One Hit Kill, Damage Multiplier, Freeze Gold, Earn Multiplier, Speed",
+                    "description": ``,
+                    "link": "xxx",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Pixelmon Idle.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Tap Titans 2: Clicker Idle RPG",
+                    "note": "Drop Multiplier (Gold), VIP Benefits, Speed",
+                    "description": ``,
+                    "link": "xxx",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tap Titans 2.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
                                 
 
 ]
