@@ -1741,6 +1741,17 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Big Helmets: Heroes of Destiny",
+                    "note": "Damage Multiplier, Damage Reduction, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.bighelmets.destiny&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/xxx.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
 
 
 
