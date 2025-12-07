@@ -383,7 +383,7 @@ window.gameDataSource = [
                     "name": "The Demonized: Idle RPG",  "note": "Free Summon, Gold Drop Multiplier, One Hit, Speed",
                     "description": "Game nhập vai phiêu lưu hành động, nơi bạn nắm lấy sức mạnh của quỷ để chống lại các thế lực tà ác.",
                     "link": "https://play.google.com/store/apps/details?id=com.deepgames.release.becamethedevil", "videoId": "TOdBgR5Nvyk", "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Demonized_Idle_RPG.webp?raw=true",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/The Demonized Idle RPG.png?raw=true",
                     "vip": true
                 },
                 {
@@ -1668,7 +1668,7 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "name": "Pixelmon Idle",
                     "note": "God Mode, One Hit Kill, Damage Multiplier, Freeze Gold, Earn Multiplier, Speed",
                     "description": ``,
-                    "link": "xxx",
+                    "link": "https://play.google.com/store/apps/details?id=com.dreamplay.pixelmonidlekr.google",
                     "videoId": "mKfZbVROh5w",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Pixelmon Idle.png?raw=true",
@@ -1678,14 +1678,72 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                 {
                     "name": "Tap Titans 2: Clicker Idle RPG",
                     "note": "Drop Multiplier (Gold), VIP Benefits, Speed",
-                    "description": ``,
-                    "link": "xxx",
+                    "description": `Sync account may not working, so you only able to play on new account`,
+                    "link": "https://play.google.com/store/apps/details?id=com.gamehivecorp.taptitans2",
                     "videoId": "PS4MUdKd1QY",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tap Titans 2.png?raw=true",
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Dungeon Slasher : Roguelike",
+                    "note": "Damage Multiplier, God Mode, Resource Injection, Ads Free, Unlock All Character & Character's Packages, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.nspgames.dungeonslasher",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Dungeon Slasher Roguelike.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Animal Quest: Idle RPG",
+                    "note": "Weak Enemy, Earn Multiplier, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.gameberrystudio.animals",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Animal Quest Idle RPG.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Delicious Monsters: TD Tycoon",
+                    "note": "Damage Mulptiplier, God Mode, Earn Multiplier, Ads Free, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=idle.cooking.defense.high",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Delicious Monsters TD Tycoon.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "전우치 키우기 : K 데몬 헌터 (Jeon Woo Chi: K Demon Hunter)",
+                    "note": "Damage Mulptiplier, God Mode, Reward Multiplier,Free Shop (Not including Packages), Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.codedragon.woochi&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/전우치 키우기 K 데몬 헌터 (Jeon Woo Chi K Demon Hunter).png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Pirate Mercenary Squad",
+                    "note": "Damage Multiplier, Damage Reduction, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.mercenarysquad.googlelb",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Pirate Mercenary Squad.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+
+
+
                                 
 
 ]
