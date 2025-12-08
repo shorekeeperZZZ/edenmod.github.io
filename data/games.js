@@ -1757,7 +1757,7 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "note": "Damage Mulptiplier, God Mode, Freeshop, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.dwgames.assassinrpg2&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "WfHeIoaLRd0",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Raising Kunoichi.png?raw=true",
                     "free": false,
