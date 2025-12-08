@@ -1752,6 +1752,28 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "쿠노이치 키우기 (Raising Kunoichi)",
+                    "note": "Damage Mulptiplier, God Mode, Freeshop, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.dwgames.assassinrpg2&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Raising Kunoichi.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+                {
+                    "name": "Idle 999th Hero:AFK RPG",
+                    "note": "Damage Mulptiplier, God Mode, Reward Multiply, Speed",
+                    "description": `Enable Reward Multiply then go to Achievement to get reward`,
+                    "link": "https://play.google.com/store/apps/details?id=net.ekgames.projectl&ref=edenmod.net",
+                    "videoId": "N_6kah9PIN4",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Idle 999th Hero AFK RPG.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
 
 
 
