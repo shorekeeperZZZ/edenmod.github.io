@@ -1785,6 +1785,17 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "Survivor Kingdoms: Roguelike",
+                    "note": "Damage Mulptiplier, God Mode, Freeshop, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.gamee.kingdoms.survivor.io&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Survivor Kingdoms Roguelike.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
 
                         
 ]
