@@ -1774,9 +1774,17 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "FAIRY TAIL Wizard Chronicle",
+                    "note": "Damage Mulptiplier, God Mode, Freeshop, Speed",
+                    "description": `Some packages in Shop will not working`,
+                    "link": "https://play.google.com/store/apps/details?id=jp.co.goodroid.fairy&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/FAIRY TAIL Wizard Chronicle.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
 
-
-
-                                
-
+                        
 ]
