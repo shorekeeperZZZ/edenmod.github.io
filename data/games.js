@@ -1777,9 +1777,11 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                 {
                     "name": "FAIRY TAIL Wizard Chronicle",
                     "note": "Damage Mulptiplier, God Mode, Freeshop, Speed",
-                    "description": `Some packages in Shop will not working`,
+                    "description": `Some packages in Shop will not working.
+Turn off Speed while shopping or you will get disconnected
+`,
                     "link": "https://play.google.com/store/apps/details?id=jp.co.goodroid.fairy&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "bnxz-vW-1yo",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/FAIRY TAIL Wizard Chronicle.png?raw=true",
                     "free": false,
@@ -1790,7 +1792,7 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "note": "Damage Mulptiplier, God Mode, Freeshop, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.gamee.kingdoms.survivor.io&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "x-ctbkFoZYY",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Survivor Kingdoms Roguelike.png?raw=true",
                     "free": false,
@@ -1801,9 +1803,20 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "note": "Damage Mulptiplier, God Mode, Resource Injection",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.mgif.idle.quest&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "lly29QjRBaE",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Warrior of Light Idle RPG.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+                {
+                    "name": "Weapon Master Idle: Action RPG",
+                    "note": "One Hit Kill,  God Mode, Gold Multiplier, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=io.supercrack.weaponmaster&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Weapon Master Idle Action RPG.png?raw=true",
                     "free": false,
                     "vip": false
                 },
