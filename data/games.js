@@ -1796,6 +1796,16 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "free": false,
                     "vip": false
                 },
-
+                {
+                    "name": "Warrior of Light: Idle RPG",
+                    "note": "Damage Mulptiplier, God Mode, Resource Injection",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.mgif.idle.quest&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Warrior of Light Idle RPG.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
                         
 ]
