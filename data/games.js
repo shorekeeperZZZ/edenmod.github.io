@@ -1814,7 +1814,7 @@ Turn off Speed while shopping or you will get disconnected
                     "note": "One Hit Kill,  God Mode, Gold Multiplier, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=io.supercrack.weaponmaster&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "s9k-B3tIbkU",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Weapon Master Idle Action RPG.png?raw=true",
                     "free": false,
