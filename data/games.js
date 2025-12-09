@@ -1842,5 +1842,16 @@ Turn off Speed while shopping or you will get disconnected
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Tap Dragon: Little Knight Lunaxx",
+                    "note": "Damage Mulptiplier, Freeze Currency, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.superplanet.luna2&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tap Dragon Little Knight Luna.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
                         
 ]
