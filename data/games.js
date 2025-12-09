@@ -1820,5 +1820,16 @@ Turn off Speed while shopping or you will get disconnected
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Three Kingdoms: Conquest",
+                    "note": "Damage Mulptiplier, God Mode, Reward Multiply, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.ngu.games.threekingdomoffense&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Three Kingdoms Conquest.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
                         
 ]
