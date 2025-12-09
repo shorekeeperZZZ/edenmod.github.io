@@ -1853,5 +1853,16 @@ Turn off Speed while shopping or you will get disconnected
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Archmagic Survivors Magic TD",
+                    "note": "Damage Mulptiplier, God Mode, Freeshop, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.gigaswords.archtdsurv&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/xxx.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
                         
 ]
