@@ -1860,7 +1860,7 @@ Turn off Speed while shopping or you will get disconnected
                     "link": "https://play.google.com/store/apps/details?id=com.gigaswords.archtdsurv&ref=edenmod.net",
                     "videoId": "xxx",
                     "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/xxx.png?raw=true",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Archmagic Survivors Magic TD.png?raw=true",
                     "free": false,
                     "vip": false
                 },
