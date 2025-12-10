@@ -1858,7 +1858,7 @@ Turn off Speed while shopping or you will get disconnected
                     "note": "Damage Mulptiplier, God Mode, Freeshop, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.gigaswords.archtdsurv&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "WIarySSVYvU",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Archmagic Survivors Magic TD.png?raw=true",
                     "free": false,
@@ -1869,11 +1869,23 @@ Turn off Speed while shopping or you will get disconnected
                     "note": "Damage Mulptiplier, Damage Reduction, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.clovergames.lordofheroes&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "W9riKFdCbII",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Lord of Heroes anime games.png?raw=true",
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "Undead Siege: Tower Defense",
+                    "note": "Damage Mulptiplier, God Mode, Freeshop, Vip Benefits, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.whitedot.dzs&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Undead Siege Tower Defense.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                
                         
 ]
