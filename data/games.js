@@ -1862,7 +1862,18 @@ Turn off Speed while shopping or you will get disconnected
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Archmagic Survivors Magic TD.png?raw=true",
                     "free": false,
-                    "vip": false
+                    "vip": true
+                },
+                {
+                    "name": "Lord of Heroes: anime games",
+                    "note": "Damage Mulptiplier, Damage Reduction, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.clovergames.lordofheroes&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Lord of Heroes anime games.png?raw=true",
+                    "free": false,
+                    "vip": true
                 },
                         
 ]
