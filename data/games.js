@@ -1886,6 +1886,17 @@ Turn off Speed while shopping or you will get disconnected
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "존나르센 키우기: 성검전설 (Raising John Narsen: Legend of the Holy Sword)",
+                    "note": "Stats Mulptiplier, God Mode, Weak Enemy",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.studiolico.johnnarsen&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Raising John Narsen.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
                 
                         
 ]
