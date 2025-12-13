@@ -1919,6 +1919,20 @@ Turn off Speed while shopping or you will get disconnected
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Monmusu Girls: Autobattler",
+                    "note": "Damage Multiplier, Defense Multiplier, Speed",
+                    "description": `Instructions: Adjust the Damage and Defense Multipliers, then activate "Enable Mod".
+Only activate "Enable Mod" at the start of a battle and deactivate it when the battle ends to avoid potential flickering issues.
+Hướng dẫn: Điều chỉnh hệ số sát thương và phòng thủ, sau đó kích hoạt "Bật Mod".
+Chỉ kích hoạt "Bật Mod" khi bắt đầu trận chiến và tắt nó khi trận chiến kết thúc để tránh các vấn đề nhấp nháy có thể xảy ra.`,
+                    "link": "https://play.google.com/store/apps/details?id=com.toplay.MonmusuGirlsAutobattler&ref=edenmod.net",
+                    "videoId": "J42w1dGDuc4",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Monmusu Girls Autobattler.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
             
                 
                         
