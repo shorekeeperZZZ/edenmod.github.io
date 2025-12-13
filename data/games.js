@@ -1897,6 +1897,29 @@ Turn off Speed while shopping or you will get disconnected
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "Monster:Evolution Origin",
+                    "note": "Damage Multiplier, Defense Multiplier, Auto-Battle (Dungeon)",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=go.secret.messenger",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Monster Evolution Origin.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+                {
+                    "name": "Hellsquad Rrrush!",
+                    "note": "Damage Multiplier, Damage Reduction, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.wemademax.projectsc&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Hellsquad Rrrush!.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+            
                 
                         
 ]
