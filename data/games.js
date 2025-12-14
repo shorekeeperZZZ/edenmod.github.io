@@ -1955,6 +1955,39 @@ Chỉ kích hoạt "Bật Mod" khi bắt đầu trận chiến và tắt nó khi
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "AutoCat: PvP Defense",
+                    "note": "One Hit Kill\nResource Injection\nSpeed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.poom.autocat&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/AutoCat PvP Defense.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+                {
+                    "name": "Dual Blade Growth",
+                    "note": "God Mode, One Hit Kill, Resource Injection, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.crimsonstd.NecroAFK&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Dual Blade Growth.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+                {
+                    "name": "Dungeon Random Defense",
+                    "note": "One Hit Kill, Ads Free,Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.dungeonrandomdefense.google&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Dungeon Random Defense.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
             
                 
                         
