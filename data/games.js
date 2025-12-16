@@ -1988,6 +1988,25 @@ Chỉ kích hoạt "Bật Mod" khi bắt đầu trận chiến và tắt nó khi
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Demon Hunter Idle",
+                    "note": "Guest Login, Damage Mulptiplier, God Mode, Reward Multiply, Auto Clear, Speed",
+                    "description": `Log in to the game hall and activate "Enable Cheat." Once enabled, cheat features will be available for use.
+Reward Multiply: Earn multiplied rewards by completing the guide mission.
+Dont spend too fast. You will get banned.
+
+Đăng nhập vào phòng chơi và kích hoạt "Bật tính năng gian lận". Sau khi kích hoạt, các tính năng gian lận sẽ có sẵn để sử dụng.
+
+Nhân bội phần thưởng: Nhận phần thưởng gấp bội bằng cách hoàn thành nhiệm vụ hướng dẫn.
+
+Đừng tiêu tiền quá nhanh. Bạn sẽ bị cấm.`,
+                    "link": "https://play.google.com/store/apps/details?id=com.mobirix.mbpdh&ref=edenmod.net",
+                    "videoId": "ENdeD96p2L0",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Demon Hunter Idle.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
             
                 
                         
