@@ -2012,7 +2012,7 @@ Nhân bội phần thưởng: Nhận phần thưởng gấp bội bằng cách h
                     "note": "Weak Enemy, Speed",
                     "description": `"Weak Enemy" might cause flickering issues, so only activate it during battles.`,
                     "link": "https://play.google.com/store/apps/details?id=top.kingsdefender.towerdefense&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "Hyctl4SvcMY",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Kings Defender Tower Defense.png?raw=true",
                     "free": false,
