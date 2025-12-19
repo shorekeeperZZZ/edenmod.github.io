@@ -2018,6 +2018,18 @@ Nhân bội phần thưởng: Nhận phần thưởng gấp bội bằng cách h
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "Sword Parasite: Idle RPG",
+                    "note": "One Hit Kill, God Mode, Damage Multiplier, Custom Reward, Speed",
+                    "description": `Get reward through guide mission
+Nhận phần thưởng khi hoàn thành nhiệm vụ hướng dẫn`,
+                    "link": "https://play.google.com/store/apps/details?id=com.ngu.games.vampire&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Sword Parasite Idle RPG.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
             
                 
                         
