@@ -2024,7 +2024,7 @@ Nhân bội phần thưởng: Nhận phần thưởng gấp bội bằng cách h
                     "description": `Get reward through guide mission
 Nhận phần thưởng khi hoàn thành nhiệm vụ hướng dẫn`,
                     "link": "https://play.google.com/store/apps/details?id=com.ngu.games.vampire&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "Oqo7c2cG9cM",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Sword Parasite Idle RPG.png?raw=true",
                     "free": false,
