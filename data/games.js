@@ -2041,6 +2041,17 @@ Nhận phần thưởng khi hoàn thành nhiệm vụ hướng dẫn`,
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "GunBladeGirl idle",
+                    "note": "Guest Login, God Mode, Resource Injection, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.Rielargame.Elemental&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/GunBladeGirl idle.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
             
                 
                         
