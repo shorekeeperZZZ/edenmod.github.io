@@ -2030,6 +2030,17 @@ Nhận phần thưởng khi hoàn thành nhiệm vụ hướng dẫn`,
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Gunblade Girl Idle AFK RPG",
+                    "note": "Damage Multiplier, God Mode, Resource Injection, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.hadeul.gunblader&ref=edenmod.net",
+                    "videoId": "Gix0ymOaW_4",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Gunblade Girl Idle AFK RPG.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
             
                 
                         
