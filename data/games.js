@@ -2074,6 +2074,17 @@ Nhận phần thưởng khi hoàn thành nhiệm vụ hướng dẫn`,
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Ayakashi Rise: AFK Demon Hunt",
+                    "note": "Damage Multiplier, Damage Reduction, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.clovergames.ayakashirise&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Ayakashi Rise AFK Demon Hunt.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
             
                 
                         
