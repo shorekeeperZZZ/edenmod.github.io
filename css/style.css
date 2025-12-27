@@ -261,6 +261,7 @@ body {
     font-size: 1rem;
 }
 
+
 #gameList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -434,7 +435,14 @@ body {
     padding: clamp(2rem, 6vw, 3rem);
     transition: box-shadow 0.3s, border-color 0.3s;
 }
-
+/* --- Căn chỉnh tính năng MOD xuống dòng --- */
+.features-list {
+    display: flex;
+    flex-direction: column; /* Quan trọng: ép xuống dòng */
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+}
 #detail-title {
     font-size: clamp(1.8rem, 5vw, 2.5rem);
     font-weight: 700;
