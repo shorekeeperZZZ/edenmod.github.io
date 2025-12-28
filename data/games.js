@@ -1946,7 +1946,7 @@ Chỉ kích hoạt "Bật Mod" khi bắt đầu trận chiến và tắt nó khi
                 },
                 {
                     "name": "Knight Maidens: Idle RPG (TEST)",
-                    "note": "Attack Multiplier, Defense Reduction, Max Summon Level, Resource Injection (Gold, Mileage) [RISK], Speed",
+                    "note": "Attack Multiplier, Defense Reduction, Max Summon Level, Resource Injection[RISK], Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.yesgames.knightmaidens&ref=edenmod.net",
                     "videoId": "xxx",
@@ -2095,6 +2095,28 @@ Nhận phần thưởng khi hoàn thành nhiệm vụ hướng dẫn`,
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Bloom & Boom.png?raw=true",
                     "free": false,
                     "vip": true
+                },
+                {
+                    "name": "3Q: Tây Zu Hí",
+                    "note": "Damage Multiplier, Defense Multiplier",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=vn.funtap.tayzuhi3q",
+                    "videoId": "c7dbmPrBeQQ",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/3Q Tây Zu Hí.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Poke Loạn Chiến",
+                    "note": "Damage Multiplier, Damage Reduction",
+                    "description": ``,
+                    "link": "https://pokeloanchien.com/",
+                    "videoId": "N_By1mkQUvQ",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Poke Loạn Chiến.png?raw=true",
+                    "free": false,
+                    "vip": false
                 },
             
                 
