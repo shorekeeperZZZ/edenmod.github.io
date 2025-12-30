@@ -2123,11 +2123,22 @@ Nhận phần thưởng khi hoàn thành nhiệm vụ hướng dẫn`,
                     "note": "Damage Multiplier, Defense Multiplier",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.cultivation.gp",
-                    "videoId": "xxx",
+                    "videoId": "_ywVLqZnJPk",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Mercenary Adventures (Đội Quân Lưu Lạc).png?raw=true",
                     "free": false,
                     "vip": false
+                },
+                {
+                    "name": "Gunbound Legend: Vua Toạ Độ",
+                    "note": "hack",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.vtc.gunbound",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Gunbound Legend Vua Toạ Độ.png?raw=true",
+                    "free": false,
+                    "vip": true
                 },
             
                 
