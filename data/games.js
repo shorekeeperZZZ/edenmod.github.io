@@ -2131,10 +2131,13 @@ Nhận phần thưởng khi hoàn thành nhiệm vụ hướng dẫn`,
                 },
                 {
                     "name": "Gunbound Legend: Vua Toạ Độ",
-                    "note": "hack",
-                    "description": ``,
+                    "note": "Always hit the target, Luôn bắn trúng mục tiêu",
+                    "description": `Some mobiles and skills may not work properly. For example: Boomer.
+Do not shoot at max power (under 70% is best).
+Một số xe và kỹ năng có thể không hoạt động ổn định. Ví dụ: Boomer.
+Đừng bắn tối đa lực (tốt nhất là dưới 70%).`,
                     "link": "https://play.google.com/store/apps/details?id=com.vtc.gunbound",
-                    "videoId": "xxx",
+                    "videoId": "XFAlexCMu98",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Gunbound Legend Vua Toạ Độ.png?raw=true",
                     "free": false,
