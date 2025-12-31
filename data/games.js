@@ -2146,11 +2146,14 @@ Một số xe và kỹ năng có thể không hoạt động ổn định. Ví d
                 {
                     "name": "GunboundM ",
                     "note": "Eliminate Wind and Tornado Effects, Loại bỏ ảnh hưởng của gió và lốc xoáy",
-                    "description": ``,
+                    "description": `Some mobiles and skills may not work properly. For example: Boomer.
+Do not shoot at max power (under 70% is best).
+Một số xe và kỹ năng có thể không hoạt động ổn định. Ví dụ: Boomer.
+Đừng bắn tối đa lực (tốt nhất là dưới 70%).`,
                     "link": "https://play.google.com/store/apps/details?id=com.DargomStudio.GunboundM.Global&ref=edenmod.net",
                     "videoId": "XFAlexCMu98",
                     "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/GunboundM .png?raw=true",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/GunboundM.png?raw=true",
                     "free": false,
                     "vip": true
                 },
