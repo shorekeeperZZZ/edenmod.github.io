@@ -2131,7 +2131,7 @@ Nhận phần thưởng khi hoàn thành nhiệm vụ hướng dẫn`,
                 },
                 {
                     "name": "Gunbound Legend: Vua Toạ Độ",
-                    "note": "Always hit the target, Luôn bắn trúng mục tiêu",
+                    "note": "Eliminate Wind and Tornado Effects, Loại bỏ ảnh hưởng của gió và lốc xoáy",
                     "description": `Some mobiles and skills may not work properly. For example: Boomer.
 Do not shoot at max power (under 70% is best).
 Một số xe và kỹ năng có thể không hoạt động ổn định. Ví dụ: Boomer.
@@ -2140,6 +2140,17 @@ Một số xe và kỹ năng có thể không hoạt động ổn định. Ví d
                     "videoId": "XFAlexCMu98",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Gunbound Legend Vua Toạ Độ.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "GunboundM ",
+                    "note": "Eliminate Wind and Tornado Effects, Loại bỏ ảnh hưởng của gió và lốc xoáy",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.DargomStudio.GunboundM.Global&ref=edenmod.net",
+                    "videoId": "XFAlexCMu98",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/GunboundM .png?raw=true",
                     "free": false,
                     "vip": true
                 },
