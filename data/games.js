@@ -2157,6 +2157,17 @@ Một số xe và kỹ năng có thể không hoạt động ổn định. Ví d
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "Hidden Heroes : AFK Idle RPG",
+                    "note": "God Mode, Drop Multiplier, Freeze Currency, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.dreamplay.hiddenheroes.google",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Hidden Heroes AFK Idle RPG.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
             
                 
                         
