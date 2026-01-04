@@ -2162,9 +2162,20 @@ Một số xe và kỹ năng có thể không hoạt động ổn định. Ví d
                     "note": "God Mode, Drop Multiplier, Freeze Currency, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.dreamplay.hiddenheroes.google",
-                    "videoId": "xxx",
+                    "videoId": "xlf1_rfJ5uDExx",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Hidden Heroes AFK Idle RPG.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Valkyrie nghỉ chạy (Valkyrie Idle)",
+                    "note": "Damage Multiplier, Drop Multiplier, Freeze Currency, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.mobirix.valkyrieidle",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Valkyrie Idle.png?raw=true",
                     "free": false,
                     "vip": true
                 },
