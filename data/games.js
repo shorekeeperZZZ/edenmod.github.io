@@ -2173,9 +2173,20 @@ Một số xe và kỹ năng có thể không hoạt động ổn định. Ví d
                     "note": "Damage Multiplier, Drop Multiplier, Freeze Currency, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.mobirix.valkyrieidle",
-                    "videoId": "xxx",
+                    "videoId": "x4t1FS7DCc-Qxx",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Valkyrie Idle.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Lucky Hero: Idle RPG",
+                    "note": "Damage Multiplier, Damage Reduction, Reward Multiplier, Freeshop, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.inchanters.enchantmaster",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Lucky Hero Idle RPG.png?raw=true",
                     "free": false,
                     "vip": true
                 },
