@@ -2184,13 +2184,23 @@ Một số xe và kỹ năng có thể không hoạt động ổn định. Ví d
                     "note": "Damage Multiplier, Damage Reduction, Reward Multiplier, Freeshop, Speed",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.inchanters.enchantmaster",
-                    "videoId": "xxx",
+                    "videoId": "Y4PoD0NdyVw",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Lucky Hero Idle RPG.png?raw=true",
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "Đại Chiến Giai Điệu",
+                    "note": "Damage Multiplier, Damage Reduction, Ads Free, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.yulong.sgame.vn.gp",
+                    "videoId": "SWKLsj3gGJA",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Đại Chiến Giai Điệu.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
             
-                
-                        
+                                   
 ]
