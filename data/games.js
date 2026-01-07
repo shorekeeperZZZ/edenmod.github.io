@@ -2215,7 +2215,12 @@ Một số xe và kỹ năng có thể không hoạt động ổn định. Ví d
                 {
                     "name": "Headless Knight: Idle RPG",
                     "note": "Weak Enemy",
-                    "description": ``,
+                    "description": `"Weak Enemy" might need to be toggled again upon entering a new stage or facing a boss.
+Enabling "Auto Weaken" will automatically weaken enemies but could potentially cause some lag.
+Occasionally, the weakening effect might apply to yourself as well.
+"Weak Enemy" (Yếu hóa kẻ địch) có thể cần phải được bật lại khi bạn bước sang màn chơi mới hoặc khi đối đầu với Boss.
+Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động giảm sức mạnh kẻ địch, nhưng có khả năng gây ra hiện tượng giật lag.
+Đôi khi, hiệu ứng làm yếu này có thể tác động lên chính nhân vật của bạn.`,
                     "link": "https://play.google.com/store/apps/details?id=xyz.lightgame.blade",
                     "videoId": "xxx",
                     "discordLink": "https://discord.gg/edenmod",
