@@ -1676,17 +1676,6 @@ IF YOU GOT BATTLE ERROR IN MAIN STAGE, UPGRADE YOUR POWER. THAT'S ONLY SOLUTION`
                     "vip": true
                 },
                 {
-                    "name": "Tap Titans 2: Clicker Idle RPG",
-                    "note": "Drop Multiplier (Gold), VIP Benefits, Speed",
-                    "description": `Sync account may not working, so you only able to play on new account`,
-                    "link": "https://play.google.com/store/apps/details?id=com.gamehivecorp.taptitans2",
-                    "videoId": "PS4MUdKd1QY",
-                    "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tap Titans 2.png?raw=true",
-                    "free": false,
-                    "vip": false
-                },
-                {
                     "name": "Dungeon Slasher : Roguelike",
                     "note": "Damage Multiplier, God Mode, Resource Injection, Ads Free, Unlock All Character & Character's Packages, Speed",
                     "description": ``,
@@ -2200,6 +2189,39 @@ Một số xe và kỹ năng có thể không hoạt động ổn định. Ví d
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Đại Chiến Giai Điệu.png?raw=true",
                     "free": false,
                     "vip": false
+                },
+                {
+                    "name": "Tap Titans 2: Clicker Idle RPG",
+                    "note": "Damage Multiplier, Drop Multiplier (Gold), Speed",
+                    "description": `Sync account may not working, so you only able to play on new account`,
+                    "link": "https://play.google.com/store/apps/details?id=com.gamehivecorp.taptitans2",
+                    "videoId": "PS4MUdKd1QY",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tap Titans 2.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+                {
+                    "name": "Pixel Đại Chiến",
+                    "note": "Damage Multiplier, Defense Multiplier",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.pixelgame.daichien",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Pixel Đại Chiến.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
+                {
+                    "name": "Headless Knight: Idle RPG",
+                    "note": "Weak Enemy",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=xyz.lightgame.blade",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Headless Knight Idle RPG.png?raw=true",
+                    "free": false,
+                    "vip": true
                 },
             
                                    
