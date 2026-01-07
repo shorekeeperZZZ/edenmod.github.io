@@ -2228,6 +2228,17 @@ Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động gi
                     "free": false,
                     "vip": true
                 },
+                {
+                    "name": "F Class Adventurer: AFK RPG",
+                    "note": "Damage Mulptiplier, God Mode, Reward Multiply ,Speed",
+                    "description": `Enable Reward Multiply then go to Achievement to get reward`,
+                    "link": "https://play.google.com/store/apps/details?id=net.ekgames.fclasshero&ref=edenmod.net",
+                    "videoId": "kbiStZJ0i6g",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/F Class Adventurer AFK RPG.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
             
                                    
 ]
