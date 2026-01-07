@@ -2206,7 +2206,7 @@ Một số xe và kỹ năng có thể không hoạt động ổn định. Ví d
                     "note": "Damage Multiplier, Defense Multiplier",
                     "description": ``,
                     "link": "https://play.google.com/store/apps/details?id=com.pixelgame.daichien",
-                    "videoId": "xxx",
+                    "videoId": "sfXJ7xxJXHA",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Pixel Đại Chiến.png?raw=true",
                     "free": false,
@@ -2222,7 +2222,7 @@ Occasionally, the weakening effect might apply to yourself as well.
 Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động giảm sức mạnh kẻ địch, nhưng có khả năng gây ra hiện tượng giật lag.
 Đôi khi, hiệu ứng làm yếu này có thể tác động lên chính nhân vật của bạn.`,
                     "link": "https://play.google.com/store/apps/details?id=xyz.lightgame.blade",
-                    "videoId": "xxx",
+                    "videoId": "Pci4Es8ECbs",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Headless Knight Idle RPG.png?raw=true",
                     "free": false,
