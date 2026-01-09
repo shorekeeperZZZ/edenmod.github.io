@@ -2238,7 +2238,17 @@ Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động gi
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/F Class Adventurer AFK RPG.png?raw=true",
                     "free": false,
                     "vip": false
+                },                
+                {
+                    "name": "Adventure of White Chord",
+                    "note": "Damage Multiplier, Damage Reduction, Ads Free, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.yulong.sgame.vn.gp",
+                    "videoId": "SWKLsj3gGJA",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Đại Chiến Giai Điệu.png?raw=true",
+                    "free": false,
+                    "vip": false
                 },
-            
                                    
 ]
