@@ -2250,5 +2250,17 @@ Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động gi
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Tokyo Ghoul: Thức Tỉnh",
+                    "note": "Auto Win, Speed",
+                    "description": `Chỉ hoạt động ở màn chơi CHÍNH. Vô hiệu hóa tính năng này ở các nội dung khác, nếu không bạn sẽ gặp lỗi "Lỗi dữ liệu trận chiến".
+KHÔNG SỬ DỤNG TRÊN CÁC BẢN ĐỒ HƯỚNG DẪN. TỐT HƠN HẾT LÀ BẮT ĐẦU CHƠI MOD TỪ BẢN ĐỒ 2-1.`,
+                    "link": "https://play.google.com/store/apps/details?id=com.tgbtcvn.google",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tokyo Ghoul Thức Tỉnh.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
                                    
 ]
