@@ -2268,7 +2268,7 @@ Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động gi
                     "link": "https://play.google.com/store/apps/details?id=com.cipaishe.wuhua.google",
                     "videoId": "xxx",
                     "discordLink": "https://discord.gg/edenmod",
-                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/xxx.png?raw=true",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Neo Artifacts.png?raw=true",
                     "free": false,
                     "vip": false
                 },
