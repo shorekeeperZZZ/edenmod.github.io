@@ -2255,12 +2255,22 @@ Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động gi
                     "note": "Guest Login, Free Shop, Speed",
                     "description": `IMPORTANT: Before quitting the game, ensure you purchase or spend (summon) something to trigger synchronization with the server. Otherwise, your stage progress will not be saved..`,
                     "link": "https://play.google.com/store/apps/details?id=com.streetcomplete.pixelmagician",
-                    "videoId": "xxx",
+                    "videoId": "4cPV41_ydBg",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Idle Pixel Magician.png?raw=true",
                     "free": false,
                     "vip": true
                 },
-
+                {
+                    "name": "Neo Artifacts",
+                    "note": "Damage Multiplier, Damage Reduction",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.cipaishe.wuhua.google",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/xxx.png?raw=true",
+                    "free": false,
+                    "vip": false
+                },
                                    
 ]
