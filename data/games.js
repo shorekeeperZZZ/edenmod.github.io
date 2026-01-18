@@ -2271,6 +2271,17 @@ Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động gi
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Neo Artifacts.png?raw=true",
                     "free": false,
                     "vip": false
+                },                
+                {
+                    "name": "BLEACH: Soul Resonance",
+                    "note": "Damage Multiplier, Damage Reduction",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.crunchyroll.bleachsoulres",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/BLEACH Soul Resonance.png?raw=true",
+                    "free": false,
+                    "vip": true
                 },
                                    
 ]
