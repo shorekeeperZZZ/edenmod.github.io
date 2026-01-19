@@ -2304,6 +2304,18 @@ Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động gi
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/소울 헌터 키우기 방치형 RPG (Raising Soul Hunter Idle RPG).png?raw=true",
                     "free": false,
                     "vip": true
+                },              
+                {
+                    "name": "테이밍 마스터 : 소환수 키우기 (Taming Master: Raising Summoners)",
+                    "note": "Damage Multiplier, Damage Reduction, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.studiolb.tm_idle&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Taming Master Raising.png?raw=true",
+                    "free": false,
+                    "vip": false
                 },
+
                                    
 ]
