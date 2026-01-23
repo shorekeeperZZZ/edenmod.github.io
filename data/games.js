@@ -2316,6 +2316,33 @@ Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động gi
                     "free": false,
                     "vip": false
                 },
+                {
+                    "name": "Arknights: Endfield VN",
+                    "note": "Damage Multiplier, Damage Reduction, Teleport to quest check point, Speed",
+                    "description": `CHỈ SỬ DỤNG DỊCH CHUYỂN KHI BẠN NHÌN THẤY KHOẢNG CÁCH ĐẾN ĐIỂM KIỂM TRA.
+DỊCH CHUYỂN CÓ THỂ BỎ QUA ĐIỂM KIỂM TRA CỐT TRUYỆN, VÌ VẬY NẾU BẠN KHÔNG THỂ TIẾP TỤC, HÃY QUAY LẠI CON ĐƯỜNG ĐỂ KÍCH HOẠT CỐT TRUYỆN.
+TỐT HƠN HẾT LÀ HOÀN THÀNH CỐT TRUYỆN ĐẦU TIÊN TRƯỚC KHI SỬ DỤNG DỊCH CHUYỂN.`,
+                    "link": "https://play.google.com/store/apps/details?id=com.gryphline.endfield.gp&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Arknights Endfieldvn.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+                {
+                    "name": "Arknights: Endfield",
+                    "note": "Damage Multiplier, Damage Reduction, Teleport to quest check point, Speed",
+                    "description": `ONLY USE TELEPORT WHEN YOU SEE THE CHECK POINT DISTANCE.
+TELEPORT MAY SKIP THE STORY CHECKPOINT SO IF YOU CANNOT GO ON. JUST GO BACK THE ROAD TO ACTIVATE THE STORY
+BETTER TO FINISH THE FIRST STORY BEFORE USING TELEPORT`,
+                    "link": "https://play.google.com/store/apps/details?id=com.gryphline.endfield.gp&ref=edenmod.net",
+                    "videoId": "xxx",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Arknights Endfield.png?raw=true",
+                    "free": false,
+                    "vip": true
+                },
+
 
                                    
 ]
