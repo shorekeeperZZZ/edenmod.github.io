@@ -2318,12 +2318,12 @@ Việc kích hoạt "Auto Weaken" (Tự động làm yếu) sẽ tự động gi
                 },
                 {
                     "name": "Arknights: Endfield VN",
-                    "note": "Damage Multiplier, Damage Reduction, Teleport to quest check point, Speed",
+                    "note": "Damage Multiplier, Damage Reduction, Teleport to quest check point, Unlimited Stamina, Speed",
                     "description": `CHỈ SỬ DỤNG DỊCH CHUYỂN KHI BẠN NHÌN THẤY KHOẢNG CÁCH ĐẾN ĐIỂM KIỂM TRA.
 DỊCH CHUYỂN CÓ THỂ BỎ QUA ĐIỂM KIỂM TRA CỐT TRUYỆN, VÌ VẬY NẾU BẠN KHÔNG THỂ TIẾP TỤC, HÃY QUAY LẠI CON ĐƯỜNG ĐỂ KÍCH HOẠT CỐT TRUYỆN.
 TỐT HƠN HẾT LÀ HOÀN THÀNH CỐT TRUYỆN ĐẦU TIÊN TRƯỚC KHI SỬ DỤNG DỊCH CHUYỂN.`,
                     "link": "https://play.google.com/store/apps/details?id=com.gryphline.endfield.gp&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "7Kgy07l_kMo",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Arknights Endfieldvn.png?raw=true",
                     "free": false,
@@ -2331,17 +2331,29 @@ TỐT HƠN HẾT LÀ HOÀN THÀNH CỐT TRUYỆN ĐẦU TIÊN TRƯỚC KHI SỬ 
                 },
                 {
                     "name": "Arknights: Endfield",
-                    "note": "Damage Multiplier, Damage Reduction, Teleport to quest check point, Speed",
+                    "note": "Damage Multiplier, Damage Reduction, Teleport to quest check point, Unlimited Stamina, Speed",
                     "description": `ONLY USE TELEPORT WHEN YOU SEE THE CHECK POINT DISTANCE.
 TELEPORT MAY SKIP THE STORY CHECKPOINT SO IF YOU CANNOT GO ON. JUST GO BACK THE ROAD TO ACTIVATE THE STORY
 BETTER TO FINISH THE FIRST STORY BEFORE USING TELEPORT`,
                     "link": "https://play.google.com/store/apps/details?id=com.gryphline.endfield.gp&ref=edenmod.net",
-                    "videoId": "xxx",
+                    "videoId": "7Kgy07l_kMo",
                     "discordLink": "https://discord.gg/edenmod",
                     "image": "https://github.com/shorekeeperZZZ/image/blob/main/Arknights Endfield.png?raw=true",
                     "free": false,
                     "vip": true
+                },              
+                {
+                    "name": "신궁 키우기 : 방치형 RPG (Raising the Archmage: Idle RPG)",
+                    "note": "Damage Multiplier, Damage Reduction, Max Attack Range, Fast Skill Cooltime, Speed",
+                    "description": ``,
+                    "link": "https://play.google.com/store/apps/details?id=com.rp.archer&ref=edenmod.net",
+                    "videoId": "XTQnZwoHdhE",
+                    "discordLink": "https://discord.gg/edenmod",
+                    "image": "https://github.com/shorekeeperZZZ/image/blob/main/Raising the Archmage Idle RPG.png?raw=true",
+                    "free": false,
+                    "vip": false
                 },
+
 
 
                                    
