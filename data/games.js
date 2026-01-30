@@ -2372,6 +2372,18 @@ BETTER TO FINISH THE FIRST STORY BEFORE USING TELEPORT`,
         "vip": false
     },
 
+    {
+        "name": "LUDUS・Strategy PvP Battle Game",
+        "note": "Gold & Diamond Hack, Speed",
+        "description": ``,
+        "link": "https://play.google.com/store/apps/details?id=com.studion.mergearena&ref=edenmod.net",
+        "videoId": "xxx",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/LUDUS・Strategy PvP Battle Game.png?raw=true",
+        "free": false,
+        "vip": true
+    },
+
 
 
 
