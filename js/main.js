@@ -7,6 +7,7 @@ window.addEventListener('load', () => {
 });
 
 // --- Main App Logic ---
+// --- Main App Logic ---
 document.addEventListener('DOMContentLoaded', () => {
     const mainView = document.getElementById('main-view');
     const detailView = document.getElementById('detail-view');
@@ -18,22 +19,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterFreeBtn = document.getElementById('filter-free');
     const filterNormalBtn = document.getElementById('filter-normal');
 
+    // Elements for Favorites (Future implementation if button added)
+    // const filterFavBtn = document.getElementById('filter-fav'); 
+
     let currentFilter = 'all';
+    let allGamesData = [];
+    let savedScrollPosition = 0;
 
-    // Lấy dữ liệu từ file games.js (biến global window.gameDataSource)
-    const rawGameData = window.gameDataSource || [];
 
-    const processData = (rawData) => {
-        return rawData.map(game => {
-            const features = (game.note || '').split(/,/).map(f => f.trim()).filter(f => f);
-            const id = game.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-            const isFree = game.free === true;
-            return { ...game, id, features, vip: game.vip || false, free: isFree };
-        });
+    // --- Helpers ---
+    const normalizeStr = (str) => {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
     };
 
-    const gameData = processData(rawGameData);
 
+
+    // --- Skeleton Loading ---
+    const renderSkeleton = () => {
+        gameListContainer.innerHTML = '';
+        const skeletonCount = 12;
+        for (let i = 0; i < skeletonCount; i++) {
+            const card = document.createElement('div');
+            card.className = 'game-card skeleton-card';
+            card.style.pointerEvents = 'none';
+            card.innerHTML = `
+                <div class="skeleton-image" style="width:100%; aspect-ratio:16/9; background:rgba(255,255,255,0.05); border-radius:12px; margin-bottom:1rem; animation: pulse 1.5s infinite;"></div>
+                <div class="skeleton-text" style="height:24px; width:70%; background:rgba(255,255,255,0.05); border-radius:4px; margin-bottom:0.5rem; animation: pulse 1.5s infinite;"></div>
+                <div class="skeleton-text" style="height:16px; width:40%; background:rgba(255,255,255,0.05); border-radius:4px; animation: pulse 1.5s infinite;"></div>
+            `;
+            gameListContainer.appendChild(card);
+        }
+    };
+
+    // --- Data Fetching ---
+    const fetchGameData = async () => {
+        renderSkeleton();
+        try {
+            // Simulate minimal network delay for skeleton demo (optional, remove in prod)
+            // await new Promise(r => setTimeout(r, 800)); 
+
+            const response = await fetch('data/games.json');
+            if (!response.ok) throw new Error('Failed to load data');
+            const data = await response.json();
+
+            allGamesData = data.map(game => {
+                const features = (game.note || '').split(/,/).map(f => f.trim()).filter(f => f);
+                const id = game.name ? game.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'unknown';
+                const isFree = game.free === true;
+                return { ...game, id, features, vip: game.vip || false, free: isFree };
+            });
+
+            renderGameList();
+        } catch (error) {
+            gameListContainer.innerHTML = `<p style="text-align:center; color:red;">Lỗi tải dữ liệu: ${error.message}</p>`;
+            console.error(error);
+        }
+    };
+
+    // --- Rendering ---
     const displayGames = (games) => {
         gameListContainer.innerHTML = '';
         gameCounter.textContent = `Hiển thị ${games.length} game.`;
@@ -43,61 +86,148 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const fragment = document.createDocumentFragment();
+
         games.slice().reverse().forEach(game => {
             const card = document.createElement('article');
             const classes = ['game-card'];
             if (game.vip) classes.push('is-vip');
             if (game.free) classes.push('is-free');
+            if (!game.vip && !game.free) classes.push('is-plus');
             card.className = classes.join(' ');
             card.dataset.gameId = game.id;
 
+            // Determine badge
+            let badges = '';
+            if (game.free) {
+                badges += `<div class="free-badge">FREE</div>`;
+            } else if (game.vip) {
+                badges += `<div class="vip-badge">VIP</div>`;
+            } else {
+                badges += `<div class="plus-badge">PLUS</div>`;
+            }
+
+
+
+            // VIP Logic for Fav position override if needed, but flex/absolute works. 
+            // Note: Reuse existing badge class, adjusted positions in CSS.
+
             const featuresHTML = game.features.length > 0 ?
-                `<ul class="features-list">${game.features.map(f => `<li class="feature-tag">${f}</li>`).join('')}</ul>` :
+                `<ul class="features-list">${game.features.slice(0, 4).map(f => `<li class="feature-tag">${f}</li>`).join('')}${game.features.length > 4 ? '<li class="feature-tag">...</li>' : ''}</ul>` :
                 '<p style="font-size: 0.9rem; color: var(--text-secondary);">Chưa có thông tin.</p>';
 
-            const vipBadgeHTML = game.vip ? `<div class="vip-badge">VIP</div>` : '';
-            const freeBadgeHTML = game.free ? `<div class="free-badge">FREE</div>` : '';
-
             card.innerHTML = `
-                ${freeBadgeHTML}
-                ${vipBadgeHTML}
+                ${badges}
+
                 <img class="game-card-image" 
                     src="${(game.image || '').replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/')}"
                     alt="Ảnh bìa ${game.name}" 
                     loading="lazy"
-                    onerror="
-                        if (!this.dataset.retried) {
-                            this.dataset.retried = true; 
-                            this.src = this.src; /* Thử tải lại 1 lần nữa */
-                        } else {
-                            this.onerror = null; 
-                            this.src = 'https://placehold.co/400x200/0d1117/8b949e?text=Image+Error';
-                        }
-                    ">
+                    onerror="this.onerror=null; this.src='https://placehold.co/400x200/0d1117/8b949e?text=No+Image';">
                 <h3>${game.name}</h3>
                 <p class="mod-author-note">100% apk and No root by Nobody</p>
                 <div class="features-wrapper"><strong>Tính năng Mod:</strong>${featuresHTML}</div>`;
 
-            card.addEventListener('click', () => showDetailView(game.id));
-            gameListContainer.appendChild(card);
+            // Event Listeners
+            card.addEventListener('click', (e) => {
+                showDetailView(game.id);
+            });
+
+            fragment.appendChild(card);
+        });
+
+        gameListContainer.appendChild(fragment);
+    };
+
+    const renderGameList = () => {
+        const searchTerm = normalizeStr(searchInput.value.trim());
+        let filteredGames = allGamesData;
+
+        // Filter Logic
+        if (currentFilter === 'vip') filteredGames = filteredGames.filter(g => g.vip);
+        else if (currentFilter === 'free') filteredGames = filteredGames.filter(g => g.free);
+        else if (currentFilter === 'normal') filteredGames = filteredGames.filter(g => !g.vip && !g.free);
+        // else if (currentFilter === 'fav') filteredGames = filteredGames.filter(g => favorites.includes(g.id));
+
+        // Search Logic (Fuzzy-ish)
+        if (searchTerm) {
+            filteredGames = filteredGames.filter(game => {
+                const name = normalizeStr(game.name || '');
+                const desc = normalizeStr(game.description || '');
+                const note = normalizeStr(game.note || ''); // Search in features too
+                return name.includes(searchTerm) || desc.includes(searchTerm) || note.includes(searchTerm);
+            });
+        }
+
+        displayGames(filteredGames);
+    };
+
+    // --- Detail View Logic ---
+    const showDetailView = (gameId) => {
+        const game = allGamesData.find(g => g.id === gameId);
+        if (!game) return;
+
+        // View Transition Logic
+        if (!document.startViewTransition) {
+            // Fallback for browsers without View Transitions support
+            fallbackShowDetail(game);
+            return;
+        }
+
+        // 1. Assign unique view-transition-name to the clicked card image
+        const clickedCard = document.querySelector(`.game-card[data-game-id="${gameId}"]`);
+        const cardImg = clickedCard ? clickedCard.querySelector('.game-card-image') : null;
+
+        if (cardImg) cardImg.style.viewTransitionName = 'hero-image';
+
+        // 2. Start Transition
+        const transition = document.startViewTransition(() => {
+            savedScrollPosition = window.scrollY;
+
+            // Switch DOM
+            document.querySelector('.header').style.display = 'none';
+            mainView.style.display = 'none';
+            detailView.style.display = 'block';
+            detailView.style.opacity = '1'; // CSS handled by class
+
+            // Update content
+            updateDetailContent(game);
+
+            // Assign transition name to target (video wrapper essentially acts as the hero image destination)
+            const videoContainer = document.querySelector('.video-wrapper');
+            if (videoContainer) videoContainer.style.viewTransitionName = 'hero-image';
+
+            window.scrollTo(0, 0);
+        });
+
+        // 3. Cleanup after transition
+        transition.finished.then(() => {
+            if (cardImg) cardImg.style.viewTransitionName = '';
+            const videoContainer = document.querySelector('.video-wrapper');
+            if (videoContainer) videoContainer.style.viewTransitionName = '';
         });
     };
 
-    const showDetailView = (gameId) => {
-        document.querySelector('.header').style.display = 'none';
-        const game = gameData.find(g => g.id === gameId);
-        if (!game) return;
+    // Helper to populate content (extracted to be reusable)
+    const updateDetailContent = (game) => {
+        // Set Blurred Background
+        const bgUrl = (game.image || '').replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+        const detailBg = document.getElementById('detail-bg');
+        if (detailBg) detailBg.style.backgroundImage = `url('${bgUrl}')`;
 
-        document.getElementById('detail-title').innerHTML = `<a href="${game.link || '#'}" target="_blank" rel="noopener noreferrer">${game.name}</a>`;
+        // Populate Text Data
+        document.getElementById('detail-title').innerHTML = `<a href="${game.link || '#'}" target="_blank">${game.name}</a>`;
         document.getElementById('video-container').innerHTML = game.videoId && game.videoId !== "xxx" ?
             `<iframe src="https://www.youtube.com/embed/${game.videoId}" frameborder="0" allowfullscreen></iframe>` :
-            `<div style="text-align:center; padding: 2rem;">Không có video demo.</div>`;
-        document.querySelector('#detail-description p').textContent = game.description || "Chưa có mô tả.";
+            `<img src="${bgUrl}" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" alt="Backup Image">`;
+
+        // Features
         document.querySelector('#detail-features .features-list').innerHTML = game.features.map(f =>
             `<li class="feature-tag">${f}</li>`
         ).join('');
         document.getElementById('detail-discord-link').href = game.discordLink || "https://discord.gg/edenmod";
 
+        // Download Link
         const downloadLink = document.getElementById('download-link');
         if (downloadLink) {
             if (game.link && game.link !== "link") {
@@ -109,54 +239,100 @@ document.addEventListener('DOMContentLoaded', () => {
                 downloadLink.href = '#';
             }
         }
-
-        mainView.style.display = 'none';
-        detailView.style.display = 'block';
-        window.scrollTo(0, 0);
     };
 
-    const renderGameList = () => {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        let filteredGames = gameData;
+    const fallbackShowDetail = (game) => {
+        savedScrollPosition = window.scrollY;
+        document.querySelector('.header').style.display = 'none';
+        mainView.style.opacity = '0';
+        setTimeout(() => {
+            mainView.style.display = 'none';
+            detailView.style.display = 'block';
+            detailView.style.opacity = '0';
+            updateDetailContent(game);
+            requestAnimationFrame(() => {
+                detailView.style.transition = 'opacity 0.3s ease';
+                detailView.style.opacity = '1';
+                window.scrollTo(0, 0);
+            });
+        }, 200);
+    };
 
-        if (currentFilter === 'vip') {
-            filteredGames = filteredGames.filter(game => game.vip);
-        } else if (currentFilter === 'free') {
-            filteredGames = filteredGames.filter(game => game.free);
-        } else if (currentFilter === 'normal') {
-            filteredGames = filteredGames.filter(game => !game.vip && !game.free);
+    window.showMainView = () => {
+        if (!document.startViewTransition) {
+            fallbackShowMain();
+            return;
         }
 
-        if (searchTerm) {
-            filteredGames = filteredGames.filter(game => game.name.toLowerCase().includes(searchTerm));
-        }
+        const transition = document.startViewTransition(() => {
+            detailView.style.display = 'none';
+            document.querySelector('.header').style.display = 'flex';
+            mainView.style.display = 'block';
+            window.scrollTo(0, savedScrollPosition);
+        });
+    };
 
-        displayGames(filteredGames);
+    const fallbackShowMain = () => {
+        detailView.style.opacity = '0';
+        setTimeout(() => {
+            detailView.style.display = 'none';
+            document.querySelector('.header').style.display = 'flex';
+            mainView.style.display = 'block';
+
+            // Restore scroll
+            window.scrollTo(0, savedScrollPosition);
+
+            requestAnimationFrame(() => {
+                mainView.style.transition = 'opacity 0.3s ease';
+                mainView.style.opacity = '1';
+            });
+        }, 200);
     };
 
     window.copyDiscordLink = (button) => {
         const link = document.getElementById('detail-discord-link').href;
         navigator.clipboard.writeText(link).then(() => {
-            button.textContent = 'Đã sao chép!';
-            setTimeout(() => { button.textContent = 'Sao chép Link'; }, 2000);
+            showToast('Đã sao chép link Discord!', 'success');
+        }).catch(() => {
+            showToast('Lỗi khi sao chép!', 'error');
         });
     };
 
-    window.showMainView = () => {
-        document.querySelector('.header').style.display = 'flex';
-        detailView.style.display = 'none';
-        mainView.style.display = 'block';
+    // --- Toast Logic ---
+    const showToast = (message, type = 'success') => {
+        let container = document.querySelector('.toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        // Simple icons based on type
+        const icon = type === 'success' ? '✅' : '⚠️';
+        toast.innerHTML = `<i>${icon}</i> ${message}`;
+
+        container.appendChild(toast);
+
+        // Auto remove
+        setTimeout(() => {
+            toast.style.animation = 'slideOutRight 0.3s ease-in forwards';
+            toast.addEventListener('animationend', () => toast.remove());
+        }, 3000);
     };
 
-    // --- Init App ---
-    renderGameList();
-    searchInput.addEventListener('input', renderGameList);
+    // --- Init ---
+    fetchGameData();
+
+    // Event Listeners
+    searchInput.addEventListener('input', () => renderGameList());
 
     const setActiveBtn = (btn) => {
         [filterAllBtn, filterVipBtn, filterFreeBtn, filterNormalBtn].forEach(b => {
-            if(b) b.classList.remove('active');
+            if (b) b.classList.remove('active');
         });
-        if(btn) btn.classList.add('active');
+        if (btn) btn.classList.add('active');
     };
 
     if (filterAllBtn) filterAllBtn.addEventListener('click', () => { currentFilter = 'all'; setActiveBtn(filterAllBtn); renderGameList(); });
@@ -164,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (filterFreeBtn) filterFreeBtn.addEventListener('click', () => { currentFilter = 'free'; setActiveBtn(filterFreeBtn); renderGameList(); });
     if (filterNormalBtn) filterNormalBtn.addEventListener('click', () => { currentFilter = 'normal'; setActiveBtn(filterNormalBtn); renderGameList(); });
 
+    // Scroll To Top
     const scrollToTopBtn = document.getElementById('scroll-to-top');
     window.addEventListener('scroll', () => {
         if (scrollToTopBtn) scrollToTopBtn.classList.toggle('visible', window.scrollY > 300);
@@ -174,95 +351,205 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- Announcement Modal Logic ---
-(function() {
-  const BACKDROP_ID = 'policy-modal-backdrop';
-  const KEY_UNTIL   = 'edenmod_policy_dismiss_until_3h';
-  const KEY_LANG    = 'edenmod_policy_lang';
-  const KEY_VER     = 'edenmod_policy_version';
-  const NOTICE_VERSION = '2025-10-31-v2';
-  const DISMISS_HOURS = 3;
+(function () {
+    const BACKDROP_ID = 'policy-modal-backdrop';
+    const KEY_UNTIL = 'edenmod_policy_dismiss_until_3h';
+    const KEY_LANG = 'edenmod_policy_lang';
+    const KEY_VER = 'edenmod_policy_version';
+    const NOTICE_VERSION = '2025-10-31-v2';
+    const DISMISS_HOURS = 3;
 
-  function setStore(key, val) { try { localStorage.setItem(key, val); } catch(e) { try { document.cookie = encodeURIComponent(key) + '=' + encodeURIComponent(val) + '; path=/; max-age=' + (365*24*3600); } catch(e2){} } }
-  function getStore(key) { try { return localStorage.getItem(key); } catch(e) { const m = document.cookie.match(new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)')); return m ? decodeURIComponent(m[1]) : null; } }
-  function delStore(key) { try { localStorage.removeItem(key); } catch(e) { document.cookie = encodeURIComponent(key) + '=; path=/; max-age=0'; } }
+    function setStore(key, val) { try { localStorage.setItem(key, val); } catch (e) { try { document.cookie = encodeURIComponent(key) + '=' + encodeURIComponent(val) + '; path=/; max-age=' + (365 * 24 * 3600); } catch (e2) { } } }
+    function getStore(key) { try { return localStorage.getItem(key); } catch (e) { const m = document.cookie.match(new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)')); return m ? decodeURIComponent(m[1]) : null; } }
+    function delStore(key) { try { localStorage.removeItem(key); } catch (e) { document.cookie = encodeURIComponent(key) + '=; path=/; max-age=0'; } }
 
-  const $backdrop = document.getElementById(BACKDROP_ID);
-  const $modal    = document.getElementById('policy-modal');
-  const $langVI   = document.getElementById('lang-vi');
-  const $langEN   = document.getElementById('lang-en');
-  const $boxVI    = document.getElementById('policy-vi');
-  const $boxEN    = document.getElementById('policy-en');
-  const $dont3h   = document.getElementById('dont-show-3h');
-  const $close    = document.getElementById('policy-close');
-  const $ok       = document.getElementById('policy-accept');
-  const $dontText = document.getElementById('dont-show-text');
+    const $backdrop = document.getElementById(BACKDROP_ID);
+    const $modal = document.getElementById('policy-modal');
+    const $langVI = document.getElementById('lang-vi');
+    const $langEN = document.getElementById('lang-en');
+    const $boxVI = document.getElementById('policy-vi');
+    const $boxEN = document.getElementById('policy-en');
+    const $dont3h = document.getElementById('dont-show-3h');
+    const $close = document.getElementById('policy-close');
+    const $ok = document.getElementById('policy-accept');
+    const $dontText = document.getElementById('dont-show-text');
 
-  const storedLang = (getStore(KEY_LANG) || '').toLowerCase();
-  const browserLang = (navigator.language || '').toLowerCase();
-  const preferVI = storedLang ? storedLang === 'vi' : browserLang.startsWith('vi');
+    const storedLang = (getStore(KEY_LANG) || '').toLowerCase();
+    const browserLang = (navigator.language || '').toLowerCase();
+    const preferVI = storedLang ? storedLang === 'vi' : browserLang.startsWith('vi');
 
-  function setLang(lang) {
-    const vi = lang === 'vi';
-    if($langVI) {
-        $langVI.classList.toggle('active', vi);
-        $langVI.setAttribute('aria-selected', vi ? 'true' : 'false');
+    function setLang(lang) {
+        const vi = lang === 'vi';
+        if ($langVI) {
+            $langVI.classList.toggle('active', vi);
+            $langVI.setAttribute('aria-selected', vi ? 'true' : 'false');
+        }
+        if ($langEN) {
+            $langEN.classList.toggle('active', !vi);
+            $langEN.setAttribute('aria-selected', !vi ? 'true' : 'false');
+        }
+        if ($boxVI) $boxVI.style.display = vi ? '' : 'none';
+        if ($boxEN) $boxEN.style.display = vi ? 'none' : '';
+        if ($dontText) $dontText.textContent = vi ? 'Đừng hiện lại trong 3 giờ' : "Don't show again for 3 hours";
+        setStore(KEY_LANG, vi ? 'vi' : 'en');
     }
-    if($langEN) {
-        $langEN.classList.toggle('active', !vi);
-        $langEN.setAttribute('aria-selected', !vi ? 'true' : 'false');
+
+    function shouldShow() {
+        try {
+            const ver = getStore(KEY_VER);
+            if (ver !== NOTICE_VERSION) return true;
+            const until = Number(getStore(KEY_UNTIL) || 0);
+            return Date.now() > until;
+        } catch (e) { return true; }
     }
-    if($boxVI) $boxVI.style.display = vi ? '' : 'none';
-    if($boxEN) $boxEN.style.display = vi ? 'none' : '';
-    if($dontText) $dontText.textContent = vi ? 'Đừng hiện lại trong 3 giờ' : "Don't show again for 3 hours";
-    setStore(KEY_LANG, vi ? 'vi' : 'en');
-  }
 
-  function shouldShow() {
-    try {
-      const ver = getStore(KEY_VER);
-      if (ver !== NOTICE_VERSION) return true;
-      const until = Number(getStore(KEY_UNTIL) || 0);
-      return Date.now() > until;
-    } catch(e) { return true; }
-  }
-
-  function afterDismiss(save3h) {
-    try { setStore(KEY_VER, NOTICE_VERSION); } catch(e){}
-    if (save3h) {
-      const until = Date.now() + DISMISS_HOURS*60*60*1000;
-      try { setStore(KEY_UNTIL, String(until)); } catch(e){}
-    } else {
-      try { delStore(KEY_UNTIL); } catch(e){}
+    function afterDismiss(save3h) {
+        try { setStore(KEY_VER, NOTICE_VERSION); } catch (e) { }
+        if (save3h) {
+            const until = Date.now() + DISMISS_HOURS * 60 * 60 * 1000;
+            try { setStore(KEY_UNTIL, String(until)); } catch (e) { }
+        } else {
+            try { delStore(KEY_UNTIL); } catch (e) { }
+        }
     }
-  }
 
-  function showModal() {
-    if(!$backdrop) return;
-    $backdrop.classList.add('show');
-    $backdrop.setAttribute('aria-hidden','false');
-  }
-  function hideModal() {
-    if(!$backdrop) return;
-    $backdrop.classList.remove('show');
-    $backdrop.setAttribute('aria-hidden','true');
-  }
+    function showModal() {
+        if (!$backdrop) return;
+        $backdrop.classList.add('show');
+        $backdrop.setAttribute('aria-hidden', 'false');
+    }
+    function hideModal() {
+        if (!$backdrop) return;
+        $backdrop.classList.remove('show');
+        $backdrop.setAttribute('aria-hidden', 'true');
+    }
 
-  function dismiss(save3h) { afterDismiss(save3h); hideModal(); }
+    function dismiss(save3h) { afterDismiss(save3h); hideModal(); }
 
-  if($langVI) $langVI.addEventListener('click', () => setLang('vi'));
-  if($langEN) $langEN.addEventListener('click', () => setLang('en'));
-  if($close) $close.addEventListener('click', () => dismiss($dont3h?.checked));
-  if($ok) $ok.addEventListener('click',   () => dismiss($dont3h?.checked));
-  if($backdrop) $backdrop.addEventListener('click', (e) => { if (e.target === $backdrop) dismiss($dont3h?.checked); });
+    if ($langVI) $langVI.addEventListener('click', () => setLang('vi'));
+    if ($langEN) $langEN.addEventListener('click', () => setLang('en'));
+    if ($close) $close.addEventListener('click', () => dismiss($dont3h?.checked));
+    if ($ok) $ok.addEventListener('click', () => dismiss($dont3h?.checked));
+    if ($backdrop) $backdrop.addEventListener('click', (e) => { if (e.target === $backdrop) dismiss($dont3h?.checked); });
 
-  setLang(preferVI ? 'vi' : 'en');
-  if (shouldShow()) showModal();
+    setLang(preferVI ? 'vi' : 'en');
+    if (shouldShow()) showModal();
 })();
 
 // --- Anti-DevTools Script ---
-document.addEventListener('contextmenu', function(e) { e.preventDefault(); }, false);
-document.addEventListener('keydown', function(e) {
+document.addEventListener('contextmenu', function (e) { e.preventDefault(); }, false);
+document.addEventListener('keydown', function (e) {
     if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); return false; }
     if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.keyCode === 73 || e.key === 'J' || e.keyCode === 74 || e.key === 'C' || e.keyCode === 67)) { e.preventDefault(); return false; }
     if (e.ctrlKey && (e.key === 'U' || e.keyCode === 85)) { e.preventDefault(); return false; }
 });
+
+// --- Mouse Trail Logic ---
+document.addEventListener('mousemove', (e) => {
+    // Throttle creation for performance
+    if (Math.random() > 0.3) return;
+
+    const particle = document.createElement('div');
+    particle.className = 'mouse-trail-particle';
+    particle.style.left = `${e.clientX}px`;
+    particle.style.top = `${e.clientY}px`;
+
+    // Randomize slightly color
+    const colors = ['#00f0ff', '#58a6ff', '#bf00ff'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    particle.style.backgroundColor = randomColor;
+    particle.style.boxShadow = `0 0 8px ${randomColor}`;
+
+    document.body.appendChild(particle);
+
+    // Remove after animation (0.6s matched CSS)
+    setTimeout(() => {
+        particle.remove();
+    }, 600);
+});
+
+// --- Seasonal Theme System ---
+let particleInterval;
+
+window.setTheme = (theme) => {
+    const body = document.body;
+    // Remove all theme classes first
+    body.classList.remove('theme-spring', 'theme-summer', 'theme-autumn', 'theme-winter');
+
+    // Add new theme
+    if (theme) body.classList.add(`theme-${theme}`);
+
+    // Save preference
+    if (theme) localStorage.setItem('edenTheme', theme);
+
+    // Restart Particles
+    startSeasonalParticles(theme);
+};
+
+const applyAutoTheme = () => {
+    // Check saved theme first
+    const saved = localStorage.getItem('edenTheme');
+    if (saved) {
+        setTheme(saved);
+        return;
+    }
+
+    const month = new Date().getMonth() + 1; // 1-12
+    let theme = 'winter';
+    if (month >= 3 && month <= 5) theme = 'spring';
+    else if (month >= 6 && month <= 8) theme = 'summer';
+    else if (month >= 9 && month <= 11) theme = 'autumn';
+
+    setTheme(theme);
+};
+
+const startSeasonalParticles = (theme) => {
+    // Clear old interval
+    if (particleInterval) clearInterval(particleInterval);
+    // Remove old particles
+    document.querySelectorAll('.seasonal-particle').forEach(p => p.remove());
+
+    // Only spawn on PC/Tablet to save mobile battery
+    if (window.innerWidth < 768) return;
+
+    particleInterval = setInterval(() => {
+        const p = document.createElement('div');
+        p.classList.add('seasonal-particle');
+
+        let size = Math.random() * 10 + 5 + 'px';
+        let bg = '';
+        let shape = '50%';
+
+        if (theme === 'spring') {
+            bg = '#ffb7b2'; // Sakura
+            shape = '10px 0';
+        } else if (theme === 'summer') {
+            bg = 'rgba(255, 240, 0, 0.6)'; // Sunlight
+            size = Math.random() * 5 + 2 + 'px'; // Small dust
+        } else if (theme === 'autumn') {
+            bg = '#e29587'; // Leaf
+            shape = '0px';
+        } else if (theme === 'winter') {
+            bg = '#fff'; // Snow
+        } else {
+            return; // No particles
+        }
+
+        p.style.width = size;
+        p.style.height = size;
+        p.style.background = bg;
+        p.style.borderRadius = shape;
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.opacity = Math.random() * 0.8 + 0.2;
+        p.style.animationDuration = Math.random() * 5 + 5 + 's';
+
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 10000);
+    }, 400);
+};
+
+// Initialize
+window.addEventListener('load', applyAutoTheme);
+
+
+

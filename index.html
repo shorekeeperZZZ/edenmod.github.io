@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://discord.gg" crossorigin>
-    
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -36,7 +36,9 @@
                     </p>
                     <div class="policy-links">
                         <a href="https://discord.gg/edenmod" target="_blank" rel="noopener">Tham gia Discord</a>
-                        <p>Trong trường hợp máy chủ mod/cheat bị xóa hoặc ngừng hoạt động, mọi giao dịch mua liên quan sẽ không được hoàn tiền.</p>
+                        <p>Trong trường hợp máy chủ mod/cheat bị xóa hoặc ngừng hoạt động, mọi giao dịch mua liên
+                            quan
+                            sẽ không được hoàn tiền.</p>
                     </div>
                     <p>Vui lòng <strong>xem thông báo Update thường xuyên</strong> để nắm thông tin mới nhất.</p>
                 </div>
@@ -48,7 +50,8 @@
                     </p>
                     <div class="policy-links">
                         <a href="https://discord.gg/edenmod" target="_blank" rel="noopener">Join Discord</a>
-                        <p>In case the mod/cheat server is deleted or shut down. Any related purchases will not be refunded.</p>
+                        <p>In case the mod/cheat server is deleted or shut down. Any related purchases will not be
+                            refunded.</p>
                     </div>
                     <p>Please <strong>check updates regularly</strong> to stay current.</p>
                 </div>
@@ -67,6 +70,7 @@
         </div>
     </div>
 
+
     <div id="preloader">
         <div class="spinner"></div>
     </div>
@@ -74,21 +78,26 @@
     <header class="header electric-border">
         <img src="banner-edenmod.png" alt="Eden Mod Banner"
             style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-        <div style="position: relative; z-index: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div
+            style="position: relative; z-index: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <img src="edenimage.png" alt="Eden Mod Logo" class="header-logo" onerror="this.style.display='none'">
             <h1 class="electric-border electric-text"
                 style="margin-bottom: 1rem; padding: 0.3em 1em; background: rgba(22,27,34,0.55); border-radius: 18px; display: inline-block;">
                 EDENMOD.NET
             </h1>
-            <div style="margin-bottom: 1.5rem; text-align: center; padding: 0.5em 1em; background: rgba(22,27,34,0.45); font-size: 1.2rem; border-radius: 14px; max-width: 480px; display: flex; flex-direction: column; gap: 0.5em;">
+            <div
+                style="margin-bottom: 1.5rem; text-align: center; padding: 0.5em 1em; background: rgba(22,27,34,0.45); font-size: 1.2rem; border-radius: 14px; max-width: 480px; display: flex; flex-direction: column; gap: 0.5em;">
                 <div>
-                    <b style="color:#ede32a; text-shadow:0 0 8px #fff;">Không Root:</b> Mod game an toàn, không can thiệp hệ thống.
+                    <b style="color:#ede32a; text-shadow:0 0 8px #fff;">Không Root:</b> Mod game an toàn, không can
+                    thiệp hệ thống.
                 </div>
                 <div>
                     <b style="color:#58a6ff; text-shadow:0 0 8px #fff;">Không Phí:</b> Mod chất lượng, miễn phí.
                 </div>
                 <div>
-                    <b style="color:#ede32a; text-shadow:0 0 8px #fff;">Không "Làm màu":</b> Uy tín là hàng đầu, chất lượng là giá trị cốt lõi.
+                    <b style="color:#ede32a; text-shadow:0 0 8px #fff;">Không "Làm màu":</b> Uy tín là hàng đầu,
+                    chất
+                    lượng là giá trị cốt lõi.
                 </div>
             </div>
             <a href="https://discord.gg/edenmod" target="_blank" rel="noopener noreferrer"
@@ -120,37 +129,38 @@
             </main>
 
             <section id="detail-view">
-                <button class="back-button" onclick="showMainView()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="19" y1="12" x2="5" y2="12"></line>
-                        <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
-                    Quay lại
-                </button>
-                <div class="detail-content">
-                    <h2 id="detail-title"></h2>
+                <div id="detail-bg" aria-hidden="true"></div>
+                <div class="detail-container">
+                    <button class="back-button" onclick="showMainView()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                        Quay lại
+                    </button>
+                    <div class="detail-content">
+                        <h2 id="detail-title"></h2>
 
-                    <div class="video-wrapper">
-                        <div id="video-container"></div>
-                    </div>
+                        <div class="video-wrapper">
+                            <div id="video-container"></div>
+                        </div>
 
-                    <div id="detail-description">
-                        <h3>Giới thiệu</h3>
-                        <p></p>
-                    </div>
 
-                    <div id="detail-features">
-                        <h3>Tính năng Mod</h3>
-                        <ul class="features-list"></ul>
-                    </div>
 
-                    <div class="detail-actions">
-                        <a id="detail-discord-link" href="#" target="_blank" rel="noopener noreferrer">Vào Server Discord</a>
-                        <button id="copy-discord-link" onclick="copyDiscordLink(this)">Sao chép Link</button>
-                        <a id="download-link" href="#" target="_blank">Tải Game</a>
+                        <div id="detail-features">
+                            <h3>Tính năng Mod</h3>
+                            <ul class="features-list"></ul>
+                        </div>
+
+                        <div class="detail-actions">
+                            <a id="detail-discord-link" href="#" target="_blank" rel="noopener noreferrer">Vào
+                                Server
+                                Discord</a>
+                            <button id="copy-discord-link" onclick="copyDiscordLink(this)">Sao chép Link</button>
+                            <a id="download-link" href="#" target="_blank">Tải Game</a>
+                        </div>
                     </div>
-                </div>
             </section>
         </div>
     </div>
@@ -161,7 +171,20 @@
         <p>© 2025 Eden Mod. All rights reserved.</p>
     </footer>
 
-    <script src="data/games.js"></script>
+    <!-- Seasonal Theme Controls -->
+    <div id="theme-controls">
+        <button onclick="setTheme('spring')" title="Mùa Xuân" class="theme-btn"
+            style="--btn-color: #ff7eb3;">🌸</button>
+        <button onclick="setTheme('summer')" title="Mùa Hạ" class="theme-btn" style="--btn-color: #00d2ff;">☀️</button>
+        <button onclick="setTheme('autumn')" title="Mùa Thu" class="theme-btn" style="--btn-color: #ff9966;">🍁</button>
+        <button onclick="setTheme('winter')" title="Mùa Đông" class="theme-btn"
+            style="--btn-color: #a1ffce;">❄️</button>
+    </div>
+
+
+
+    <!-- Data is now loaded via fetch in main.js -->
     <script src="js/main.js"></script>
 </body>
+
 </html>
