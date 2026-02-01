@@ -2395,6 +2395,28 @@ When you want to buy, turn off the free reward.`,
         "free": false,
         "vip": false
     },
+    {
+        "name": "The Keeper : Idle RPG",
+        "note": "Damage Multiplier, Damage Reduction, Freeshop, Speed",
+        "description": ``,
+        "link": "https://play.google.com/store/apps/details?id=com.rrg.ecliptor.gp&ref=edenmod.net",
+        "videoId": "xxx",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/The Keeper Idle RPG.png?raw=true",
+        "free": false,
+        "vip": false
+    },
+    {
+        "name": "Box Head: Roguelike",
+        "note": "Damage Multiplier, Damage Reduction, Unlock Everything, Add Resources, Add Items, Max Upgrade (Open upgrade window first)",
+        "description": ``,
+        "link": "https://play.google.com/store/apps/details?id=com.migoigames.boxheadzombiesmustdie&ref=edenmod.net",
+        "videoId": "xxx",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Box Head Roguelike.png?raw=true",
+        "free": false,
+        "vip": false
+    },
 
 
 ]
