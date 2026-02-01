@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterFreeBtn = document.getElementById('filter-free');
     const filterNormalBtn = document.getElementById('filter-normal');
 
-    // Elements for Favorites (Future implementation if button added)
-    // const filterFavBtn = document.getElementById('filter-fav'); 
+
 
     let currentFilter = 'all';
     let allGamesData = [];
@@ -147,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentFilter === 'vip') filteredGames = filteredGames.filter(g => g.vip);
         else if (currentFilter === 'free') filteredGames = filteredGames.filter(g => g.free);
         else if (currentFilter === 'normal') filteredGames = filteredGames.filter(g => !g.vip && !g.free);
-        // else if (currentFilter === 'fav') filteredGames = filteredGames.filter(g => favorites.includes(g.id));
+
 
         // Search Logic (Fuzzy-ish)
         if (searchTerm) {
@@ -443,93 +442,3 @@ document.addEventListener('keydown', function (e) {
     if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.keyCode === 73 || e.key === 'J' || e.keyCode === 74 || e.key === 'C' || e.keyCode === 67)) { e.preventDefault(); return false; }
     if (e.ctrlKey && (e.key === 'U' || e.keyCode === 85)) { e.preventDefault(); return false; }
 });
-
-
-
-
-
-// --- Seasonal Theme System ---
-let particleInterval;
-
-window.setTheme = (theme) => {
-    const body = document.body;
-    // Remove all theme classes first
-    body.classList.remove('theme-spring', 'theme-summer', 'theme-autumn', 'theme-winter');
-
-    // Add new theme
-    if (theme) body.classList.add(`theme-${theme}`);
-
-    // Save preference
-    if (theme) localStorage.setItem('edenTheme', theme);
-
-    // Restart Particles
-    startSeasonalParticles(theme);
-};
-
-const applyAutoTheme = () => {
-    // Check saved theme first
-    const saved = localStorage.getItem('edenTheme');
-    if (saved) {
-        setTheme(saved);
-        return;
-    }
-
-    const month = new Date().getMonth() + 1; // 1-12
-    let theme = 'winter';
-    if (month >= 3 && month <= 5) theme = 'spring';
-    else if (month >= 6 && month <= 8) theme = 'summer';
-    else if (month >= 9 && month <= 11) theme = 'autumn';
-
-    setTheme(theme);
-};
-
-const startSeasonalParticles = (theme) => {
-    // Clear old interval
-    if (particleInterval) clearInterval(particleInterval);
-    // Remove old particles
-    document.querySelectorAll('.seasonal-particle').forEach(p => p.remove());
-
-    // Only spawn on PC/Tablet to save mobile battery
-    if (window.innerWidth < 768) return;
-
-    particleInterval = setInterval(() => {
-        const p = document.createElement('div');
-        p.classList.add('seasonal-particle');
-
-        let size = Math.random() * 10 + 5 + 'px';
-        let bg = '';
-        let shape = '50%';
-
-        if (theme === 'spring') {
-            bg = '#ffb7b2'; // Sakura
-            shape = '10px 0';
-        } else if (theme === 'summer') {
-            bg = 'rgba(255, 240, 0, 0.6)'; // Sunlight
-            size = Math.random() * 5 + 2 + 'px'; // Small dust
-        } else if (theme === 'autumn') {
-            bg = '#e29587'; // Leaf
-            shape = '0px';
-        } else if (theme === 'winter') {
-            bg = '#fff'; // Snow
-        } else {
-            return; // No particles
-        }
-
-        p.style.width = size;
-        p.style.height = size;
-        p.style.background = bg;
-        p.style.borderRadius = shape;
-        p.style.left = Math.random() * 100 + 'vw';
-        p.style.opacity = Math.random() * 0.8 + 0.2;
-        p.style.animationDuration = Math.random() * 5 + 5 + 's';
-
-        document.body.appendChild(p);
-        setTimeout(() => p.remove(), 10000);
-    }, 400);
-};
-
-// Initialize
-window.addEventListener('load', applyAutoTheme);
-
-
-
