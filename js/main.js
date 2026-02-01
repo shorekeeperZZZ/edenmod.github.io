@@ -444,29 +444,9 @@ document.addEventListener('keydown', function (e) {
     if (e.ctrlKey && (e.key === 'U' || e.keyCode === 85)) { e.preventDefault(); return false; }
 });
 
-// --- Mouse Trail Logic ---
-document.addEventListener('mousemove', (e) => {
-    // Throttle creation for performance
-    if (Math.random() > 0.3) return;
 
-    const particle = document.createElement('div');
-    particle.className = 'mouse-trail-particle';
-    particle.style.left = `${e.clientX}px`;
-    particle.style.top = `${e.clientY}px`;
 
-    // Randomize slightly color
-    const colors = ['#00f0ff', '#58a6ff', '#bf00ff'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    particle.style.backgroundColor = randomColor;
-    particle.style.boxShadow = `0 0 8px ${randomColor}`;
 
-    document.body.appendChild(particle);
-
-    // Remove after animation (0.6s matched CSS)
-    setTimeout(() => {
-        particle.remove();
-    }, 600);
-});
 
 // --- Seasonal Theme System ---
 let particleInterval;

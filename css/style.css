@@ -3,8 +3,9 @@
     --bg-primary: #05090e;
     /* Đen xanh sâu thẳm */
     --bg-secondary: #0f141c;
-    --glass-bg: rgba(15, 20, 28, 0.65);
-    --glass-bg-hover: rgba(15, 20, 28, 0.85);
+    --glass-bg: rgba(15, 20, 28, 0.75);
+    /* Increased opacity to compensate for less blur */
+    --glass-bg-hover: rgba(15, 20, 28, 0.9);
     --primary-accent: #00f0ff;
     /* Cyan Neon */
     --secondary-accent: #7000ff;
@@ -272,8 +273,8 @@ body::before {
 
 .controls-container {
     background-color: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 2rem;
@@ -377,8 +378,8 @@ body::before {
 
 .game-card {
     background: rgba(15, 20, 28, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-radius: 20px;
     padding: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -484,6 +485,8 @@ body::before {
     color: #fff;
     box-shadow: 0 0 10px rgba(191, 0, 255, 0.5);
 }
+
+
 
 .game-card-image {
     width: 100%;
@@ -615,8 +618,8 @@ body::before {
     margin: 4rem auto;
     padding: 2rem;
     background: rgba(22, 27, 34, 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -658,8 +661,8 @@ body::before {
 }
 
 .detail-content {
-    background: rgba(22, 27, 34, 0.85);
-    backdrop-filter: blur(16px);
+    background: rgba(22, 27, 34, 0.9);
+    backdrop-filter: blur(10px);
     box-shadow: 0 12px 48px 0 rgba(88, 166, 255, 0.15), 0 2px 8px 0 rgba(0, 0, 0, 0.25);
     border: 2px solid var(--primary-accent);
     border-radius: 24px;
@@ -1067,76 +1070,4 @@ body::before {
 .skeleton-card {
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.02);
-}
-
-
-
-/* --- SEASONAL THEMES --- */
-/* Spring: Pink/Green */
-body.theme-spring {
-    --primary-accent: #ff7eb3;
-    --secondary-accent: #7afcbb;
-}
-
-/* Summer: Blue/Yellow */
-body.theme-summer {
-    --primary-accent: #00d2ff;
-    --secondary-accent: #fdd700;
-}
-
-/* Autumn: Orange/Brown */
-body.theme-autumn {
-    --primary-accent: #ff9966;
-    --secondary-accent: #ff5e62;
-}
-
-/* Winter: Cyan/White */
-body.theme-winter {
-    --primary-accent: #a1ffce;
-    --secondary-accent: #faffd1;
-}
-
-/* Theme Controls */
-#theme-controls {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    padding: 8px;
-    border-radius: 50px;
-    display: flex;
-    gap: 8px;
-    z-index: 10000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.theme-btn {
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    transition: transform 0.2s, background 0.2s;
-}
-
-.theme-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.2);
-}
-
-/* Particles */
-.seasonal-particle {
-    position: fixed;
-    top: -20px;
-    z-index: 1000;
-    pointer-events: none;
-    animation: fall linear forwards;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(720deg);
-    }
 }
