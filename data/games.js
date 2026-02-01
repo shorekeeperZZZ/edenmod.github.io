@@ -2384,8 +2384,17 @@ When you want to buy, turn off the free reward.`,
         "free": false,
         "vip": true
     },
-
-
+    {
+        "name": "Mini Legion: Warband(히어로 모험단)",
+        "note": "Vip Benefits",
+        "description": ``,
+        "link": "https://play.google.com/store/apps/details?id=com.minilegionrise.gp&ref=edenmod.net",
+        "videoId": "xxx",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Mini Legion Warband.png?raw=true",
+        "free": false,
+        "vip": false
+    },
 
 
 ]
