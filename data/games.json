@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "name": "Kho Báu Đại Chiến",
         "note": "Damage Multiplier, Defense Multiplier",
@@ -1038,16 +1038,6 @@
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/DaysBygoneCastle_Defense.webp?raw=true",
         "free": false,
         "vip": true
-    },
-    {
-        "name": "Box Head: Roguelike",
-        "note": "God Mod, Damage Multiplier, Drop Multiplier, Unlimited Stamina, Unlimited No Ads Tokens, All Skins Purchased",
-        "link": "https://play.google.com/store/apps/details?id=com.migoigames.boxheadzombiesmustdie",
-        "videoId": "OwwYH-sWKtY",
-        "discordLink": "https://discord.gg/edenmod",
-        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Box Head Roguelike.png?raw=true",
-        "free": true,
-        "vip": false
     },
     {
         "name": "Huyền Thoại Diêm La (Legend of Yeomra)",
@@ -2392,7 +2382,7 @@
         "name": "Box Head: Roguelike",
         "note": "Damage Multiplier, Damage Reduction, Unlock Everything, Add Resources, Add Items, Max Upgrade (Open upgrade window first)",
         "link": "https://play.google.com/store/apps/details?id=com.migoigames.boxheadzombiesmustdie\u0026ref=edenmod.net",
-        "videoId": "xxx",
+        "videoId": "gwxXCLvQsjc",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Box Head Roguelike.png?raw=true",
         "free": false,
@@ -2402,10 +2392,20 @@
         "name": "Demon Fall : Idle RPG",
         "note": "Damage Multiplier, Damage Reduction, Freeshop, Speed",
         "link": "https://play.google.com/store/apps/details?id=net.gameduo.cd\u0026ref=edenmod.net",
-        "videoId": "xxx",
+        "videoId": "SCtW6jcdo6A",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Demon Fall Idle RPG.png?raw=true",
         "free": false,
         "vip": false
+    },
+    {
+        "name": "Evil Lands",
+        "note": "Resource Hack",
+        "link": "https://play.google.com/store/apps/details?id=com.ragequitgames.evillands&hl=vi&ref=edenmod.net",
+        "videoId": "cZgVbE2J734",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Evil Lands.png?raw=true",
+        "free": false,
+        "vip": true
     }
 ]
