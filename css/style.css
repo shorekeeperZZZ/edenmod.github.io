@@ -57,7 +57,7 @@ body::before {
         radial-gradient(circle at 50% 50%, rgba(255, 0, 85, 0.05), transparent 40%);
     filter: blur(60px);
     z-index: -1;
-    animation: auroraMove 15s ease-in-out infinite alternate;
+    /* animation: auroraMove 15s ease-in-out infinite alternate; */
 }
 
 @keyframes auroraMove {
@@ -523,7 +523,7 @@ body::before {
 }
 
 .mod-author-note {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
     text-align: left;
     margin-bottom: 1rem;

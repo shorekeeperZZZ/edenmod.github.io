@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     loading="lazy"
                     onerror="this.onerror=null; this.src='https://placehold.co/400x200/0d1117/8b949e?text=No+Image';">
                 <h3>${game.name}</h3>
-                <p class="mod-author-note">100% apk and No root by Nobody</p>
+                <p class="mod-author-note">100% apk and No root by Nobody. Android and emulator only.</p>
                 <div class="features-wrapper"><strong>Tính năng Mod:</strong>${featuresHTML}</div>`;
 
             // Event Listeners
