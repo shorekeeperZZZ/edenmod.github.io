@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "name": "Kho Báu Đại Chiến",
         "note": "Damage Multiplier, Defense Multiplier",
@@ -2405,6 +2405,26 @@
         "videoId": "cZgVbE2J734",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Evil Lands.png?raw=true",
+        "free": false,
+        "vip": true
+    },
+    {
+        "name": "Grimguard Tactics: Fantasy RPG",
+        "note": "Free Shop, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.outerdawn.grimguard&hl=vi&ref=edenmod.net",
+        "videoId": "rlwvXlcsveA",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Grimguard Tactics Fantasy RPG.png?raw=true",
+        "free": false,
+        "vip": true
+    },
+    {
+        "name": "Pixel Guardians: Idle RPG",
+        "note": "Damage Multiplier, Damage Reduction, Free Shop, Unlimited Currencies, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.epixelgames.townguardians&ref=edenmod.net",
+        "videoId": "mFIfqsm-gz8",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Pixel Guardians Idle RPG.png?raw=true",
         "free": false,
         "vip": true
     }
