@@ -2427,5 +2427,35 @@
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Pixel Guardians Idle RPG.png?raw=true",
         "free": false,
         "vip": true
+    },
+    {
+        "name": "데빌 서머너 : 소환사 키우기 (Devil Summoner: Raising a Summoner)",
+        "note": "One Hit Kill, God Mode, Free Shop, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.LunaGames.Summoner&ref=edenmod.net",
+        "videoId": "4j8KcatnXwU",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Devil Summoner Raising a Summoner.png?raw=true",
+        "free": false,
+        "vip": false
+    },
+    {
+        "name": "Arcana Tactics: Tactical RPG",
+        "note": "Damage Multiplier, Damage Reduction, Free Shop, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.gamevil.arcanatactics.android.google.global.normal&hl=vi&ref=edenmod.net",
+        "videoId": "",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Arcana Tactics Tactical RPG.png?raw=true",
+        "free": false,
+        "vip": false
+    },
+    {
+        "name": "BLEACH: Cộng Hưởng Linh Hồn",
+        "note": "Damage Multiplier, Damage Reduction",
+        "link": "https://play.google.com/store/apps/details?id=com.crunchyroll.bleachsoulres",
+        "videoId": "n2qHRClHEE0",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/BLEACH Soul Resonance.png?raw=true",
+        "free": false,
+        "vip": true
     }
 ]
