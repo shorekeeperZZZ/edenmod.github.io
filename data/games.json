@@ -2442,7 +2442,7 @@
         "name": "Arcana Tactics: Tactical RPG",
         "note": "Damage Multiplier, Damage Reduction, Free Shop, Speed",
         "link": "https://play.google.com/store/apps/details?id=com.gamevil.arcanatactics.android.google.global.normal&hl=vi&ref=edenmod.net",
-        "videoId": "",
+        "videoId": "wIKexaU2HuQ",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Arcana Tactics Tactical RPG.png?raw=true",
         "free": false,
@@ -2457,5 +2457,25 @@
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/BLEACH Soul Resonance.png?raw=true",
         "free": false,
         "vip": true
+    },
+    {
+        "name": "Blade Idle",
+        "note": "Damage Multiplier, Damage Reduction, Auto Kill, Ads Free, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.mobirix.mbbi&hl=vi&ref=edenmod.net",
+        "videoId": "",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Blade Idle.png?raw=true",
+        "free": false,
+        "vip": true
+    },
+    {
+        "name": "Ensemble Stars Music",
+        "note": "Auto Play (Save you 10 Diamonds), Brutal",
+        "link": "https://play.google.com/store/apps/details?id=com.happyelements.es2.en.gp&hl=vi&ref=edenmod.net",
+        "videoId": "",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Ensemble Stars Music.png?raw=true",
+        "free": false,
+        "vip": false
     }
 ]
