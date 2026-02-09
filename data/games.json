@@ -2472,10 +2472,20 @@
         "name": "Ensemble Stars Music",
         "note": "Auto Play (Save you 10 Diamonds), Brutal",
         "link": "https://play.google.com/store/apps/details?id=com.happyelements.es2.en.gp&hl=vi&ref=edenmod.net",
-        "videoId": "",
+        "videoId": "v=GGwUaJs0xso",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Ensemble Stars Music.png?raw=true",
         "free": false,
         "vip": false
+    },
+    {
+        "name": "Titan Slayer : Action Idle RPG",
+        "note": "Damage Multiplier, God Mode, Freeze Currencies, Free Shop, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.cookapps.titanslayer&hl=vi&ref=edenmod.net",
+        "videoId": "",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Titan Slayer Action Idle RPG.png?raw=true",
+        "free": false,
+        "vip": true
     }
 ]
