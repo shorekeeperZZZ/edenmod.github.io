@@ -1,4 +1,4 @@
-[
+﻿[
     {
         "name": "Kho Báu Đại Chiến",
         "note": "Damage Multiplier, Defense Multiplier",
@@ -2482,19 +2482,29 @@
         "name": "Titan Slayer : Action Idle RPG",
         "note": "Damage Multiplier, God Mode, Freeze Currencies, Free Shop, Speed",
         "link": "https://play.google.com/store/apps/details?id=com.cookapps.titanslayer&hl=vi&ref=edenmod.net",
-        "videoId": "",
+        "videoId": "4KOgMg00zQ4",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Titan Slayer Action Idle RPG.png?raw=true",
         "free": false,
         "vip": true
-    }
+    },
     {
         "name": "Trials Of Eternity",
         "note": "Damage Multiplier, God Mode, Free Shop, Speed",
         "link": "https://play.google.com/store/apps/details?id=com.trials.eternity.free&hl=vi&ref=edenmod.net",
-        "videoId": "",
+        "videoId": "U5VJqTxagTs",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Trials Of Eternity.png?raw=true",
+        "free": false,
+        "vip": true
+    },
+    {
+        "name": "Self-Service Knight : idle RPG",
+        "note": "Damage Multiplier, God Mode, Free Shop, Hack Summon Grade, Hack Summon Equip Level, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.cookapps.ssknight&hl=vi&ref=edenmod.net",
+        "videoId": "sWFket91ZTA",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Self-Service Knight Idle RPG.png?raw=true",
         "free": false,
         "vip": true
     }
