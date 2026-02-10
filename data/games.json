@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "name": "Kho Báu Đại Chiến",
         "note": "Damage Multiplier, Defense Multiplier",
@@ -2505,6 +2505,16 @@
         "videoId": "sWFket91ZTA",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Self-Service Knight Idle RPG.png?raw=true",
+        "free": false,
+        "vip": true
+    },
+    {
+        "name": "Tavern Tale",
+        "note": "God Mode, Unlimited MP, Auto Kill, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.chillyroom.hanksbar.gp&ref=edenmod.net",
+        "videoId": "",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tavern Tale.png?raw=true",
         "free": false,
         "vip": true
     }
