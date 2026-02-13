@@ -2539,12 +2539,22 @@
         "vip": false
     },
     {
-        "name": "드래곤 라이즈",
+        "name": "드래곤 라이즈 (Dragon Rise)",
         "note": "God Mode, Damage Multiplier, Unlimited MP, Freeze Resources, Drop Multiplier, Speed",
         "link": "https://play.google.com/store/apps/details?id=com.stormrise.dragonrise&ref=edenmod.net",
-        "videoId": "",
+        "videoId": "HYVD4JKFwGw",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/드래곤 라이즈.png?raw=true",
+        "free": false,
+        "vip": false
+    },
+    {
+        "name": "단테 키우기 : 지옥의 여정 (Dante Raising: Journey of Hell)",
+        "note": "God Mode, Damage Multiplier, Dev Cheat Menu, Freeshop, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.chopchop.danteRPG&ref=edenmod.net",
+        "videoId": "",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/단테 키우기 지옥의 여정.png?raw=true",
         "free": false,
         "vip": false
     }
