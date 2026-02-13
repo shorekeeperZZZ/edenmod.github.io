@@ -2522,7 +2522,7 @@
         "name": "Druid Rising: Idle RPG",
         "note": "God Mode, Damage Multiplier, Free Shop, Speed",
         "link": "https://play.google.com/store/apps/details?id=com.lunosoft.idledruid&ref=edenmod.net&hl=vi",
-        "videoId": "",
+        "videoId": "oGaP9-zCKAA",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Druid Rising Idle RPG.png?raw=true",
         "free": false,
@@ -2532,9 +2532,19 @@
         "name": "클래스 : 국산 파밍 RPG",
         "note": "God Mode, Damage Multiplier, Unlimited MP, Freeze Resources, Ads Free, Speed",
         "link": "https://play.google.com/store/apps/details?id=com.stormrise.newclass&ref=edenmod.net&hl=vi",
-        "videoId": "",
+        "videoId": "kqqxxLBzjrE",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/클래스 국산 파밍 RPG.png?raw=true",
+        "free": false,
+        "vip": false
+    },
+    {
+        "name": "드래곤 라이즈",
+        "note": "God Mode, Damage Multiplier, Unlimited MP, Freeze Resources, Drop Multiplier, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.stormrise.dragonrise&ref=edenmod.net",
+        "videoId": "",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/드래곤 라이즈.png?raw=true",
         "free": false,
         "vip": false
     }
