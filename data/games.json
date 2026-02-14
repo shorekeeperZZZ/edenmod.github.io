@@ -2557,5 +2557,15 @@
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/단테 키우기 지옥의 여정.png?raw=true",
         "free": false,
         "vip": false
+    },
+    {
+        "name": "Monmate Master: Idle Adventure",
+        "note": "Damage Multiplier, Defense Multiplier, VIP Enabled (1), Auto Clear Map, No SP Cost",
+        "link": "https://play.google.com/store/apps/details?id=com.yqyxus.google&ref=edenmod.net",
+        "videoId": "",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Monmate Master Idle Adventure.png?raw=true",
+        "free": false,
+        "vip": true
     }
 ]
