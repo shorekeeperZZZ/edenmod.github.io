@@ -2577,5 +2577,25 @@
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Witch of the Labyrinth IdleRPG.png?raw=true",
         "free": false,
         "vip": false
+    },
+    {
+        "name": "Planet Wars",
+        "note": "God Mode, Damage Multiplier, Freeshop, Ads Free, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.ponyent.spacepony&ref=edenmod.net",
+        "videoId": "b80jalVmICM",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Planet Wars.png?raw=true",
+        "free": false,
+        "vip": false
+    },
+    {
+        "name": "Auto Heroes Strategy",
+        "note": "God Mode, Damage Multiplier, Always Win, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.fort23.gj007&ref=edenmod.net",
+        "videoId": "KhZKYgxYPjI",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Auto Heroes Strategy.png?raw=true",
+        "free": false,
+        "vip": false
     }
 ]
