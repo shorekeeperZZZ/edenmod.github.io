@@ -2607,5 +2607,25 @@
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Loot Heroes Fantasy RPG Games.png?raw=true",
         "free": false,
         "vip": false
+    },
+    {
+        "name": "K-Demon Hunter",
+        "note": "God Mode, Damage Multiplier, Free Shop, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.codedragon.kdemon&ref=edenmod.net",
+        "videoId": "i0zKb_VyaTY",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/K-Demon Hunter.png?raw=true",
+        "free": false,
+        "vip": false
+    },
+    {
+        "name": "The Warrior Returns : Idle RPG (Anh hùng trở lại)",
+        "note": "God Mode, Damage Multiplier, Ads Free, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.reddot.warriorreturns&ref=edenmod.net",
+        "videoId": "",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/The Warrior Returns Idle RPG.png?raw=true",
+        "free": false,
+        "vip": false
     }
 ]
