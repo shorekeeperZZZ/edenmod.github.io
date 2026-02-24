@@ -2647,5 +2647,15 @@
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Epic Pirate War.png?raw=true",
         "free": false,
         "vip": false
+    },
+    {
+        "name": "Tông Sư Mạnh Nhất",
+        "note": "Damage Multiplier, Damage Reduction, Auto Kill (2), VIP Benefits (1), No Skill CD",
+        "link": "https://play.google.com/store/apps/details?id=com.xxyx.vn&ref=edenmod.net",
+        "videoId": "iPduXUUw3hE",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tông Sư Mạnh Nhất.png?raw=true",
+        "free": false,
+        "vip": true
     }
 ]
