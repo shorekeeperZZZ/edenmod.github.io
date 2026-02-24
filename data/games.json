@@ -2622,9 +2622,29 @@
         "name": "The Warrior Returns : Idle RPG (Anh hùng trở lại)",
         "note": "God Mode, Damage Multiplier, Ads Free, Speed",
         "link": "https://play.google.com/store/apps/details?id=com.reddot.warriorreturns&ref=edenmod.net",
-        "videoId": "",
+        "videoId": "LliEfe1Kg9M",
         "discordLink": "https://discord.gg/edenmod",
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/The Warrior Returns Idle RPG.png?raw=true",
+        "free": false,
+        "vip": false
+    },
+    {
+        "name": "Pixel Girl Idle",
+        "note": "God Mode, Damage Multiplier, Free Shop, Speed",
+        "link": "https://play.google.com/store/apps/details?id=com.ztogames.bs&ref=edenmod.net",
+        "videoId": "AGnw3LtyKu0",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Pixel Girl Idle.png?raw=true",
+        "free": false,
+        "vip": true
+    },
+    {
+        "name": "Epic Pirate War",
+        "note": "Damage Multiplier, Defense Multiplier, Auto-Battle (Dungeon)",
+        "link": "https://play.google.com/store/apps/details?id=com.epicpiratewar.googlelb&ref=edenmod.net",
+        "videoId": "HXxeBASqe6U",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Epic Pirate War.png?raw=true",
         "free": false,
         "vip": false
     }
