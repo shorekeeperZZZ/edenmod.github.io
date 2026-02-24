@@ -2657,5 +2657,35 @@
         "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tông Sư Mạnh Nhất.png?raw=true",
         "free": false,
         "vip": true
+    },
+    {
+        "name": "Wuxia Rising Star",
+        "note": "Damage Multiplier, Damage Reduction, Auto Kill (2), VIP Benefits (1), No Skill CD",
+        "link": "https://play.google.com/store/apps/details?id=com.xxyx.vn&ref=edenmod.net",
+        "videoId": "PzP_59VWJ7M",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Tông Sư Mạnh Nhất.png?raw=true",
+        "free": false,
+        "vip": true
+    },
+    {
+        "name": "팰리팰리 (Monmate Master: Idle Adventure)",
+        "note": "Damage Multiplier, Damage Divider, VIP Benefits (1), Auto Kill (2)",
+        "link": "https://play.google.com/store/apps/details?id=com.yqyxkr.google&ref=edenmod.net",
+        "videoId": "dkMV-GIJXuE",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/팰리팰리 (Monmate Master Idle Adventure).png?raw=true",
+        "free": false,
+        "vip": true
+    },
+    {
+        "name": "Demon: Adventure Journey",
+        "note": "Player Stats Multiplier, Enemy Stats Divider",
+        "link": "https://play.google.com/store/apps/details?id=com.TongTouad.ShijD&ref=edenmod.net",
+        "videoId": "wStp-2uJAS8",
+        "discordLink": "https://discord.gg/edenmod",
+        "image": "https://github.com/shorekeeperZZZ/image/blob/main/Demon Adventure Journey.png?raw=true",
+        "free": false,
+        "vip": true
     }
 ]
